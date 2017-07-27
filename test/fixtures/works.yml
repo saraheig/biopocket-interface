@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  topic: one
+  category: one
+  title: MyString
+  description: MyText
+  impact: MyText
+  house: false
+  cost: 9.99
+  time: MyString
+  difficulty: 1
+
+two:
+  topic: two
+  category: two
+  title: MyString
+  description: MyText
+  impact: MyText
+  house: false
+  cost: 9.99
+  time: MyString
+  difficulty: 1
