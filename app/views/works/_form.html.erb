@@ -9,7 +9,7 @@
   <% end %>
   <% if work.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(work.errors.count, "erreurs") %> ont été identifiées : </h2>
+      <h2><%= pluralize(work.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>
 
       <ul>
       <% work.errors.messages.values.each do |message| %>
