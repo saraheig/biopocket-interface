@@ -1,14 +1,24 @@
-<p id="notice"><%= notice %></p>
+<br/><p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titre : </strong>
-  <%= @topic.title %>
-</p>
+<h1>Thème "<%= @topic.title %>"</h1>
 
-<p>
-  <strong>Description : </strong>
-  <%= @topic.description %>
-</p>
+<hr/>
+<%= link_to 'Voir tous les thèmes', topics_path %>
+<hr/>
 
-<%= link_to 'Editer', edit_topic_path(@topic) %> |
-<%= link_to 'Retour', topics_path %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @topic.title %></td>
+      <td><%= @topic.description %></td>
+      <td><%= link_to 'Editer', edit_topic_path(@topic) %></td>
+    </tr>
+  </tbody>
+</table>
