@@ -4,7 +4,8 @@ class WorksController < ApplicationController
   # GET /works
   # GET /works.json
   def index
-    @works = Work.all
+    # works are ordered by updated_at desc => the most recently changed work: at the top 
+    @works = Work.all.order(updated_at: :desc)
   end
 
   # GET /works/1
@@ -28,8 +29,8 @@ class WorksController < ApplicationController
 
     respond_to do |format|
       if @work.save
-        format.html { redirect_to @work, notice: 'Work was successfully created.' }
-        format.json { render :show, status: :created, location: @work }
+        format.html { redirect_to works_url, notice: 'L\'action a été créée.' }
+        format.json { render :index, status: :created, location: @work }
       else
         format.html { render :new }
         format.json { render json: @work.errors, status: :unprocessable_entity }
@@ -42,8 +43,8 @@ class WorksController < ApplicationController
   def update
     respond_to do |format|
       if @work.update(work_params)
-        format.html { redirect_to @work, notice: 'Work was successfully updated.' }
-        format.json { render :show, status: :ok, location: @work }
+        format.html { redirect_to works_url, notice: 'L\'action a été mise à jour.' }
+        format.json { render :index, status: :ok, location: @work }
       else
         format.html { render :edit }
         format.json { render json: @work.errors, status: :unprocessable_entity }
@@ -56,7 +57,7 @@ class WorksController < ApplicationController
   def destroy
     @work.destroy
     respond_to do |format|
-      format.html { redirect_to works_url, notice: 'Work was successfully destroyed.' }
+      format.html { redirect_to works_url, notice: 'L\'action a été supprimée.' }
       format.json { head :no_content }
     end
   end
