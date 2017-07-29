@@ -10,13 +10,15 @@
       </ul>
     </div>
   <% end %>
+  
+  <hr/><h3>Information sur le type d'action</h3><br/>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :category_title %>
+    Titre : <br/>
+    <%= form.text_field :title, id: :category_title, size: '43.5' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Enregistrer' %>
   </div>
 <% end %>
