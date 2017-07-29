@@ -6,11 +6,11 @@
   <% end %>
   <% if topic.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
+      <h2><%= pluralize(topic.errors.count, "erreurs") %> :</h2>
 
       <ul>
-      <% topic.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% topic.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
       <% end %>
       </ul>
     </div>
