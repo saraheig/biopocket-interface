@@ -6,12 +6,25 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
   </head>
 
   <body>
-    <div class='container'>
+    <nav class='navbar navbar-default navbar-fixed-top'>
+      <div class='container'>
+        <a class='navbar-brand' href='/tables'>BioRails</a>
+        <ul class='nav navbar-nav'>
+          <li><%= link_to 'Actions', works_path %></li>
+          <li><%= link_to 'Thèmes', topics_path %></li>
+          <li><%= link_to 'Types d\'action', categories_path %></li>
+        </ul>
+        <div class='collapse navbar-collapse navbar-right'>
+          <a class='btn btn-default navbar-btn' href='#'>Aller en haut de la page</a>
+        </div>
+      </div>
+    </nav>
+    <main class='container'>
       <%= yield %>
-    </div>
+    </main>
   </body>
 </html>
