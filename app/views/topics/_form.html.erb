@@ -1,4 +1,9 @@
 <%= form_with(model: topic, local: true) do |form| %>
+  <% type = request.path_info.split("/")[3] %>
+  <% if type == 'edit' %>
+    <%-# This is an existing topic. -%>
+    <h2>Thème "<%= topic.title %>"</h2>
+  <% end %>
   <% if topic.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(topic.errors.count, "error") %> prohibited this topic from being saved:</h2>
@@ -10,18 +15,20 @@
       </ul>
     </div>
   <% end %>
+  
+  <hr/><h3>Information sur le thème</h3><br/>
 
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :topic_title %>
+    Titre : <br/>
+    <%= form.text_field :title, id: :topic_title, size: '43.5' %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :topic_description %>
+    Description : <br/>
+    <%= form.text_area :description, id: :topic_description, size: '40x5' %>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Enregistrer' %>
   </div>
 <% end %>
