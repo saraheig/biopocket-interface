@@ -1,8 +1,8 @@
 <%= form_with(model: work, local: true) do |form| %>
   <%-# The type variable: to know if this is a new or an existing work which is modified (see below) -%>
-  <% type = request.path_info.split("/")[2] %>
+  <% type = request.path_info.split("/")[3] %>
   <%-# Add a title according if this is a new or an existing work -%>
-  <% if type != 'new' %>
+  <% if type == 'edit' %>
     <%-# This is an existing work. -%>
     <h2>Action "<%= work.title %>"</h2>
     <%-# No <h2> title if this is a new work. -%>
@@ -47,7 +47,7 @@
   </div>
 
   <div class="field">
-    Temps : <br/>
+    Temps (unité à spécifier dans le champs) : <br/>
     <%= form.text_field :time, id: :work_time, size: '43.5' %>
   </div>
 
@@ -68,13 +68,13 @@
       <% toparray = [topic.title, topic.id] %>
       <% topoptions.push(toparray) %>
       <%-# If this is an existing work, the selected option of the select form is the current value (see below). -%>
-      <% if type != 'new' %>
+      <% if type == 'edit' %>
         <% if topic.id == work.topic.id %>
           <% topselected = topic.id %>
         <% end %>
       <% end %>
     <% end %>
-    <% if type != 'new' %>
+    <% if type == 'edit' %>
       <%= form.select :topic_id, options_for_select(topoptions, selected: topselected), id: :work_topic_id %>
     <% else %>
       <%-# If this is a new work, there is no default value selected in the select form. -%>
@@ -91,13 +91,13 @@
     <% categories.each do |category| %>
       <% catarray = [category.title, category.id] %>
       <% catoptions.push(catarray) %>
-      <% if type != 'new' %>
+      <% if type == 'edit' %>
         <% if category.id == work.category.id %>
           <% catselected = category.id %>
         <% end %>
       <% end %>
     <% end %>
-    <% if type != 'new' %>
+    <% if type == 'edit' %>
       <%= form.select :category_id, options_for_select(catoptions, selected: catselected), id: :work_category_id %>
     <% else %> 
       <%= form.select :category_id, options_for_select(catoptions), id: :work_category_id %>
