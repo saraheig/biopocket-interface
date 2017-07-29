@@ -1,9 +1,22 @@
-<p id="notice"><%= notice %></p>
+<br/><p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Titre : </strong>
-  <%= @category.title %>
-</p>
+<h1>Type d'action "<%= @category.title %>"</h1>
 
-<%= link_to 'Editer', edit_category_path(@category) %> |
-<%= link_to 'Retour', categories_path %>
+<hr/>
+<%= link_to 'Voir tous les types d\'action', categories_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover" style="max-width: 50%">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @category.title %></td>
+      <td><%= link_to 'Editer', edit_category_path(@category) %></td>
+    </tr>
+  </tbody>
+</table>
