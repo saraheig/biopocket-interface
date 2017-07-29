@@ -29,7 +29,7 @@ class WorksController < ApplicationController
 
     respond_to do |format|
       if @work.save
-        format.html { redirect_to works_url, notice: 'L\'action a été créée.' }
+        format.html { redirect_to @work, notice: 'L\'action a été créée.' }
         format.json { render :index, status: :created, location: @work }
       else
         format.html { render :new }
@@ -43,7 +43,7 @@ class WorksController < ApplicationController
   def update
     respond_to do |format|
       if @work.update(work_params)
-        format.html { redirect_to works_url, notice: 'L\'action a été mise à jour.' }
+        format.html { redirect_to @work, notice: 'L\'action a été mise à jour.' }
         format.json { render :index, status: :ok, location: @work }
       else
         format.html { render :edit }
