@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'tables/index'
+
   resources :works
   resources :categories
   resources :topics
