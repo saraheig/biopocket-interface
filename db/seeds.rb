@@ -91,3 +91,10 @@ Work.create!(
     cost: 30.0,
     time: '4h00',
     difficulty: 3)
+
+User.create!(
+    firstname: 'toto',
+    lastname: 'tutu',
+    pseudo: 'totu',
+    email: 'toto@tutu.com',
+    password: 'f36SU7fuCA29w')
