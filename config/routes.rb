@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :users
   get '/tables', to: 'tables#index'
   
   resources :works, path: '/tables/works'
