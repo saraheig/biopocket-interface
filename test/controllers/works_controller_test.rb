@@ -17,7 +17,7 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
 
   test "should create work" do
     assert_difference('Work.count') do
-      post works_url, params: { work: { category_id: @work.category_id, cost: @work.cost, description: @work.description, difficulty: @work.difficulty, house: @work.house, impact: @work.impact, time: @work.time, title: @work.title, topic_id: @work.topic_id } }
+      post works_url, params: { work: { category_id: @work.category_id, cost: @work.cost, description: @work.description, difficulty: @work.difficulty, house: @work.house, impact: @work.impact, time: @work.time, title: 'NewTitle', topic_id: @work.topic_id } }
     end
 
     assert_redirected_to work_url(Work.last)
