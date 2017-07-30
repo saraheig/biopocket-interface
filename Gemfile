@@ -36,6 +36,7 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # Adds support for Capybara system testing and poltergeist driver
   gem 'capybara', '~> 2.13'
+  gem 'capybara-screenshot'
   gem 'poltergeist'
 end
 
