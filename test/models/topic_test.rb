@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class TopicTest < ActiveSupport::TestCase
+  setup do
+    @topic = topics(:one)
+  end
   
   test 'ensures that title exists' do
     topic = Topic.new(title: nil)
@@ -15,15 +18,14 @@ class TopicTest < ActiveSupport::TestCase
   end
   
   test 'ensures that title is unique' do
-    topic = Topic.new(title: 'FirstTitle')
+    topic = Topic.new(title: @topic.title)
     assert_not topic.valid?
     assert_equal [:title], topic.errors.keys
   end
   
   test 'ensures that description length is less than 250' do
-    topic = Topic.new(title: 'MyNewTitle', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus quam, blandit eu erat in, placerat vulputate elit. Curabitur molestie mauris vel risus interdum pellentesque. Ut egestas massa vitae facilisis laoreet. Vivamus hendrerit laoreet sedd.')
+    topic = Topic.new(title: 'NewTitle', description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec metus quam, blandit eu erat in, placerat vulputate elit. Curabitur molestie mauris vel risus interdum pellentesque. Ut egestas massa vitae facilisis laoreet. Vivamus hendrerit laoreet sedd.')
     assert_not topic.valid?
     assert_equal [:description], topic.errors.keys
   end
-  
 end
