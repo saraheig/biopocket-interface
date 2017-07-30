@@ -1,6 +1,9 @@
 require 'test_helper'
 
 class CategoryTest < ActiveSupport::TestCase
+  setup do
+    @category = categories(:one)
+  end
   
   test 'ensures that title exists' do
     category = Category.new(title: nil)
@@ -15,9 +18,8 @@ class CategoryTest < ActiveSupport::TestCase
   end
   
   test 'ensures that title is unique' do
-    category = Category.new(title: 'FirstTitle')
+    category = Category.new(title: @category.title)
     assert_not category.valid?
     assert_equal [:title], category.errors.keys
   end
-  
 end
