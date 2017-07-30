@@ -17,7 +17,7 @@ class TopicsControllerTest < ActionDispatch::IntegrationTest
 
   test "should create topic" do
     assert_difference('Topic.count') do
-      post topics_url, params: { topic: { description: @topic.description, title: @topic.title } }
+      post topics_url, params: { topic: { title: 'NewTitle', description: 'NewDescription' } }
     end
 
     assert_redirected_to topic_url(Topic.last)
