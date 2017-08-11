@@ -1,5 +1,16 @@
 <h1>S'enregistrer</h1>
 <%= form_with(model: @user, local: true) do |form| %>
+
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>
+      <ul>
+      <% @user.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
   
   <hr/><h3>Choisissez vos paramètres de connexion</h3><br/>
   
