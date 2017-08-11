@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :users
+  resources :users, only: %i[new create]
   get '/tables', to: 'tables#index'
   
   resources :works, path: '/tables/works'

@@ -1,0 +1,38 @@
+<h1>S'enregistrer</h1>
+<%= form_with(model: @user, local: true) do |form| %>
+  
+  <hr/><h3>Choisissez vos paramètres de connexion</h3><br/>
+  
+  <div class="field">
+    Pseudo : <br/>
+    <%= form.text_field :pseudo, id: :user_pseudo, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Mot de passe : <br/>
+    <%= form.password_field :password, id: :user_password, size: '43.5' %>
+  </div>
+  
+  <hr/><h3>Identifiez-vous</h3><br/>
+
+  <div class="field">
+    Prénom : <br/>
+    <%= form.text_field :firstname, id: :user_firstname, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Nom de famille : <br/>
+    <%= form.text_field :lastname, id: :user_lastname, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    E-mail : <br/>
+    <%= form.email_field :email, id: :user_email, size: '43.5' %>
+  </div>
+  
+  <hr/>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+  
+<% end %>
