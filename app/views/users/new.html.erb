@@ -11,21 +11,8 @@
       </ul>
     </div>
   <% end %>
-  
-  <hr/><h3>Choisissez vos paramètres de connexion</h3><br/>
-  
-  <div class="field">
-    Pseudo : <br/>
-    <%= form.text_field :pseudo, id: :user_pseudo, size: '43.5' %>
-  </div>
-  
-  <div class="field">
-    Mot de passe : <br/>
-    <%= form.password_field :password, id: :user_password, size: '43.5' %>
-  </div>
-  
-  <hr/><h3>Identifiez-vous</h3><br/>
 
+  <hr/>
   <div class="field">
     Prénom : <br/>
     <%= form.text_field :firstname, id: :user_firstname, size: '43.5' %>
@@ -39,6 +26,17 @@
   <div class="field">
     E-mail : <br/>
     <%= form.email_field :email, id: :user_email, size: '43.5' %>
+  </div>
+  
+  <hr/>
+  <div class="field">
+    Pseudo : <br/>
+    <%= form.text_field :pseudo, id: :user_pseudo, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Mot de passe : <br/>
+    <%= form.password_field :password, id: :user_password, size: '43.5' %>
   </div>
   
   <hr/>
