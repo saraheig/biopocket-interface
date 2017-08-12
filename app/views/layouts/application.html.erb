@@ -18,10 +18,14 @@
           <li><%= link_to 'Thèmes', topics_path %></li>
           <li><%= link_to 'Types d\'action', categories_path %></li>
         </ul>
-        <div class='collapse navbar-collapse navbar-right'>
-          <a class='btn btn-link navbar-btn' href='#'>Aller en haut de la page</a>
-          <a class='btn btn-link navbar-btn' href='/users/new'>S'enregistrer</a>
-        </div>
+        <ul class='nav navbar-nav navbar-right'>
+          <li><%= link_to 'Aller en haut de la page', :anchor => "#" %></li>
+          <% if logged_in? %>
+            <li><%= link_to "Se déconnecter (#{current_user.pseudo})", session_path, method: :delete %></li>
+          <% else %>
+            <li><%= link_to "Se connecter (s'enregistrer)", new_session_path %></li>
+          <% end %>
+        </ul>
       </div>
     </nav>
     <main class='container'>
