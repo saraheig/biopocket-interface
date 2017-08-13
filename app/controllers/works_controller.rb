@@ -1,4 +1,4 @@
-class WorksController < ApplicationController
+class WorksController < AuthenticateController
   before_action :set_work, only: [:show, :edit, :update, :destroy]
 
   # GET /works

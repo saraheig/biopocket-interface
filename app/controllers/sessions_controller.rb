@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
   
   def destroy
     session.delete(:user_id)
-    redirect_to root_url, notice: 'Déconnexion réussie'
+    redirect_to new_session_path, notice: 'Déconnexion réussie'
   end
   
 end

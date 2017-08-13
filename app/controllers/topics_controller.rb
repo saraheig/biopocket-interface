@@ -1,4 +1,4 @@
-class TopicsController < ApplicationController
+class TopicsController < AuthenticateController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   # GET /topics

@@ -1,4 +1,4 @@
-class TablesController < ApplicationController
+class TablesController < AuthenticateController
   def index
   end
 end
