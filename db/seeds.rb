@@ -95,6 +95,6 @@ Work.create!(
 User.create!(
     firstname: 'toto',
     lastname: 'tutu',
-    pseudo: 'totu',
+    pseudo: 'tototutu',
     email: 'toto@tutu.com',
-    password: 'f36SU7fuCA29w')
+    password: 'tototutu')
