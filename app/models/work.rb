@@ -12,7 +12,7 @@ class Work < ApplicationRecord
   validates_length_of :time, :in => 2..15, :message => "Le temps de l'action doit être présent et avoir entre 2 et 15 caractères."
   validates_inclusion_of :difficulty, :in => [1, 2, 3], :message => "Les valeurs possibles pour la difficulté de l'action sont 1, 2 ou 3."
 
-  def self.search(keyword, house, difficulty, costmin, costmax)
+  def self.search(keyword, house, difficulty, costmin, costmax, topic, category)
     if house == "Oui"
       sql_house = "house"
     elsif house == "Non"
@@ -36,9 +36,22 @@ class Work < ApplicationRecord
       sql_cost = "cost >= #{costmin.to_f}"
     end
 
-    # The query
-    where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
-    # works are ordered by updated_at desc => the most recently changed work: at the top
+    # Another possibility: test topic and category in a final if - elsif - else condition
+    if topic != 'Indifférent' && category != 'Indifférent'
+      sql_topcat = "topic_id = #{topic.to_f} AND category_id = #{category.to_f}"
+    elsif topic != 'Indifférent' && category == 'Indifférent'
+      sql_topcat = "topic_id = #{topic.to_f}"
+    elsif topic == 'Indifférent' && category != 'Indifférent'
+      sql_topcat = "category_id = #{category.to_f}"
+    else
+      sql_topcat = ""
+    end
 
+    if sql_topcat == ""
+      where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      # works are ordered by updated_at desc => the most recently changed work: at the top
+    else
+      where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND " + sql_topcat + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+    end
   end
 end

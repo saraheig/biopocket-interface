@@ -35,6 +35,28 @@
     <%= number_field_tag :costmax, params[:costmax], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
   </div>
 
+  <div class="field">
+    Thème :
+    <% topics = Topic.all %>
+    <% topoptions = ['Indifférent'] %>
+    <% topics.each do |topic| %>
+      <% toparray = [topic.title, topic.id] %>
+      <% topoptions.push(toparray) %>
+    <% end %>
+    <%= select_tag :topic_id, options_for_select(topoptions, params[:topic_id]) %>
+  </div>
+
+  <div class="field">
+    Type d'action :
+    <% categories = Category.all %>
+    <% catoptions = ['Indifférent'] %>
+    <% categories.each do |category| %>
+      <% catarray = [category.title, category.id] %>
+      <% catoptions.push(catarray) %>
+    <% end %>
+    <%= select_tag :category_id, options_for_select(catoptions, params[:category_id]) %>
+  </div>
+
   <div class="actions">
     <%= submit_tag 'Rechercher', name: nil %>
   </div>

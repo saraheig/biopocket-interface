@@ -9,7 +9,9 @@ class WorksController < AuthenticateController
     difficulty = params[:difficulty]
     costmin = params[:costmin]
     costmax = params[:costmax]
-    @works = Work.search(keyword, house, difficulty, costmin, costmax)
+    topic = params[:topic_id]
+    category = params[:category_id]
+    @works = Work.search(keyword, house, difficulty, costmin, costmax, topic, category)
   end
 
   # GET /works/1
