@@ -7,6 +7,42 @@
 <%= link_to 'Ajouter une nouvelle action', new_work_path %>
 <hr/>
 
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(works_path, method: :get) do %>
+
+  <div class="field">
+    Mot-clé cherché dans le titre, les descriptions ou le temps :
+    <%= text_field_tag :keyword, params[:keyword], placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Nécessité d'une maison ?
+    <%= select_tag :house, options_for_select(['Indifférent', 'Oui', 'Non'], params[:house]) %>
+  </div>
+
+  <div class="field">
+    Difficulté (1 = facile, 2 = moyen, 3 = difficile) :
+    <%= select_tag :difficulty, options_for_select(['Indifférent', '1', '2', '3'], params[:difficulty]) %>
+  </div>
+
+  <div class="field">
+    Coût minimum :
+    <%= number_field_tag :costmin, params[:costmin], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Coût maximum :
+    <%= number_field_tag :costmax, params[:costmax], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+
+<%= link_to 'Annuler la recherche', works_path %><br/><br/>
+
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>

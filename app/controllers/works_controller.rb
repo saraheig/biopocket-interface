@@ -4,8 +4,12 @@ class WorksController < AuthenticateController
   # GET /works
   # GET /works.json
   def index
-    # works are ordered by updated_at desc => the most recently changed work: at the top 
-    @works = Work.all.order(updated_at: :desc)
+    keyword = params[:keyword]
+    house = params[:house]
+    difficulty = params[:difficulty]
+    costmin = params[:costmin]
+    costmax = params[:costmax]
+    @works = Work.search(keyword, house, difficulty, costmin, costmax)
   end
 
   # GET /works/1

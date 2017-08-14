@@ -12,4 +12,33 @@ class Work < ApplicationRecord
   validates_length_of :time, :in => 2..15, :message => "Le temps de l'action doit être présent et avoir entre 2 et 15 caractères."
   validates_inclusion_of :difficulty, :in => [1, 2, 3], :message => "Les valeurs possibles pour la difficulté de l'action sont 1, 2 ou 3."
 
+  def self.search(keyword, house, difficulty, costmin, costmax)
+    if house == "Oui"
+      sql_house = "house"
+    elsif house == "Non"
+      sql_house = "not house"
+    else
+      sql_house = "(house OR not house)"
+      # Another possibility: put sql_house="" and test it in a final if - elsif - else condition
+    end
+
+    if difficulty != "Indifférent"
+      sql_diff = "difficulty = #{difficulty.to_f}"
+    else
+      sql_diff = "(difficulty = 1 OR difficulty = 2 OR difficulty = 3)"
+      # Another possibility: put sql_diff="" and test it in a final if - elsif - else condition
+    end
+
+    # The minimum cost equals 0.0.
+    if costmax != ""
+      sql_cost = "cost >= #{costmin.to_f} AND cost <= #{costmax.to_f}"
+    else
+      sql_cost = "cost >= #{costmin.to_f}"
+    end
+
+    # The query
+    where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+    # works are ordered by updated_at desc => the most recently changed work: at the top
+
+  end
 end
