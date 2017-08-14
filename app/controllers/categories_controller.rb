@@ -4,7 +4,7 @@ class CategoriesController < AuthenticateController
   # GET /categories
   # GET /categories.json
   def index
-    @categories = Category.all.order(updated_at: :desc)
+    @categories = Category.search(params[:search])
   end
 
   # GET /categories/1
