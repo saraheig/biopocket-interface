@@ -4,7 +4,7 @@ class TopicsController < AuthenticateController
   # GET /topics
   # GET /topics.json
   def index
-    @topics = Topic.all.order(updated_at: :desc)
+    @topics = Topic.search(params[:search])
   end
 
   # GET /topics/1
@@ -69,6 +69,6 @@ class TopicsController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def topic_params
-      params.require(:topic).permit(:title, :description)
+      params.require(:topic).permit(:title, :description, :search)
     end
 end
