@@ -2,16 +2,23 @@ class Work < ApplicationRecord
   belongs_to :topic
   belongs_to :category
   
-  validates_presence_of :title, :message => "Le titre de l'action doit être spécifié."
-  validates_length_of :title, :maximum => 50, :message => "Le titre de l'action doit avoir moins de 50 caractères."
-  validates_uniqueness_of :title, :case_sensitive => false, :message => "Le titre de l'action est déjà utilisé."
-  validates_length_of :description, :maximum => 250, :message => "La description de l'action doit avoir moins de 250 caractères."
-  validates_length_of :impact, :maximum => 250, :message => "La description de l'impact doit avoir moins de 250 caractères."
-  validates_inclusion_of :house, :in => [true, false], :message => "Les valeurs possibles pour la nécessité d'une maison est true ou false."
-  validates_format_of :cost, :with => /\A[0-9]*\.?[0-9]?[0|5]?\z/, :message => "Le coût doit être présent et être un nombre qui peut contenir deux décimales (facultatif), dont la deuxième a la valeur de 0 ou 5."
-  validates_length_of :time, :in => 2..15, :message => "Le temps de l'action doit être présent et avoir entre 2 et 15 caractères."
-  validates_inclusion_of :difficulty, :in => [1, 2, 3], :message => "Les valeurs possibles pour la difficulté de l'action sont 1, 2 ou 3."
+  # Compulsory fields: title and time
+  validates_presence_of :title, :message => 'Le titre de l\'action doit être spécifié.'
+  validates_length_of :title, :maximum => 50, :message => 'Le titre de l\'action doit avoir moins de 50 caractères.'
+  # title uniqueness: case insensitive
+  validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre de l\'action est déjà utilisé.'
+  validates_length_of :description, :maximum => 250, :message => 'La description de l\'action doit avoir moins de 250 caractères.'
+  validates_length_of :impact, :maximum => 250, :message => 'La description de l\'impact doit avoir moins de 250 caractères.'
+  # house: only two possibilities -> true or false
+  validates_inclusion_of :house, :in => [true, false], :message => 'Les valeurs possibles pour la nécessité d\'une maison est true ou false.'
+  # cost: regex validation
+  validates_format_of :cost, :with => /\A[0-9]*\.?[0-9]?[0|5]?\z/, :message => 'Le coût doit être présent et être un nombre qui peut contenir deux décimales (facultatif), dont la deuxième a la valeur de 0 ou 5.'
+  # The time of a work could be small (just a few minutes) or big (days). -> User can here specify the most suitable unit.
+  validates_length_of :time, :in => 2..15, :message => 'Le temps de l\'action doit être présent et avoir entre 2 et 15 caractères.'
+  # difficulty: only three possibilities -> 1, 2 or 3
+  validates_inclusion_of :difficulty, :in => [1, 2, 3], :message => 'Les valeurs possibles pour la difficulté de l\'action sont 1, 2 ou 3.'
 
+  # Function search to search a keyword and/or other elements through a form 
   def self.search(keyword, house, difficulty, costmin, costmax, topic, category)
     if house == "Oui"
       sql_house = "house"
@@ -37,11 +44,11 @@ class Work < ApplicationRecord
     end
 
     # Another possibility: test topic and category in a final if - elsif - else condition
-    if topic != 'Indifférent' && category != 'Indifférent'
+    if topic != "Indifférent" && category != "Indifférent"
       sql_topcat = "topic_id = #{topic.to_f} AND category_id = #{category.to_f}"
-    elsif topic != 'Indifférent' && category == 'Indifférent'
+    elsif topic != "Indifférent" && category == "Indifférent"
       sql_topcat = "topic_id = #{topic.to_f}"
-    elsif topic == 'Indifférent' && category != 'Indifférent'
+    elsif topic == "Indifférent" && category != "Indifférent"
       sql_topcat = "category_id = #{category.to_f}"
     else
       sql_topcat = ""
