@@ -47,11 +47,14 @@ class Work < ApplicationRecord
       sql_topcat = ""
     end
 
-    if sql_topcat == ""
+    # If no search is done, all data are displayed.
+    if sql_house && sql_diff && sql_cost && keyword && sql_topcat == ""
       where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # works are ordered by updated_at desc => the most recently changed work: at the top
-    else
+    elsif sql_house && sql_diff && sql_cost && keyword && sql_topcat != ""
       where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND " + sql_topcat + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+    else
+      all.order(updated_at: :desc)
     end
   end
 end
