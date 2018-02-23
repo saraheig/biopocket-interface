@@ -80,6 +80,6 @@ test:
 #
 production:
   <<: *default
-  database: bio-rails_production
-  username: bio-rails
-  password: <%= ENV['BIO-RAILS_DATABASE_PASSWORD'] %>
+  database: <%= ENV['BIO_RAILS_DATABASE_NAME'] %>
+  username: <%= ENV['BIO_RAILS_DATABASE_USERNAME'] %>
+  password: <%= ENV['BIO_RAILS_DATABASE_PASSWORD'] %>
