@@ -1,0 +1,29 @@
+<%= form_with(model: type, local: true) do |form| %>
+  <% if type.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(type.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% type.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <hr/><h3>Information sur le type d'action</h3><br/>
+
+  <div class="field">
+    Titre : <br/>
+    <%= form.text_field :title, id: :type_title, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Description : <br/>
+    <%= form.text_area :description, id: :type_description, size: '40x5' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

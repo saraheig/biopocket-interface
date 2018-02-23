@@ -1,0 +1,132 @@
+<br/><p id="notice"><%= notice %></p>
+
+<h1>Table des actions</h1>
+
+<hr/>
+<%-# Button to add a new action: at the top -%>
+<%= link_to 'Ajouter une nouvelle action', new_action_path %>
+<hr/>
+
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(actions_path, method: :get) do %>
+
+  <div class="field">
+    Mot-clé cherché dans le titre, les descriptions ou le temps :
+    <%= text_field_tag :keyword, params[:keyword], placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Nécessité d'une maison ?
+    <%= select_tag :spot, options_for_select(['Indifférent', 'Oui', 'Non'], params[:spot]) %>
+  </div>
+
+  <div class="field">
+    Difficulté (1 = facile, 2 = moyen, 3 = difficile) :
+    <%= select_tag :investment, options_for_select(['Indifférent', '1', '2', '3'], params[:investment]) %>
+  </div>
+
+  <div class="field">
+    Coût minimum :
+    <%= number_field_tag :costmin, params[:costmin], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Coût maximum :
+    <%= number_field_tag :costmax, params[:costmax], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Thème :
+    <% themes = Theme.all %>
+    <% topoptions = ['Indifférent'] %>
+    <% themes.each do |theme| %>
+      <% toparray = [theme.title, theme.id] %>
+      <% topoptions.push(toparray) %>
+    <% end %>
+    <%= select_tag :theme_id, options_for_select(topoptions, params[:theme_id]) %>
+  </div>
+
+  <div class="field">
+    Type d'action :
+    <% types = Type.all %>
+    <% catoptions = ['Indifférent'] %>
+    <% types.each do |type| %>
+      <% catarray = [type.title, type.id] %>
+      <% catoptions.push(catarray) %>
+    <% end %>
+    <%= select_tag :type_id, options_for_select(catoptions, params[:type_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+
+<%= link_to 'Annuler la recherche', actions_path %><br/><br/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description de l'action</th>
+      <th>Description de l'impact</th>
+      <th>Nécessité d'une maison ?</th>
+      <th>Coût minimum [CHF]</th>
+      <th>Temps minimum</th>
+      <th>Unité de temps</th>
+      <th>Description sur le temps</th>
+      <th>Surface minimale</th>
+      <th>Difficulté</th>
+      <th>Photo</th>
+      <th>Importance pour la biodiversité</th>
+      <th>Thème</th>
+      <th>Type d'action</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @actions.each do |action| %>
+      <tr>
+        <td><%= action.title %></td>
+        <td><%= action.description %></td>
+        <td><%= action.impact %></td>
+        <td>
+          <% if action.spot == true %>
+            Oui
+          <% else %>
+            Non
+          <% end %>
+        </td>
+        <td><%= action.cost_min %></td>
+        <td><%= action.time_min %></td>
+        <td>
+          <% if action.time_unit == 1 %>
+            Minute
+          <% elsif action.time_unit == 2 %>
+            Heure
+          <% elsif action.time_unit == 3 %>
+            Jour
+          <% elsif action.time_unit == 4 %>
+            Semaine
+          <% elsif action.time_unit == 5 %>
+            Mois
+          <% else %>
+            -
+          <% end %>
+        </td>
+        <td><%= action.time_description %></td>
+        <td><%= action.surface_min %></td>
+        <td><%= action.investment %></td>
+        <td><%= action.picture %></td>
+        <td><%= action.importance %></td>
+        <td><%= action.theme.title %></td>
+        <td><%= action.type.title %></td>
+        <td>
+          <%= link_to 'Editer', edit_action_path(action) %><br/>
+          <%= link_to 'Supprimer', action, method: :delete, data: { confirm: 'Etes-vous sûr ?' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

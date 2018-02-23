@@ -1,0 +1,137 @@
+<%= form_with(model: action, local: true) do |form| %>
+  <%-# The type variable: to know if this is a new or an existing action which is modified (see below) -%>
+  <% type = request.path_info.split("/")[3] %>
+  <%-# Add a title according if this is a new or an existing action -%>
+  <% if type == 'edit' %>
+    <%-# This is an existing action. -%>
+    <h2>Action "<%= action.title %>"</h2>
+    <%-# No <h2> title if this is a new action. -%>
+  <% end %>
+  <% if action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(action.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>
+
+      <ul>
+      <% action.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <hr/><h3>Information sur l'action</h3><br/>
+
+  <div class="field">
+    Titre : <br/>
+    <%= form.text_field :title, id: :action_title, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Description de l'action : <br/>
+    <%= form.text_area :description, id: :action_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Description de l'impact : <br/>
+    <%= form.text_area :impact, id: :action_impact, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Nécessité d'une maison ?
+    <%= form.check_box :spot, id: :action_spot %>
+  </div>
+
+  <div class="field">
+    Coût minimum [CHF] : <br/>
+    <%= form.text_field :cost_min, id: :action_cost_min, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Temps minimum (unité à spécifier dans le champ suivant) : <br/>
+    <%= form.text_field :time_min, id: :action_time_min, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Unité de temps :
+    <%= form.select :time_min, options_for_select([1, 2, 3, 4, 5], selected: action.time_min), id: :action_time_min %>
+  </div>
+  
+  <div class="field">
+    Description sur le temps : <br/>
+    <%= form.text_area :time_description, id: :action_time_description, size: '40x5' %>
+  </div>
+  
+  <div class="field">
+    Surface minimale [mètres carrés] : <br/>
+    <%= form.text_field :surface_min, id: :action_surface_min, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Difficulté (1 = facile, 2 = moyen, 3 = difficile) :  
+    <%-# Difficulty level has only three possibilities: 1, 2 or 3. -%>
+    <%= form.select :investment, options_for_select([1, 2, 3], selected: action.investment), id: :action_investment %>
+  </div>
+  
+  <div class="field">
+    Photo : <br/>
+    <%= form.text_field :picture, id: :action_picture, size: '43.5' %>
+  </div>
+  
+  <div class="field">
+    Importance pour la biodiversité : <br/>
+    <%= form.text_field :importance, id: :action_importance, size: '43.5' %>
+  </div>
+  
+  <hr/><h3>Classification de l'action</h3><br/>
+  
+  <div class="field">
+    Thème : 
+    <% themes = Theme.all %>
+    <% topoptions = Array.new %>
+    <% topselected = '' %>
+    <% themes.each do |theme| %>
+      <% toparray = [theme.title, theme.id] %>
+      <% topoptions.push(toparray) %>
+      <%-# If this is an existing action, the selected option of the select form is the current value (see below). -%>
+      <% if type == 'edit' %>
+        <% if theme.id == action.theme.id %>
+          <% topselected = theme.id %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if type == 'edit' %>
+      <%= form.select :theme_id, options_for_select(topoptions, selected: topselected), id: :action_theme_id %>
+    <% else %>
+      <%-# If this is a new action, there is no default value selected in the select form. -%>
+      <%= form.select :theme_id, options_for_select(topoptions), id: :action_theme_id %>
+    <% end %>
+    <%= link_to 'Créer un nouveau thème', new_theme_path %>
+  </div>
+
+  <div class="field">
+    Type d'action : 
+    <% types = Type.all %>
+    <% catoptions = Array.new %>
+    <% catselected = '' %>
+    <% types.each do |type| %>
+      <% catarray = [type.title, type.id] %>
+      <% catoptions.push(catarray) %>
+      <% if type == 'edit' %>
+        <% if type.id == action.type.id %>
+          <% catselected = type.id %>
+        <% end %>
+      <% end %>
+    <% end %>
+    <% if type == 'edit' %>
+      <%= form.select :type_id, options_for_select(catoptions, selected: catselected), id: :action_type_id %>
+    <% else %> 
+      <%= form.select :type_id, options_for_select(catoptions), id: :action_type_id %>
+    <% end %>
+    <%= link_to 'Créer un nouveau type d\'action', new_type_path %>
+  </div>
+
+  <hr/>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

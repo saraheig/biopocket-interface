@@ -5,9 +5,9 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create destroy]
   get '/tables', to: 'tables#index'
   
-  resources :works, path: '/tables/works'
-  resources :categories, path: '/tables/categories'
-  resources :topics, path: '/tables/topics'
+  resources :actions, path: '/tables/actions'
+  resources :types, path: '/tables/types'
+  resources :themes, path: '/tables/themes'
   
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]

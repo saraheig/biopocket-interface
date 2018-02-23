@@ -10,22 +10,45 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170730143140) do
+ActiveRecord::Schema.define(version: 20180223115531) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "categories", force: :cascade do |t|
-    t.string "title"
+  create_table "actions", force: :cascade do |t|
+    t.bigint "theme_id"
+    t.bigint "type_id"
+    t.string "title", limit: 40
+    t.string "description", limit: 255
+    t.text "impact"
+    t.integer "investment", limit: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "spot"
+    t.integer "cost_min"
+    t.integer "time_min"
+    t.integer "time_unit", limit: 2
+    t.text "time_description"
+    t.decimal "surface_min", precision: 10, scale: 2
+    t.text "picture"
+    t.integer "importance", limit: 2
+    t.index ["theme_id"], name: "index_actions_on_theme_id"
+    t.index ["type_id"], name: "index_actions_on_type_id"
   end
 
-  create_table "topics", force: :cascade do |t|
-    t.string "title"
+  create_table "themes", force: :cascade do |t|
+    t.string "title", limit: 40
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "picture"
+  end
+
+  create_table "types", force: :cascade do |t|
+    t.string "title", limit: 20
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.text "description"
   end
 
   create_table "users", force: :cascade do |t|
@@ -36,25 +59,10 @@ ActiveRecord::Schema.define(version: 20170730143140) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "admin", default: false, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "works", force: :cascade do |t|
-    t.bigint "topic_id"
-    t.bigint "category_id"
-    t.string "title"
-    t.text "description"
-    t.text "impact"
-    t.boolean "house"
-    t.decimal "cost"
-    t.string "time"
-    t.integer "difficulty"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["category_id"], name: "index_works_on_category_id"
-    t.index ["topic_id"], name: "index_works_on_topic_id"
-  end
-
-  add_foreign_key "works", "categories"
-  add_foreign_key "works", "topics"
+  add_foreign_key "actions", "themes"
+  add_foreign_key "actions", "types"
 end

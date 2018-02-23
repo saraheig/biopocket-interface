@@ -11,12 +11,12 @@
 
   <body>
     <nav class='navbar navbar-default navbar-fixed-top'>
-      <div class='container'>
+      <div>
         <a class='navbar-brand' href='/tables'>BioPocket</a>
         <ul class='nav navbar-nav'>
-          <li><%= link_to 'Actions', works_path %></li>
-          <li><%= link_to 'Thèmes', topics_path %></li>
-          <li><%= link_to 'Types d\'action', categories_path %></li>
+          <li><%= link_to 'Actions', actions_path %></li>
+          <li><%= link_to 'Thèmes', themes_path %></li>
+          <li><%= link_to 'Types d\'action', types_path %></li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
           <li><%= link_to 'Aller en haut de la page', :anchor => "#" %></li>
@@ -28,7 +28,7 @@
         </ul>
       </div>
     </nav>
-    <main class='container'>
+    <main>
       <%= yield %>
     </main>
   </body>

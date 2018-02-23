@@ -1,0 +1,39 @@
+<%= form_with(model: theme, local: true) do |form| %>
+  <% type = request.path_info.split("/")[3] %>
+  <% if type == 'edit' %>
+    <%-# This is an existing theme. -%>
+    <h2>Thème "<%= theme.title %>"</h2>
+  <% end %>
+  <% if theme.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(theme.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% theme.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <hr/><h3>Information sur le thème</h3><br/>
+
+  <div class="field">
+    Titre : <br/>
+    <%= form.text_field :title, id: :theme_title, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Description : <br/>
+    <%= form.text_area :description, id: :theme_description, size: '40x5' %>
+  </div>
+  
+  <div class="field">
+    Photo : <br/>
+    <%= form.text_field :picture, id: :theme_picture, size: '43.5' %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

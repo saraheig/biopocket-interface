@@ -1,0 +1,26 @@
+<br/><p id="notice"><%= notice %></p>
+
+<h1>Thème "<%= @theme.title %>"</h1>
+
+<hr/>
+<%= link_to 'Voir tous les thèmes', themes_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Photo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @theme.title %></td>
+      <td><%= @theme.description %></td>
+      <td><%= @theme.picture %></td>
+      <td><%= link_to 'Editer', edit_theme_path(@theme) %></td>
+    </tr>
+  </tbody>
+</table>

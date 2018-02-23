@@ -6,91 +6,127 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-hedgehog = Topic.create!(
+hedgehog = Theme.create!(
     title: 'Hérissons',
-    description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)')
+    description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)',
+    picture: 'image_herisson')
 
-meadow = Topic.create!(
+meadow = Theme.create!(
     title: 'Prairies fleuries',
-    description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).')
+    description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).',
+    picture: 'image_prairie')
 
-information = Category.create!(
-    title: 'Renseignement')
+information = Type.create!(
+    title: 'Renseignement',
+    description: 'description_renseignement')
     
-engagement = Category.create!(
-    title: 'Engagement')
+engagement = Type.create!(
+    title: 'Engagement',
+    description: 'description_engagement')
     
-management = Category.create!(
-    title: 'Gestion')
+management = Type.create!(
+    title: 'Gestion',
+    description: 'description_gestion')
     
-building = Category.create!(
-    title: 'Construction')
+building = Type.create!(
+    title: 'Construction',
+    description: 'description_construction')
 
-Work.create!(
-    topic: hedgehog,
-    category: management,
+Action.create!(
+    theme: hedgehog,
+    type: management,
     title: 'Accueillir les hérissons',
     description: 'Enlever tous les obstacles empêchant l’accès au jardin et éliminer tous les risques (piscine non bâchée, produits toxiques, etc.).',
     impact: 'Le hérisson trouve dans les jardins des milieux vitaux très structurés qui lui conviennent bien.',
-    house: true,
-    cost: 0.0,
-    time: '15 min',
-    difficulty: 1)
+    spot: true,
+    cost_min: 0.0,
+    time_min: 15,
+    time_unit: 1,
+    time_description: 'Le temps pour réaliser cette action dépend de la surface et des obstacles.',
+    surface_min: 1.0,
+    investment: 1,
+    picture: 'image_accueillir_hérissons',
+    importance: 1)
     
-Work.create!(
-    topic: hedgehog,
-    category: management,
+Action.create!(
+    theme: hedgehog,
+    type: management,
     title: 'Aménagements simples',
     description: 'Constituer quelques tas de branches, feuilles mortes et herbes sèches en quelques points du jardin.',
     impact: 'Le hérisson peut trouver refuge dans des tas de branches, de feuilles ou d\'herbes.',
-    house: true,
-    cost: 0.0,
-    time: '30 min',
-    difficulty: 2)
+    spot: true,
+    cost_min: 0.0,
+    time_min: 30,
+    time_unit: 1,
+    time_description: 'Le temps pour réaliser cette action dépend du nombre de tas constitués.',
+    surface_min: 1.0,
+    investment: 2,
+    picture: 'image_aménagements_simples',
+    importance: 1)
     
-Work.create!(
-    topic: hedgehog,
-    category: building,
+Action.create!(
+    theme: hedgehog,
+    type: building,
     title: 'Abri à hérissons',
     description: 'Construire un abri à hérisson.',
     impact: 'L\'abri permet à l\'hérisson de se réfugier.',
-    house: true,
-    cost: 50.0,
-    time: '1h30',
-    difficulty: 3)
+    spot: true,
+    cost_min: 50.0,
+    time_min: 90,
+    time_unit: 1,
+    time_description: 'Le temps pour réaliser cette action dépend de la grandeur de l\'abri.',
+    surface_min: 3.0,
+    investment: 3,
+    picture: 'image_abri_à_hérissons',
+    importance: 1)
     
-Work.create!(
-    topic: meadow,
-    category: information,
+Action.create!(
+    theme: meadow,
+    type: information,
     title: 'Découvrir les prairies',
     description: 'Visiter une prairie fleurie «exemplaire» et s’informer sur l’écologie de ces milieux.',
     impact: 'Se renseigner permet de prendre conscience de l\'importance des prairies fleuries.',
-    house: false,
-    cost: 0.0,
-    time: '2h00',
-    difficulty: 1)
+    spot: false,
+    cost_min: 0.0,
+    time_min: 2,
+    time_unit: 2,
+    time_description: 'Cette action peut prendre entre 1 et 8 heures de temps.',
+    surface_min: 0.0,
+    investment: 1,
+    picture: 'image_découvrir_les_prairies',
+    importance: 2)
     
-Work.create!(
-    topic: meadow,
-    category: engagement,
+Action.create!(
+    theme: meadow,
+    type: engagement,
     title: 'Entretien différencié',
     description: 'Appliquer un entretien différencié de son gazon.',
     impact: 'Un entretien différencié encourage la biodiversité au sein de son gazon.',
-    house: true,
-    cost: 0.0,
-    time: '3h00',
-    difficulty: 2)
+    spot: true,
+    cost_min: 0.0,
+    time_min: 3,
+    time_unit: 2,
+    time_description: 'Le temps pour réaliser cette action peut être calculé de la manière suivante : temps de tonte normal + 20%.',
+    surface_min: 10.0,
+    investment: 2,
+    picture: 'image_entretien_différencié',
+    importance: 1)
     
-Work.create!(
-    topic: meadow,
-    category: management,
+Action.create!(
+    theme: meadow,
+    type: management,
     title: 'Aménager une prairie fleurie',
     description: 'Installer une prairie fleurie dans son jardin.',
     impact: 'Les prairies fleuries constituent des habitats pour la petite faune et des lieux de nourrissage (insectes, oiseaux, mammifères).',
-    house: true,
-    cost: 30.0,
-    time: '4h00',
-    difficulty: 3)
+    spot: true,
+    cost_min: 30.0,
+    time_min: 4,
+    time_unit: 2,
+    time_description: 'Il faut compter 1 heure de temps pour 10 mètres carrés.',
+    surface_min: 10.0,
+    investment: 3,
+    picture: 'image_aménager_une_prairie_fleurie',
+    importance: 1)
 
 User.create!(
     firstname: 'toto',

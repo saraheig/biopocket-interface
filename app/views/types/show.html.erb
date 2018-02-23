@@ -1,0 +1,24 @@
+<br/><p id="notice"><%= notice %></p>
+
+<h1>Type d'action "<%= @type.title %>"</h1>
+
+<hr/>
+<%= link_to 'Voir tous les types d\'action', types_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover" style="max-width: 50%">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @type.title %></td>
+      <td><%= @type.description %></td>
+      <td><%= link_to 'Editer', edit_type_path(@type) %></td>
+    </tr>
+  </tbody>
+</table>
