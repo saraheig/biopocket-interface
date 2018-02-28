@@ -16,47 +16,60 @@ class Action < ApplicationRecord
   validates_presence_of :picture, :message => 'La photo doit être spécifiée.'
   
   # Function search to search a keyword and/or other elements through a form 
-  def self.search(keyword, house, difficulty, costmin, costmax, topic, category)
-    if house == "Oui"
-      sql_house = "house"
-    elsif house == "Non"
-      sql_house = "not house"
+  def self.search(keyword, spot, investment, costmin, costmax, surfmin, surfmax, importmin, importmax, theme, type)
+    if spot == "Oui"
+      sql_spot = "spot"
+    elsif spot == "Non"
+      sql_spot = "not spot"
     else
-      sql_house = "(house OR not house)"
-      # Another possibility: put sql_house="" and test it in a final if - elsif - else condition
+      sql_spot = "(spot OR not spot)"
+      # Another possibility: put sql_spot="" and test it in a final if - elsif - else condition
     end
 
-    if difficulty != "Indifférent"
-      sql_diff = "difficulty = #{difficulty.to_f}"
+    if investment != "Indifférent"
+      sql_invest = "investment = #{investment.to_f}"
     else
-      sql_diff = "(difficulty = 1 OR difficulty = 2 OR difficulty = 3)"
-      # Another possibility: put sql_diff="" and test it in a final if - elsif - else condition
+      sql_invest = "(investment = 1 OR investment = 2 OR investment = 3)"
+      # Another possibility: put sql_invest="" and test it in a final if - elsif - else condition
     end
 
     # The minimum cost equals 0.0.
     if costmax != ""
-      sql_cost = "cost >= #{costmin.to_f} AND cost <= #{costmax.to_f}"
+      sql_cost = "cost_min >= #{costmin.to_f} AND cost_min <= #{costmax.to_f}"
     else
-      sql_cost = "cost >= #{costmin.to_f}"
+      sql_cost = "cost_min >= #{costmin.to_f}"
     end
 
-    # Another possibility: test topic and category in a final if - elsif - else condition
-    if topic != "Indifférent" && category != "Indifférent"
-      sql_topcat = "topic_id = #{topic.to_f} AND category_id = #{category.to_f}"
-    elsif topic != "Indifférent" && category == "Indifférent"
-      sql_topcat = "topic_id = #{topic.to_f}"
-    elsif topic == "Indifférent" && category != "Indifférent"
-      sql_topcat = "category_id = #{category.to_f}"
+    # The minimum surface equals 0.0.
+    if surfmax != ""
+      sql_surf = "surface_min >= #{surfmin.to_f} AND surface_min <= #{surfmax.to_f}"
     else
-      sql_topcat = ""
+      sql_surf = "surface_min >= #{surfmin.to_f}"
+    end
+
+    if importmax != ""
+      sql_import = "importance >= #{importmin.to_f} AND importance <= #{importmax.to_f}"
+    else
+      sql_import = "importance >= #{importmin.to_f}"
+    end
+
+    # Another possibility: test theme and type in a final if - elsif - else condition
+    if theme != "Indifférent" && type != "Indifférent"
+      sql_themetype = "theme_id = #{theme.to_f} AND type_id = #{type.to_f}"
+    elsif theme != "Indifférent" && type == "Indifférent"
+      sql_themetype = "theme_id = #{theme.to_f}"
+    elsif theme == "Indifférent" && type != "Indifférent"
+      sql_themetype = "type_id = #{type.to_f}"
+    else
+      sql_themetype = ""
     end
 
     # If no search is done, all data are displayed.
-    if sql_house && sql_diff && sql_cost && keyword && sql_topcat == ""
-      where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+    if sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype == ""
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # actions are ordered by updated_at desc => the most recently changed action: at the top
-    elsif sql_house && sql_diff && sql_cost && keyword && sql_topcat != ""
-      where(sql_house + " AND " + sql_diff + " AND " + sql_cost + " AND " + sql_topcat + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+    elsif sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype != ""
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

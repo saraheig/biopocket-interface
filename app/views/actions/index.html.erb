@@ -36,6 +36,26 @@
   </div>
 
   <div class="field">
+    Surface minimum :
+    <%= number_field_tag :surfmin, params[:surfmin], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Surface maximum :
+    <%= number_field_tag :surfmax, params[:surfmax], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Importance pour la biodiversité minimum :
+    <%= number_field_tag :importmin, params[:importmin], step: 1, min: 0, max: 50, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Importance pour la biodiversité maximum :
+    <%= number_field_tag :importmax, params[:importmax], step: 1, min: 0, max: 50, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
     Thème :
     <% themes = Theme.all %>
     <% topoptions = ['Indifférent'] %>

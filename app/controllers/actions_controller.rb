@@ -5,13 +5,17 @@ class ActionsController < AuthenticateController
   # GET /actions.json
   def index
     keyword = params[:keyword]
-    house = params[:house]
-    difficulty = params[:difficulty]
+    spot = params[:spot]
+    investment = params[:investment]
     costmin = params[:costmin]
     costmax = params[:costmax]
-    topic = params[:topic_id]
-    category = params[:category_id]
-    @actions = Action.search(keyword, house, difficulty, costmin, costmax, topic, category)
+    surfmin = params[:surfmin]
+    surfmax = params[:surfmax]
+    importmin = params[:importmin]
+    importmax = params[:importmax]
+    theme = params[:theme_id]
+    type = params[:type_id]
+    @actions = Action.search(keyword, spot, investment, costmin, costmax, surfmin, surfmax, importmin, importmax, theme, type)
   end
 
   # GET /actions/1
@@ -76,6 +80,6 @@ class ActionsController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def action_params
-      params.require(:action).permit(:topic_id, :category_id, :title, :description, :impact, :house, :cost, :time, :difficulty)
+      params.require(:action).permit(:theme_id, :type_id, :title, :description, :impact, :spot, :cost, :time, :investment)
     end
 end
