@@ -20,7 +20,10 @@
       <td><%= @theme.title %></td>
       <td><%= @theme.description %></td>
       <td><%= @theme.picture %></td>
-      <td><%= link_to 'Editer', edit_theme_path(@theme) %></td>
+      <td>
+        <%= link_to 'Editer', edit_theme_path(@theme) %><br/>
+        <%= link_to 'Supprimer', @theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions associées.' } %></td>
+      </td>
     </tr>
   </tbody>
 </table>
