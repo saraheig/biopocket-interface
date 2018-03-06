@@ -1,6 +1,7 @@
-<%= form_with(model: action, local: true) do |form| %>
+<%= form_with(model: action, local: true, scope: :bioaction) do |form| %>
+  <%-# scope because action is a reserved word in the Rails forms -%>
   <%-# The type variable: to know if this is a new or an existing action which is modified (see below) -%>
-  <% type = request.path_info.split("/")[3] %>
+  <% type = request.path_info.split("/")[4] %>
   <%-# Add a title according if this is a new or an existing action -%>
   <% if type == 'edit' %>
     <%-# This is an existing action. -%>
@@ -53,7 +54,7 @@
   
   <div class="field">
     Unité de temps :
-    <%= form.select :time_min, options_for_select([1, 2, 3, 4, 5], selected: action.time_min), id: :action_time_min %>
+    <%= form.select :time_unit, options_for_select([1, 2, 3, 4, 5], selected: action.time_unit), id: :action_time_unit %>
   </div>
   
   <div class="field">
@@ -87,23 +88,17 @@
   <div class="field">
     Thème : 
     <% themes = Theme.all %>
-    <% topoptions = Array.new %>
-    <% topselected = '' %>
+    <% themeoptions = Array.new %>
+    <% themeselected = '' %>
     <% themes.each do |theme| %>
-      <% toparray = [theme.title, theme.id] %>
-      <% topoptions.push(toparray) %>
-      <%-# If this is an existing action, the selected option of the select form is the current value (see below). -%>
-      <% if type == 'edit' %>
-        <% if theme.id == action.theme.id %>
-          <% topselected = theme.id %>
-        <% end %>
-      <% end %>
+      <% themearray = [theme.title, theme.id] %>
+      <% themeoptions.push(themearray) %>
     <% end %>
     <% if type == 'edit' %>
-      <%= form.select :theme_id, options_for_select(topoptions, selected: topselected), id: :action_theme_id %>
+      <%= form.select :theme_id, options_for_select(themeoptions, selected: action.theme.id), id: :action_theme_id %>
     <% else %>
       <%-# If this is a new action, there is no default value selected in the select form. -%>
-      <%= form.select :theme_id, options_for_select(topoptions), id: :action_theme_id %>
+      <%= form.select :theme_id, options_for_select(themeoptions), id: :action_theme_id %>
     <% end %>
     <%= link_to 'Créer un nouveau thème', new_theme_path %>
   </div>
@@ -111,21 +106,16 @@
   <div class="field">
     Type d'action : 
     <% types = Type.all %>
-    <% catoptions = Array.new %>
-    <% catselected = '' %>
+    <% typeoptions = Array.new %>
+    <% typeselected = '' %>
     <% types.each do |type| %>
-      <% catarray = [type.title, type.id] %>
-      <% catoptions.push(catarray) %>
-      <% if type == 'edit' %>
-        <% if type.id == action.type.id %>
-          <% catselected = type.id %>
-        <% end %>
-      <% end %>
+      <% typearray = [type.title, type.id] %>
+      <% typeoptions.push(typearray) %>
     <% end %>
     <% if type == 'edit' %>
-      <%= form.select :type_id, options_for_select(catoptions, selected: catselected), id: :action_type_id %>
-    <% else %> 
-      <%= form.select :type_id, options_for_select(catoptions), id: :action_type_id %>
+      <%= form.select :type_id, options_for_select(typeoptions, selected: action.type.id), id: :action_type_id %>
+    <% else %>
+      <%= form.select :type_id, options_for_select(typeoptions), id: :action_type_id %>
     <% end %>
     <%= link_to 'Créer un nouveau type d\'action', new_type_path %>
   </div>

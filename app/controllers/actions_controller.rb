@@ -80,6 +80,6 @@ class ActionsController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def action_params
-      params.require(:action).permit(:theme_id, :type_id, :title, :description, :impact, :spot, :cost, :time, :investment)
+      params.require(:bioaction).permit(:theme_id, :type_id, :title, :description, :impact, :spot, :cost_min, :time_min, :time_unit, :investment, :picture)
     end
 end

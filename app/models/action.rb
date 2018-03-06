@@ -1,12 +1,13 @@
 class Action < ApplicationRecord
   belongs_to :theme
   belongs_to :type
-  
+  before_validation :strip_blanks
+
   validates_presence_of :title, :message => 'Le titre de l\'action doit être spécifié.'
-  validates_length_of :title, :maximum => 40, :message => 'Le titre de l\'action doit avoir moins de 40 caractères.'
+  validates_length_of :title, :maximum => 40, :message => 'Le titre de l\'action doit avoir maximum 40 caractères.'
   validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre de l\'action est déjà utilisé.'
   validates_presence_of :description, :message => 'La description de l\'action doit être spécifiée.'
-  validates_length_of :description, :maximum => 255, :message => 'La description de l\'action doit avoir moins de 255 caractères.'
+  validates_length_of :description, :maximum => 255, :message => 'La description de l\'action doit avoir maximum 255 caractères.'
   validates_presence_of :impact, :message => 'La description de l\'impact de l\'action doit être spécifiée.'
   validates_inclusion_of :spot, :in => [true, false], :message => 'Les valeurs possibles pour la nécessité d\'une maison est true ou false.'
   validates_format_of :cost_min, :with => /\A[0-9]*\.?[0-9]?[0|5]?\z/, :message => 'Le coût doit être présent et être un nombre qui peut contenir deux décimales (facultatif), dont la deuxième a la valeur de 0 ou 5.'
@@ -14,7 +15,12 @@ class Action < ApplicationRecord
   validates_inclusion_of :time_unit, :in => [1, 2, 3, 4, 5], :message => 'Les valeurs possibles pour l\'unité de temps sont 1, 2, 3, 4 ou 5.'
   validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Les valeurs possibles pour l\'investissement pour réaliser l\'action sont 1, 2 ou 3.'
   validates_presence_of :picture, :message => 'La photo doit être spécifiée.'
-  
+
+  # Function to remove spaces in the title field
+  def strip_blanks
+    self.title = self.title.strip
+  end
+
   # Function search to search a keyword and/or other elements through a form 
   def self.search(keyword, spot, investment, costmin, costmax, surfmin, surfmax, importmin, importmax, theme, type)
     if spot == "Oui"

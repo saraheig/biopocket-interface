@@ -58,23 +58,23 @@
   <div class="field">
     Thème :
     <% themes = Theme.all %>
-    <% topoptions = ['Indifférent'] %>
+    <% themeoptions = ['Indifférent'] %>
     <% themes.each do |theme| %>
-      <% toparray = [theme.title, theme.id] %>
-      <% topoptions.push(toparray) %>
+      <% themearray = [theme.title, theme.id] %>
+      <% themeoptions.push(themearray) %>
     <% end %>
-    <%= select_tag :theme_id, options_for_select(topoptions, params[:theme_id]) %>
+    <%= select_tag :theme_id, options_for_select(themeoptions, params[:theme_id]) %>
   </div>
 
   <div class="field">
     Type d'action :
     <% types = Type.all %>
-    <% catoptions = ['Indifférent'] %>
+    <% typeoptions = ['Indifférent'] %>
     <% types.each do |type| %>
-      <% catarray = [type.title, type.id] %>
-      <% catoptions.push(catarray) %>
+      <% typearray = [type.title, type.id] %>
+      <% typeoptions.push(typearray) %>
     <% end %>
-    <%= select_tag :type_id, options_for_select(catoptions, params[:type_id]) %>
+    <%= select_tag :type_id, options_for_select(typeoptions, params[:type_id]) %>
   </div>
 
   <div class="actions">

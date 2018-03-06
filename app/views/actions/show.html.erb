@@ -61,18 +61,18 @@
       <td><%= @action.picture %></td>
       <td><%= @action.importance %></td>
       <td>
-        <% topics = Topic.all %>
-        <% topics.each do |topic| %>
-          <% if topic.id == @action.topic.id %>
-            <%= topic.title %>
+        <% themes = Theme.all %>
+        <% themes.each do |theme| %>
+          <% if theme.id == @action.theme.id %>
+            <%= theme.title %>
           <% end %>
         <% end %>
       </td>
       <td>
-        <% categories = Category.all %>
-        <% categories.each do |category| %>
-          <% if category.id == @action.category.id %>
-            <%= category.title %>
+        <% types = Type.all %>
+        <% types.each do |type| %>
+          <% if type.id == @action.type.id %>
+            <%= type.title %>
           <% end %>
         <% end %>
       </td>
