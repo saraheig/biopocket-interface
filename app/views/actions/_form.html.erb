@@ -56,7 +56,7 @@
   
   <div class="field">
     Unité de temps :
-    <%= form.select :time_unit, options_for_select([1, 2, 3, 4, 5], selected: action.time_unit), id: :action_time_unit %>
+    <%= form.select :time_unit, options_for_select([["Minute", 1], ["Heure", 2], ["Jour", 3], ["Semaine", 4], ["Mois", 5]], selected: action.time_unit), id: :action_time_unit %>
   </div>
   
   <div class="field">
