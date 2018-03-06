@@ -1,9 +1,14 @@
 <%= form_with(model: theme, local: true) do |form| %>
-  <% type = request.path_info.split("/")[3] %>
-  <% if type == 'edit' %>
+
+  <%-# The part variable: to know if this is a new or an existing theme which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing theme -%>
+  <% if part == 'edit' %>
     <%-# This is an existing theme. -%>
     <h2>Thème "<%= theme.title %>"</h2>
+    <%-# No <h2> title if this is a new theme. -%>
   <% end %>
+
   <% if theme.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(theme.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>

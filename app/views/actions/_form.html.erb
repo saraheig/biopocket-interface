@@ -1,13 +1,15 @@
 <%= form_with(model: action, local: true, scope: :bioaction) do |form| %>
   <%-# scope because action is a reserved word in the Rails forms -%>
-  <%-# The type variable: to know if this is a new or an existing action which is modified (see below) -%>
-  <% type = request.path_info.split("/")[4] %>
+
+  <%-# The part variable: to know if this is a new or an existing action which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
   <%-# Add a title according if this is a new or an existing action -%>
-  <% if type == 'edit' %>
+  <% if part == 'edit' %>
     <%-# This is an existing action. -%>
     <h2>Action "<%= action.title %>"</h2>
     <%-# No <h2> title if this is a new action. -%>
   <% end %>
+
   <% if action.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(action.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>
@@ -19,7 +21,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <hr/><h3>Information sur l'action</h3><br/>
 
   <div class="field">
@@ -94,7 +96,7 @@
       <% themearray = [theme.title, theme.id] %>
       <% themeoptions.push(themearray) %>
     <% end %>
-    <% if type == 'edit' %>
+    <% if part == 'edit' %>
       <%= form.select :theme_id, options_for_select(themeoptions, selected: action.theme.id), id: :action_theme_id %>
     <% else %>
       <%-# If this is a new action, there is no default value selected in the select form. -%>
@@ -112,7 +114,7 @@
       <% typearray = [type.title, type.id] %>
       <% typeoptions.push(typearray) %>
     <% end %>
-    <% if type == 'edit' %>
+    <% if part == 'edit' %>
       <%= form.select :type_id, options_for_select(typeoptions, selected: action.type.id), id: :action_type_id %>
     <% else %>
       <%= form.select :type_id, options_for_select(typeoptions), id: :action_type_id %>

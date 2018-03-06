@@ -1,8 +1,17 @@
 <%= form_with(model: type, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing type of action which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing type of action -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing type of action. -%>
+    <h2>Type d'action "<%= type.title %>"</h2>
+    <%-# No <h2> title if this is a new type of action. -%>
+  <% end %>
+
   <% if type.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(type.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
-
       <ul>
       <% type.errors.messages.values.each do |message| %>
         <li><%= message[0] %></li>
@@ -10,7 +19,7 @@
       </ul>
     </div>
   <% end %>
-  
+
   <hr/><h3>Information sur le type d'action</h3><br/>
 
   <div class="field">
