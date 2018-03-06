@@ -70,9 +70,9 @@
   </div>
 
   <div class="field">
-    Difficulté (1 = facile, 2 = moyen, 3 = difficile) :  
+    Difficulté :
     <%-# Difficulty level has only three possibilities: 1, 2 or 3. -%>
-    <%= form.select :investment, options_for_select([1, 2, 3], selected: action.investment), id: :action_investment %>
+    <%= form.select :investment, options_for_select([["Facile", 1], ["Moyen", 2], ["Difficile", 3]], selected: action.investment), id: :action_investment %>
   </div>
   
   <div class="field">

@@ -137,7 +137,17 @@
         </td>
         <td><%= action.time_description %></td>
         <td><%= action.surface_min %></td>
-        <td><%= action.investment %></td>
+        <td>
+          <% if action.investment == 1 %>
+            Facile
+          <% elsif action.investment == 2 %>
+            Moyen
+          <% elsif action.investment == 3 %>
+            Difficile
+          <% else %>
+            -
+          <% end %>
+        </td>
         <td><%= action.picture %></td>
         <td><%= action.importance %></td>
         <td><%= action.theme.title %></td>
