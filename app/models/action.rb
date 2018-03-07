@@ -1,6 +1,7 @@
 class Action < ApplicationRecord
-  belongs_to :theme
-  belongs_to :type
+  belongs_to :theme, optional: true
+  # optional: true -> to avoid fixed error message => Utilization of a customized message
+  belongs_to :type, optional: true
   before_validation :strip_blanks
 
   validates_presence_of :title, :message => 'Le titre de l\'action doit être spécifié.'
@@ -10,11 +11,15 @@ class Action < ApplicationRecord
   validates_length_of :description, :maximum => 255, :message => 'La description de l\'action doit avoir maximum 255 caractères.'
   validates_presence_of :impact, :message => 'La description de l\'impact de l\'action doit être spécifiée.'
   validates_inclusion_of :spot, :in => [true, false], :message => 'Les valeurs possibles pour la nécessité d\'une maison est true ou false.'
-  validates_format_of :cost_min, :with => /\A[0-9]*\.?[0-9]?[0|5]?\z/, :message => 'Le coût doit être présent et être un nombre qui peut contenir deux décimales (facultatif), dont la deuxième a la valeur de 0 ou 5.'
-  validates_presence_of :time_min, :message => 'Le temps pour réaliser l\'action doit être spécifié.'
-  validates_inclusion_of :time_unit, :in => [1, 2, 3, 4, 5], :message => 'Les valeurs possibles pour l\'unité de temps sont 1, 2, 3, 4 ou 5.'
-  validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Les valeurs possibles pour l\'investissement pour réaliser l\'action sont 1, 2 ou 3.'
+  validates_numericality_of :cost_min, :only_integer => true, :greater_than_or_equal_to => 0, :message => 'Le coût minimal pour réaliser l\'action doit être spécifié et doit être défini par un nombre entier positif (>= 0).'
+  validates_numericality_of :time_min, :only_integer => true, :greater_than_or_equal_to => 0, :message => 'Le temps minimal pour réaliser l\'action doit être spécifié et doit être défini par un nombre entier positif (>= 0).'
+  validates_inclusion_of :time_unit, :in => [1, 2, 3, 4, 5], :message => 'Choisir une unité de temps pour la réalisation de l\'action.'
+  validates_numericality_of :surface_min, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'La surface doit être nulle ou définie par un nombre positif (arrondi à deux décimales).'
+  validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Choisir un niveau d\'investissement pour réaliser l\'action.'
   validates_presence_of :picture, :message => 'La photo doit être spécifiée.'
+  validates_inclusion_of :importance, :in => [1, 2, 3, 4], :allow_nil => true, :message => 'Les valeurs possibles pour l\'importance sont 1, 2, 3, 4 ou pas de valeur.'
+  validates_numericality_of :theme_id, :greater_than_or_equal_to => 0, :message => 'Choisir un thème pour cette action.'
+  validates_numericality_of :type_id, :greater_than_or_equal_to => 0, :message => 'Choisir un type d\'action pour cette action.'
 
   # Function to remove spaces in the title field
   def strip_blanks
@@ -32,7 +37,7 @@ class Action < ApplicationRecord
       # Another possibility: put sql_spot="" and test it in a final if - elsif - else condition
     end
 
-    if investment != "Indifférent"
+    if investment != "0"
       sql_invest = "investment = #{investment.to_f}"
     else
       sql_invest = "(investment = 1 OR investment = 2 OR investment = 3)"

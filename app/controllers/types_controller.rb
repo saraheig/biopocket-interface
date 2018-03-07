@@ -69,6 +69,6 @@ class TypesController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def type_params
-      params.require(:type).permit(:title)
+      params.require(:type).permit(:title, :description)
     end
 end

@@ -25,17 +25,17 @@
   <hr/><h3>Information sur l'action</h3><br/>
 
   <div class="field">
-    Titre : <br/>
+    Titre* : <br/>
     <%= form.text_field :title, id: :action_title, size: '43.5' %>
   </div>
 
   <div class="field">
-    Description de l'action : <br/>
+    Description de l'action* : <br/>
     <%= form.text_area :description, id: :action_description, size: '40x5' %>
   </div>
 
   <div class="field">
-    Description de l'impact : <br/>
+    Description de l'impact* : <br/>
     <%= form.text_area :impact, id: :action_impact, size: '40x5' %>
   </div>
 
@@ -45,48 +45,48 @@
   </div>
 
   <div class="field">
-    Coût minimum [CHF] : <br/>
-    <%= form.text_field :cost_min, id: :action_cost_min, size: '43.5' %>
+    Coût minimum* [CHF] : <br/>
+    <%= form.text_field :cost_min, id: :action_cost_min, size: '10' %>
   </div>
 
   <div class="field">
-    Temps minimum (unité à spécifier dans le champ suivant) : <br/>
-    <%= form.text_field :time_min, id: :action_time_min, size: '43.5' %>
+    Temps minimum* (unité à spécifier dans le champ suivant) : <br/>
+    <%= form.text_field :time_min, id: :action_time_min, size: '10' %>
   </div>
-  
+
   <div class="field">
-    Unité de temps :
-    <%= form.select :time_unit, options_for_select([["Minute", 1], ["Heure", 2], ["Jour", 3], ["Semaine", 4], ["Mois", 5]], selected: action.time_unit), id: :action_time_unit %>
+    Unité de temps* :
+    <%= form.select :time_unit, options_for_select([["Choisir", 0], ["Minute", 1], ["Heure", 2], ["Jour", 3], ["Semaine", 4], ["Mois", 5]], selected: action.time_unit), id: :action_time_unit %>
   </div>
-  
+
   <div class="field">
     Description sur le temps : <br/>
     <%= form.text_area :time_description, id: :action_time_description, size: '40x5' %>
   </div>
-  
+
   <div class="field">
-    Surface minimale [mètres carrés] : <br/>
-    <%= form.text_field :surface_min, id: :action_surface_min, size: '43.5' %>
+    Surface minimale [mètres carrés] (arrondi à deux décimales) : <br/>
+    <%= form.text_field :surface_min, id: :action_surface_min, size: '10' %>
   </div>
 
   <div class="field">
-    Difficulté :
+    Investissement / Difficulté* :
     <%-# Difficulty level has only three possibilities: 1, 2 or 3. -%>
-    <%= form.select :investment, options_for_select([["Facile", 1], ["Moyen", 2], ["Difficile", 3]], selected: action.investment), id: :action_investment %>
+    <%= form.select :investment, options_for_select([["Choisir", 0], ["Facile", 1], ["Moyen", 2], ["Difficile", 3]], selected: action.investment), id: :action_investment %>
   </div>
-  
+
   <div class="field">
-    Photo : <br/>
+    Photo* : <br/>
     <%= form.text_field :picture, id: :action_picture, size: '43.5' %>
   </div>
-  
+
   <div class="field">
-    Importance pour la biodiversité : <br/>
-    <%= form.text_field :importance, id: :action_importance, size: '43.5' %>
+    Importance pour la biodiversité (1 = forte importance ; 4 = faible importance) : <br/>
+    <%= form.text_field :importance, id: :action_importance, size: '10' %>
   </div>
-  
+
   <hr/><h3>Classification de l'action</h3><br/>
-  
+
   <div class="field">
     Thème : 
     <% themes = Theme.all %>
@@ -100,6 +100,7 @@
       <%= form.select :theme_id, options_for_select(themeoptions, selected: action.theme.id), id: :action_theme_id %>
     <% else %>
       <%-# If this is a new action, there is no default value selected in the select form. -%>
+      <% themeoptions.unshift(['Choisir']) %>
       <%= form.select :theme_id, options_for_select(themeoptions), id: :action_theme_id %>
     <% end %>
     <%= link_to 'Créer un nouveau thème', new_theme_path %>
@@ -117,12 +118,14 @@
     <% if part == 'edit' %>
       <%= form.select :type_id, options_for_select(typeoptions, selected: action.type.id), id: :action_type_id %>
     <% else %>
+      <% typeoptions.unshift(['Choisir']) %>
       <%= form.select :type_id, options_for_select(typeoptions), id: :action_type_id %>
     <% end %>
     <%= link_to 'Créer un nouveau type d\'action', new_type_path %>
   </div>
 
   <hr/>
+  <h6>* Champs obligatoires</h6>
   <div class="actions">
     <%= form.submit 'Enregistrer' %>
   </div>

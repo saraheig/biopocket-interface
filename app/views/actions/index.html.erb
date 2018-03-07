@@ -21,8 +21,8 @@
   </div>
 
   <div class="field">
-    Difficulté (1 = facile, 2 = moyen, 3 = difficile) :
-    <%= select_tag :investment, options_for_select(['Indifférent', '1', '2', '3'], params[:investment]) %>
+    Investissement / Difficulté :
+    <%= select_tag :investment, options_for_select([['Indifférent', '0'], ['Facile', '1'], ['Moyen', '2'], ['Difficile', '3']], params[:investment]) %>
   </div>
 
   <div class="field">
@@ -97,7 +97,7 @@
       <th>Unité de temps</th>
       <th>Description sur le temps</th>
       <th>Surface minimale</th>
-      <th>Difficulté</th>
+      <th>Investissement / Difficulté</th>
       <th>Photo</th>
       <th>Importance pour la biodiversité</th>
       <th>Thème</th>

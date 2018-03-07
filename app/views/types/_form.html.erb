@@ -23,7 +23,7 @@
   <hr/><h3>Information sur le type d'action</h3><br/>
 
   <div class="field">
-    Titre : <br/>
+    Titre* : <br/>
     <%= form.text_field :title, id: :type_title, size: '43.5' %>
   </div>
   
@@ -32,6 +32,7 @@
     <%= form.text_area :description, id: :type_description, size: '40x5' %>
   </div>
 
+  <h6>* Champ obligatoire</h6>
   <div class="actions">
     <%= form.submit 'Enregistrer' %>
   </div>
