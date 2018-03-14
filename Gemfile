@@ -27,8 +27,10 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
-# jquery
-gem 'jquery', '~> 0.0.1'
+# jquery for Rails -> in order to use autocompletion
+gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
+# jquery-ui for rails -> in order to use autocompletion
+gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 # Autocompletion
 gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.3'
 

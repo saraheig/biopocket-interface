@@ -5,10 +5,18 @@ Rails.application.routes.draw do
   resource :session, only: %i[new create destroy]
   get '/tables', to: 'tables#index'
   
-  resources :actions, path: '/tables/actions'
-  resources :types, path: '/tables/types'
-  resources :themes, path: '/tables/themes'
-  
+  resources :actions, path: '/tables/actions' do
+    get :autocomplete_action_title, :on => :collection
+  end
+
+  resources :types, path: '/tables/types' do
+    get :autocomplete_type_title, :on => :collection
+  end
+
+  resources :themes, path: '/tables/themes' do
+    get :autocomplete_theme_title, :on => :collection
+  end
+
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]
   

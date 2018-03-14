@@ -1,5 +1,6 @@
 class ThemesController < AuthenticateController
   before_action :set_theme, only: [:show, :edit, :update, :destroy]
+  autocomplete :theme, :title, :full => true
 
   # GET /themes
   # GET /themes.json

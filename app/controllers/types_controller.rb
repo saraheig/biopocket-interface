@@ -1,5 +1,6 @@
 class TypesController < AuthenticateController
   before_action :set_type, only: [:show, :edit, :update, :destroy]
+  autocomplete :type, :title, :full => true
 
   # GET /types
   # GET /types.json
