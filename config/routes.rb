@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   
   resources :actions, path: '/tables/actions' do
     get :autocomplete_action_title, :on => :collection
+    get :autocomplete_action_picture, :on => :collection
   end
 
   resources :types, path: '/tables/types' do
@@ -15,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :themes, path: '/tables/themes' do
     get :autocomplete_theme_title, :on => :collection
+    get :autocomplete_theme_picture, :on => :collection
   end
 
   # Default route (if unknown url)

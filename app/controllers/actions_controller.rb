@@ -1,6 +1,7 @@
 class ActionsController < AuthenticateController
   before_action :set_action, only: [:show, :edit, :update, :destroy]
   autocomplete :action, :title, :full => true
+  autocomplete :action, :picture, :full => true
 
   # GET /actions
   # GET /actions.json
