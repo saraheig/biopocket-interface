@@ -9,12 +9,12 @@
 hedgehog = Theme.create!(
     title: 'Hérissons',
     description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)',
-    picture: 'image_herisson')
+    picture: 'image_herisson.jpeg')
 
 meadow = Theme.create!(
     title: 'Prairies fleuries',
     description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).',
-    picture: 'image_prairie')
+    picture: 'image_prairie.png')
 
 observation = Type.create!(
     title: 'Observation',
@@ -61,7 +61,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend de la surface et des obstacles.',
     surface_min: 1.0,
     investment: 1,
-    picture: 'image_accueillir_hérissons',
+    picture: 'image_accueillir_hérissons.jpg',
     importance: 1)
     
 Action.create!(
@@ -77,7 +77,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend du nombre de tas constitués.',
     surface_min: 1.0,
     investment: 2,
-    picture: 'image_aménagements_simples',
+    picture: 'image_aménagements_simples.gif',
     importance: 1)
     
 Action.create!(
@@ -93,7 +93,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend de la grandeur de l\'abri.',
     surface_min: 3.0,
     investment: 3,
-    picture: 'image_abri_à_hérissons',
+    picture: 'image_abri_à_hérissons.png',
     importance: 1)
     
 Action.create!(
@@ -109,7 +109,7 @@ Action.create!(
     time_description: 'Cette action peut prendre entre 1 et 8 heures de temps.',
     surface_min: 0.0,
     investment: 1,
-    picture: 'image_découvrir_les_prairies',
+    picture: 'image_découvrir_les_prairies.jpeg',
     importance: 2)
     
 Action.create!(
@@ -125,7 +125,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action peut être calculé de la manière suivante : temps de tonte normal + 20%.',
     surface_min: 10.0,
     investment: 2,
-    picture: 'image_entretien_différencié',
+    picture: 'image_entretien_différencié.jpg',
     importance: 1)
     
 Action.create!(
@@ -141,7 +141,7 @@ Action.create!(
     time_description: 'Il faut compter 1 heure de temps pour 10 mètres carrés.',
     surface_min: 10.0,
     investment: 3,
-    picture: 'image_aménager_une_prairie_fleurie',
+    picture: 'image_aménager_une_prairie_fleurie.png',
     importance: 1)
 
 User.create!(
