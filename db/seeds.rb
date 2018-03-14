@@ -16,14 +16,18 @@ meadow = Theme.create!(
     description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).',
     picture: 'image_prairie')
 
+observation = Type.create!(
+    title: 'Observation',
+    description: 'description_observation')
+
+reporting = Type.create!(
+    title: 'Signalement',
+    description: 'description_signalement')
+
 information = Type.create!(
     title: 'Renseignement',
     description: 'description_renseignement')
-    
-engagement = Type.create!(
-    title: 'Engagement',
-    description: 'description_engagement')
-    
+
 management = Type.create!(
     title: 'Gestion',
     description: 'description_gestion')
@@ -31,6 +35,18 @@ management = Type.create!(
 building = Type.create!(
     title: 'Construction',
     description: 'description_construction')
+
+awareness = Type.create!(
+    title: 'Sensibilisation',
+    description: 'description_sensibilisation')
+
+promotion = Type.create!(
+    title: 'Valorisation',
+    description: 'description_valorisation')
+
+engagement = Type.create!(
+    title: 'Engagement',
+    description: 'description_engagement')
 
 Action.create!(
     theme: hedgehog,
