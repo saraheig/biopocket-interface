@@ -61,7 +61,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend de la surface et des obstacles.',
     surface_min: 1.0,
     investment: 1,
-    picture: 'image_accueillir_hérissons.jpg',
+    picture: 'image_accueillir_herissons.jpg',
     importance: 1)
     
 Action.create!(
@@ -77,7 +77,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend du nombre de tas constitués.',
     surface_min: 1.0,
     investment: 2,
-    picture: 'image_aménagements_simples.gif',
+    picture: 'image_amenagements_simples.gif',
     importance: 1)
     
 Action.create!(
@@ -93,7 +93,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action dépend de la grandeur de l\'abri.',
     surface_min: 3.0,
     investment: 3,
-    picture: 'image_abri_à_hérissons.png',
+    picture: 'image_abri_a_herissons.png',
     importance: 1)
     
 Action.create!(
@@ -109,7 +109,7 @@ Action.create!(
     time_description: 'Cette action peut prendre entre 1 et 8 heures de temps.',
     surface_min: 0.0,
     investment: 1,
-    picture: 'image_découvrir_les_prairies.jpeg',
+    picture: 'image_decouvrir_les_prairies.jpeg',
     importance: 2)
     
 Action.create!(
@@ -125,7 +125,7 @@ Action.create!(
     time_description: 'Le temps pour réaliser cette action peut être calculé de la manière suivante : temps de tonte normal + 20%.',
     surface_min: 10.0,
     investment: 2,
-    picture: 'image_entretien_différencié.jpg',
+    picture: 'image_entretien_differencie.jpg',
     importance: 1)
     
 Action.create!(
@@ -141,7 +141,7 @@ Action.create!(
     time_description: 'Il faut compter 1 heure de temps pour 10 mètres carrés.',
     surface_min: 10.0,
     investment: 3,
-    picture: 'image_aménager_une_prairie_fleurie.png',
+    picture: 'image_amenager_une_prairie_fleurie.png',
     importance: 1)
 
 User.create!(
