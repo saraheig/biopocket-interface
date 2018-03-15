@@ -1,14 +1,14 @@
-# BioRails
+# Database interface for the BioPocket project
 
 This is a Web application which allows users not only to easily create, read, update and delete (CRUD application) data, but also to quickly search a keyword and other parameters into data contents.
 
 The actual database of this project is composed by these tables: 
 
-* Work
-* Topic
-* Category
+* Action
+* Theme
+* Type
 
-A work belongs to exactly one topic and one category, whereas a topic and a category could both have several works. 
+An action belongs to exactly one theme and one type, whereas a theme and a type could both have several actions.
 
 In order to use this Web application, users must first of all sign up and sign in. As a result, the actual database also contains this table: 
 
