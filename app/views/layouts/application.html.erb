@@ -1,22 +1,42 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name='viewport'>
     <title>BioPocket</title>
     <%= csrf_meta_tags %>
-
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.5/js/bootstrap.min.js'></script>
+    <link rel='stylesheet' media='screen' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css'>
   </head>
 
   <body>
     <nav class='navbar navbar-default navbar-fixed-top'>
-      <div>
-        <a class='navbar-brand' href='/tables'>BioPocket</a>
+      <div class='collapse navbar-collapse'>
         <ul class='nav navbar-nav'>
-          <li><%= link_to 'Actions', actions_path %></li>
-          <li><%= link_to 'Thèmes', themes_path %></li>
-          <li><%= link_to 'Types d\'action', types_path %></li>
+          <li><a href='/tables'>BioPocket</a></li>
+          <li class='dropdown'>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Actions <span class='caret'></span></a>
+            <ul class='dropdown-menu'>
+              <li><a href='/tables/actions'>Voir les actions</a></li>
+              <li><a href='/tables/actions/new'>Ajouter une action</a></li>
+            </ul>
+          </li>
+          <li class='dropdown'>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Thèmes <span class='caret'></span></a>
+            <ul class='dropdown-menu'>
+              <li><a href='/tables/themes'>Voir les thèmes</a></li>
+              <li><a href='/tables/themes/new'>Ajouter un thème</a></li>
+            </ul>
+          </li>
+          <li class='dropdown'>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Types d'action <span class='caret'></span></a>
+            <ul class='dropdown-menu'>
+              <li><a href='/tables/types'>Voir les types d'action</a></li>
+              <li><a href='/tables/types/new'>Ajouter un type d'action</a></li>
+            </ul>
+          </li>
         </ul>
         <ul class='nav navbar-nav navbar-right'>
           <li><%= link_to 'Aller en haut de la page', :anchor => "#" %></li>
