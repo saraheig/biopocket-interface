@@ -3,7 +3,9 @@
 one:
   title: FirstTitle
   description: FirstDescription
+  picture: FirstPicture
 
 two:
   title: SecondTitle
   description: SecondDecription
+  picture: SecondPicture

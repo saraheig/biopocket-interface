@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  theme: one
+  type: one
+  title: FirstTitle
+  description: FirstDescription
+  impact: FirstImpactDesc
+  spot: false
+  cost_min: 9
+  time_min: 3
+  time_unit: 2
+  time_description: FirstTimeDesc
+  surface_min: 3.4
+  investment: 2
+  picture: FirstPicture
+  importance: 2
+
+two:
+  theme: two
+  type: two
+  title: SecondTitle
+  description: SecondDescription
+  impact: SecondImpactDesc
+  spot: false
+  cost_min: 8
+  time_min: 7
+  time_unit: 3
+  time_description: SecondTimeDesc
+  surface_min: 3.8
+  investment: 1
+  picture: SecondPicture
+  importance: 4

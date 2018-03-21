@@ -2,6 +2,8 @@
 
 one:
   title: FirstTitle
+  description: FirstDescription
 
 two:
   title: SecondTitle
+  description: SecondDescription
