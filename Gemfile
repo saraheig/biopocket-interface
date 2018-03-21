@@ -33,6 +33,8 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 gem 'jquery-ui-rails', '~> 6.0', '>= 6.0.1'
 # Autocompletion
 gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.3'
+# Bootstrap
+gem 'rails-bootstrap'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
