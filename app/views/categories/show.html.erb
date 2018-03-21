@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Catégorie de temps "<%= @category.title %>"</h1>
+
+<hr/>
+<%= link_to 'Voir toutes les catégories de temps', categories_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @category.title %></td>
+      <td>
+        <%= link_to 'Editer', edit_category_path(@category) %><br/>
+        <%= link_to 'Supprimer', @category, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette catégorie de temps est irréversible et suprimera toutes les tâches associées.' } %></td>
+      </td>
+    </tr>
+  </tbody>
+</table>

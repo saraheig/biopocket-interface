@@ -1,0 +1,35 @@
+<%= form_with(model: category, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing category which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing category -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing category. -%>
+    <h2>Catégorie de temps "<%= category.title %>"</h2>
+    <%-# No <h2> title if this is a new category. -%>
+  <% end %>
+
+  <% if category.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(category.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% category.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur la catégorie de temps</h3><br/>
+
+  <div class="field">
+    Titre* : <br/>
+    <%= form.text_field :title, id: :category_title, size: '43.5' %>
+  </div>
+
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

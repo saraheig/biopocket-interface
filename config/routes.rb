@@ -18,6 +18,8 @@ Rails.application.routes.draw do
     get :autocomplete_theme_title, :on => :collection
     get :autocomplete_theme_picture, :on => :collection
   end
+  
+  resources :categories, path: '/tables/categories'
 
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]
