@@ -150,3 +150,21 @@ User.create!(
     pseudo: 'tototutu',
     email: 'toto@tutu.com',
     password: 'tototutu')
+
+Category.create!(
+    title: 'Période idéale')
+
+Category.create!(
+    title: 'Période favorable')
+
+Category.create!(
+    title: 'Période possible')
+
+Category.create!(
+    title: 'Période à éviter')
+
+Category.create!(
+    title: 'Autre période')
+
+Category.create!(
+    title: 'Aucune contrainte')
