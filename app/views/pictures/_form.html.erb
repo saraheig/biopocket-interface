@@ -1,0 +1,60 @@
+<%= form_with(model: picture, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing picture which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing picture -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing picture. -%>
+    <h2>Photo "<%= picture.picture %>"</h2>
+    <%-# No <h2> title if this is a new picture. -%>
+  <% end %>
+
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% picture.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur la photo</h3><br/>
+
+  <div class="field">
+    Nom de la photo (avec son extension)* : <br/>
+    <%= form.text_field :picture, id: :picture_picture, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Description : <br/>
+    <%= form.text_area :description, id: :picture_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Tâche* : <br/>
+    <% tasks = Task.all %>
+    <% taskoptions = Array.new %>
+    <% taskselected = '' %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title, task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :task_id, options_for_select(taskoptions, selected: picture.task.id), id: :picture_task_id %>
+    <% else %>
+      <%-# If this is a new picture, there is no default value selected in the select form. -%>
+      <% taskoptions.unshift(['Choisir']) %>
+      <%= form.select :task_id, options_for_select(taskoptions), id: :picture_task_id %>
+    <% end %>
+    <%= link_to 'Créer une nouvelle tâche', new_task_path %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

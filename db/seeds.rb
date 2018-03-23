@@ -298,3 +298,28 @@ Link.create!(
 Link.create!(
     link: 'http://www.ufasamen.ch/fr/wildblumenwiesen',
     task: task6)
+
+Picture.create!(
+    picture: 'image_1.jpg',
+    description: 'description image 1',
+    task: task1)
+
+Picture.create!(
+    picture: 'image_1.jpg',
+    description: 'description image 1',
+    task: task1)
+
+Picture.create!(
+    picture: 'image_2.tif',
+    description: 'description image 2',
+    task: task1)
+
+Picture.create!(
+    picture: 'image_3.gif',
+    description: 'description image 3',
+    task: task2)
+
+Picture.create!(
+    picture: 'image_4.jpeg',
+    description: 'description image 4',
+    task: task5)

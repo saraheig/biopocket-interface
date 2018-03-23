@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Photo "<%= @picture.picture %>"</h1>
+
+<hr/>
+<%= link_to 'Voir toutes les photos', pictures_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Nom de la photo</th>
+      <th>Description</th>
+      <th>Tâche</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @picture.picture %></td>
+      <td><%= @picture.description %></td>
+      <td><%= @picture.task.title %></td>
+      <td>
+        <%= link_to 'Editer', edit_picture_path(@picture) %><br/>
+        <%= link_to 'Supprimer', @picture, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette photo est irréversible.' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>
