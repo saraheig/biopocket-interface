@@ -1,0 +1,84 @@
+<%= form_with(model: period, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing period which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing period -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing period. -%>
+    <h2>Période "<%= @period.startdate %>-<%= @period.enddate %>"</h2>
+    <%-# No <h2> title if this is a new period. -%>
+  <% end %>
+
+  <% if period.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(period.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% period.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur la période</h3><br/>
+
+  <div class="field">
+    Tâche* : <br/>
+    <% tasks = Task.all %>
+    <% taskoptions = Array.new %>
+    <% taskselected = '' %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title, task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :task_id, options_for_select(taskoptions, selected: period.task.id), id: :period_task_id %>
+    <% else %>
+      <%-# If this is a new task, there is no default value selected in the select form. -%>
+      <% taskoptions.unshift(['Choisir']) %>
+      <%= form.select :task_id, options_for_select(taskoptions), id: :period_task_id %>
+    <% end %>
+    <%= link_to 'Créer une nouvelle tâche', new_task_path %>
+  </div>
+
+  <div class="field">
+    Catégorie* : <br/>
+    <% categories = Category.all %>
+    <% categoryoptions = Array.new %>
+    <% categoryselected = '' %>
+    <% categories.each do |category| %>
+      <% categoryarray = [category.title, category.id] %>
+      <% categoryoptions.push(categoryarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :category_id, options_for_select(categoryoptions, selected: period.category.id), id: :period_category_id %>
+    <% else %>
+      <%-# If this is a new action, there is no default value selected in the select form. -%>
+      <% categoryoptions.unshift(['Choisir']) %>
+      <%= form.select :category_id, options_for_select(categoryoptions), id: :period_category_id %>
+    <% end %>
+    <%= link_to 'Créer une nouvelle catégorie', new_category_path %>
+  </div>
+
+  <div class="field">
+    Mois de début* : <br/>
+    <%= form.number_field :startdate, id: :period_startdate %>
+  </div>
+
+  <div class="field">
+    Mois de fin* : <br/>
+    <%= form.number_field :enddate, id: :period_enddate %>
+  </div>
+
+  <div class="field">
+    Description : <br/>
+    <%= form.text_area :description, id: :period_description, size: '43x5' %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

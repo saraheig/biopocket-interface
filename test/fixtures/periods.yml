@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  startdate: 1
+  enddate: 1
+  description: MyText
+  task: one
+  category: one
+
+two:
+  startdate: 1
+  enddate: 1
+  description: MyText
+  task: two
+  category: two

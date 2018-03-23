@@ -151,23 +151,23 @@ User.create!(
     email: 'toto@tutu.com',
     password: 'tototutu')
 
-Category.create!(
+cat1 = Category.create!(
     title: 'Période idéale')
 
-Category.create!(
-    title: 'Période favorable')
-
-Category.create!(
-    title: 'Période possible')
-
-Category.create!(
-    title: 'Période à éviter')
-
-Category.create!(
+cat2 = Category.create!(
     title: 'Autre période')
 
-Category.create!(
+cat3 = Category.create!(
     title: 'Aucune contrainte')
+
+cat4 = Category.create!(
+    title: 'Période possible')
+
+cat5 = Category.create!(
+    title: 'Période favorable')
+
+cat6 = Category.create!(
+    title: 'Période à éviter')
 
 Cost.create!(
     title: 'Fourniture des graines',
@@ -323,3 +323,38 @@ Picture.create!(
     picture: 'image_4.jpeg',
     description: 'description image 4',
     task: task5)
+
+Period.create!(
+    startdate: 4,
+    enddate: 6,
+    description: 'C\'est entre fin avril et mi-juin, avant la première fauche, que la floraison est la plus abondante en plaine. On peut y entendre les grillons et observer des cohhortes importantes d\'insectes.',
+    task: task1,
+    category: cat1)
+
+Period.create!(
+    startdate: 8,
+    enddate: 9,
+    description: 'Suite à la première fauche (août - septembre), l\'herbe repousse et passablement d\'espèces sont capables de fleurir à nouveau (sauge, centaurées, marguerite,…). Toutefois, cette seconde floraison est toujours moins abondante que celle du printemps. Cette période est par contre plus favorable pour l\'observation des orthoptères (sauterelles et grillons).',
+    task: task1,
+    category: cat2)
+
+Period.create!(
+    startdate: 1,
+    enddate: 12,
+    description: '',
+    task: task2,
+    category: cat3)
+
+Period.create!(
+    startdate: 3,
+    enddate: 7,
+    description: 'C\'est entre fin mars et juillet que les résultats seront les plus remarquables.',
+    task: task3,
+    category: cat1)
+
+Period.create!(
+    startdate: 3,
+    enddate: 11,
+    description: 'Une autre période possible : pendant toute la période de végétation, à savoir entre mars et novembre.',
+    task: task3,
+    category: cat4)

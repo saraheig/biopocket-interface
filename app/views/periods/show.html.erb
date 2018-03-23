@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Période "<%= @period.startdate %>-<%= @period.enddate %>"</h1>
+
+<hr/>
+<%= link_to 'Voir toutes les périodes', periods_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Tâche</th>
+      <th>Catégorie</th>
+      <th>Mois de début</th>
+      <th>Mois de fin</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @period.task.title %></td>
+      <td><%= @period.category.title %></td>
+      <td><%= @period.startdate %></td>
+      <td><%= @period.enddate %></td>
+      <td><%= @period.description %></td>
+      <td>
+        <%= link_to 'Editer', edit_period_path(@period) %><br/>
+        <%= link_to 'Supprimer', @period, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette période est irréversible.' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>
