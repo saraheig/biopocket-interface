@@ -21,7 +21,6 @@
       <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @themes.each do |theme| %>
       <tr>
@@ -30,7 +29,8 @@
         <td><%= theme.picture %></td>
         <td>
           <%= link_to 'Editer', edit_theme_path(theme) %><br/>
-          <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions associées.' } %></td>
+          <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions associées.' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>

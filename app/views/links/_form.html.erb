@@ -1,0 +1,55 @@
+<%= form_with(model: link, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing link which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing link -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing link. -%>
+    <h2>Lien "<%= link.link %>"</h2>
+    <%-# No <h2> title if this is a new link. -%>
+  <% end %>
+
+  <% if link.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(link.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% link.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur le lien</h3><br/>
+
+  <div class="field">
+    Lien* : <br/>
+    <%= form.text_field :link, id: :link_link, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Tâche* : <br/>
+    <% tasks = Task.all %>
+    <% taskoptions = Array.new %>
+    <% taskselected = '' %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title, task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :task_id, options_for_select(taskoptions, selected: link.task.id), id: :link_task_id %>
+    <% else %>
+      <%-# If this is a new task, there is no default value selected in the select form. -%>
+      <% taskoptions.unshift(['Choisir']) %>
+      <%= form.select :task_id, options_for_select(taskoptions), id: :link_task_id %>
+    <% end %>
+    <%= link_to 'Créer une nouvelle tâche', new_task_path %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>
