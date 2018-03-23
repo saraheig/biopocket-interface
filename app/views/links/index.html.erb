@@ -23,7 +23,7 @@
   <tbody>
     <% @links.each do |link| %>
       <tr>
-        <td><%= link.link %></td>
+        <td><a href='<%= link.link %>' target='_blank'><%= link.link %></a></td>
         <td><%= link.task.title %></td>
         <td>
           <%= link_to 'Editer', edit_link_path(link) %><br/>
