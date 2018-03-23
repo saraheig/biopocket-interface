@@ -20,8 +20,8 @@ Rails.application.routes.draw do
   end
   
   resources :categories, path: '/tables/categories'
-  
   resources :costs, path: '/tables/costs'
+  resources :tasks, path: '/tables/tasks'
 
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]
