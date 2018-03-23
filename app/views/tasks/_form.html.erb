@@ -1,0 +1,60 @@
+<%= form_with(model: task, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing task which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing task -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing task. -%>
+    <h2>Tâche "<%= task.title %>"</h2>
+    <%-# No <h2> title if this is a new task. -%>
+  <% end %>
+
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% task.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <hr/><h3>Information sur la tâche</h3><br/>
+
+  <div class="field">
+    Titre* : <br/>
+    <%= form.text_field :title, id: :task_title, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Description* : <br/>
+    <%= form.text_area :description, id: :task_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Action* : <br/>
+    <% actions = Action.all %>
+    <% actionoptions = Array.new %>
+    <% actionselected = '' %>
+    <% actions.each do |action| %>
+      <% actionarray = [action.title, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :action_id, options_for_select(actionoptions, selected: task.action.id), id: :task_action_id %>
+    <% else %>
+      <%-# If this is a new task, there is no default value selected in the select form. -%>
+      <% actionoptions.unshift(['Choisir']) %>
+      <%= form.select :action_id, options_for_select(actionoptions), id: :task_action_id %>
+    <% end %>
+    <%= link_to 'Créer une nouvelle action', new_action_path %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

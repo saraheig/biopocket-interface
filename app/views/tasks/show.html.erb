@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Tâche "<%= @task.title %>"</h1>
+
+<hr/>
+<%= link_to 'Voir toutes les tâches', tasks_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre</th>
+      <th>Description</th>
+      <th>Action</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @task.title %></td>
+      <td><%= @task.description %></td>
+      <td><%= @task.action.title %></td>
+      <td>
+        <%= link_to 'Editer', edit_task_path(@task) %><br/>
+        <%= link_to 'Supprimer', @task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible.' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>
