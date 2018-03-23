@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180321174115) do
+ActiveRecord::Schema.define(version: 20180323135516) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -42,6 +42,17 @@ ActiveRecord::Schema.define(version: 20180321174115) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "costs", force: :cascade do |t|
+    t.string "title", limit: 40
+    t.decimal "value_min", precision: 10, scale: 2
+    t.decimal "value_max", precision: 10, scale: 2
+    t.string "unit", limit: 20
+    t.bigint "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_costs_on_action_id"
+  end
+
   create_table "themes", force: :cascade do |t|
     t.string "title", limit: 40
     t.text "description"
@@ -70,4 +81,5 @@ ActiveRecord::Schema.define(version: 20180321174115) do
 
   add_foreign_key "actions", "themes"
   add_foreign_key "actions", "types"
+  add_foreign_key "costs", "actions"
 end

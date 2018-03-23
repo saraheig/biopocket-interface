@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  value_min: 9.99
+  value_max: 9.99
+  unit: MyString
+  action: one
+
+two:
+  title: MyString
+  value_min: 9.99
+  value_max: 9.99
+  unit: MyString
+  action: two

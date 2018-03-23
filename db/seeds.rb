@@ -48,7 +48,7 @@ engagement = Type.create!(
     title: 'Engagement',
     description: 'description_engagement')
 
-Action.create!(
+welcomeHedgehogs = Action.create!(
     theme: hedgehog,
     type: management,
     title: 'Accueillir les hérissons',
@@ -64,7 +64,7 @@ Action.create!(
     picture: 'image_accueillir_herissons.jpg',
     importance: 1)
     
-Action.create!(
+simpleLayouts = Action.create!(
     theme: hedgehog,
     type: management,
     title: 'Aménagements simples',
@@ -80,7 +80,7 @@ Action.create!(
     picture: 'image_amenagements_simples.gif',
     importance: 1)
     
-Action.create!(
+hedgehogHouse = Action.create!(
     theme: hedgehog,
     type: building,
     title: 'Abri à hérissons',
@@ -96,7 +96,7 @@ Action.create!(
     picture: 'image_abri_a_herissons.png',
     importance: 1)
     
-Action.create!(
+discoverMeadows = Action.create!(
     theme: meadow,
     type: information,
     title: 'Découvrir les prairies',
@@ -112,7 +112,7 @@ Action.create!(
     picture: 'image_decouvrir_les_prairies.jpeg',
     importance: 2)
     
-Action.create!(
+diffMaintenance = Action.create!(
     theme: meadow,
     type: engagement,
     title: 'Entretien différencié',
@@ -128,7 +128,7 @@ Action.create!(
     picture: 'image_entretien_differencie.jpg',
     importance: 1)
     
-Action.create!(
+createMeadow = Action.create!(
     theme: meadow,
     type: management,
     title: 'Aménager une prairie fleurie',
@@ -168,3 +168,10 @@ Category.create!(
 
 Category.create!(
     title: 'Aucune contrainte')
+
+Cost.create!(
+    title: 'Fourniture des graines',
+    value_min: 0.8,
+    value_max: 1.4,
+    unit: 'CHF/m2',
+    action: discoverMeadows)

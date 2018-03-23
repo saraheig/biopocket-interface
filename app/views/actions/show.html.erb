@@ -70,22 +70,8 @@
         </td>
       <td><%= @action.picture %></td>
       <td><%= @action.importance %></td>
-      <td>
-        <% themes = Theme.all %>
-        <% themes.each do |theme| %>
-          <% if theme.id == @action.theme.id %>
-            <%= theme.title %>
-          <% end %>
-        <% end %>
-      </td>
-      <td>
-        <% types = Type.all %>
-        <% types.each do |type| %>
-          <% if type.id == @action.type.id %>
-            <%= type.title %>
-          <% end %>
-        <% end %>
-      </td>
+      <td><%= @action.theme.title %></td>
+      <td><%= @action.type.title %></td>
       <td>
         <%= link_to 'Editer', edit_action_path(@action) %><br/>
         <%= link_to 'Supprimer', @action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette action est irréversible.' } %>
