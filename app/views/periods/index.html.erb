@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Table des périodes</h1>
+<h1>Table des périodes (pour les tâches)</h1>
+<em>
+  Cette table contient les différentes périodes (idéale - favorable - possible - autre - …) relatives aux différentes tâches.<br/>
+  Une tâche (table "Tâches") peut avoir différentes périodes. En revanche, une ligne de cette table ne correspond qu'à une seule tâche (pas à plusieurs tâches). 
+</em>
 
 <hr/>
 <%= link_to 'Ajouter une nouvelle période', new_period_path %>
@@ -10,7 +14,7 @@
   <thead>
     <tr>
       <th>Tâche</th>
-      <th>Catégorie</th>
+      <th>Catégorie de temps</th>
       <th>Mois de début</th>
       <th>Mois de fin</th>
       <th>Description</th>

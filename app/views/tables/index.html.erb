@@ -1,28 +1,28 @@
 <br/><p id="notice"><%= notice %></p>
 <h1>Liste des tables</h1><hr/>
 
-<table class="table table-striped table-bordered table-hover" style="max-width: 25%">
+<table class="table table-striped table-bordered table-hover" style="max-width: 30%">
   <tr>
-    <td>Table des actions</td>
-    <td><%= link_to 'Voir', actions_path %></td>
-  </tr>
-  <tr>
+    <td rowspan="1">Thèmes</td>
     <td>Table des thèmes</td>
     <td><%= link_to 'Voir', themes_path %></td>
   </tr>
   <tr>
+    <td rowspan="1">Types d'action</td>
     <td>Table des types d'action</td>
     <td><%= link_to 'Voir', types_path %></td>
   </tr>
   <tr>
-    <td>Table des catégories de temps (pour les tâches)</td>
-    <td><%= link_to 'Voir', categories_path %></td>
+    <td rowspan="2">Actions</td>
+    <td>Table des actions</td>
+    <td><%= link_to 'Voir', actions_path %></td>
   </tr>
   <tr>
     <td>Table des coûts (pour les actions)</td>
     <td><%= link_to 'Voir', costs_path %></td>
   </tr>
   <tr>
+    <td rowspan="5">Tâches</td>
     <td>Table des tâches</td>
     <td><%= link_to 'Voir', tasks_path %></td>
   </tr>
@@ -33,6 +33,10 @@
   <tr>
     <td>Table des photos (pour les tâches)</td>
     <td><%= link_to 'Voir', pictures_path %></td>
+  </tr>
+  <tr>
+    <td>Table des catégories de temps (pour les tâches)</td>
+    <td><%= link_to 'Voir', categories_path %></td>
   </tr>
   <tr>
     <td>Table des périodes (pour les tâches)</td>

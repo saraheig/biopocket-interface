@@ -6,6 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing cost. -%>
     <h2>Coût "<%= cost.title %>"</h2>
+    Action "<%= @cost.action.title %>"
     <%-# No <h2> title if this is a new cost. -%>
   <% end %>
 

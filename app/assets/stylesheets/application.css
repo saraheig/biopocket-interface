@@ -17,3 +17,25 @@
  */
 
 main { padding: 60px; }
+
+.dropdown-menu .sub-menu {
+    left: 100%;
+    top: 0;
+    margin-top: -30px;
+    position: relative;
+}
+
+.dropdown-menu li:hover .sub-menu {
+    visibility: visible;
+    display: block;
+}
+
+.rotate270 {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+    border-top-color: black !important;
+    border-bottom-color: black !important;
+}

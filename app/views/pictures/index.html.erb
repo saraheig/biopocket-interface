@@ -1,6 +1,10 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Table des photos</h1>
+<h1>Table des photos (pour les tâches)</h1>
+<em>
+  Cette table contient les liens des photos relatives aux tâches.<br/>
+  Une tâche (table "Tâches") peut avoir plusieurs photo. En revanche, une ligne de cette table ne correspond qu'à une seule tâche (pas à plusieurs tâches). 
+</em>
 
 <hr/>
 <%= link_to 'Ajouter une nouvelle photo', new_picture_path %>

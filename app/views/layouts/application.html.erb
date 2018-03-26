@@ -7,19 +7,11 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body>
     <nav class='navbar navbar-default navbar-fixed-top'>
       <div class='collapse navbar-collapse'>
         <ul class='nav navbar-nav'>
           <li><a href='/tables'>BioPocket</a></li>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Actions <span class='caret'></span></a>
-            <ul class='dropdown-menu'>
-              <li><a href='/tables/actions'>Voir les actions</a></li>
-              <li><a href='/tables/actions/new'>Ajouter une action</a></li>
-            </ul>
-          </li>
           <li class='dropdown'>
             <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Thèmes <span class='caret'></span></a>
             <ul class='dropdown-menu'>
@@ -35,17 +27,17 @@
             </ul>
           </li>
           <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Catégories de temps <span class='caret'></span></a>
+            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Actions <span class='caret'></span></a>
             <ul class='dropdown-menu'>
-              <li><a href='/tables/categories'>Voir les catégories de temps</a></li>
-              <li><a href='/tables/categories/new'>Ajouter une catégorie de temps</a></li>
-            </ul>
-          </li>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Coûts <span class='caret'></span></a>
-            <ul class='dropdown-menu'>
-              <li><a href='/tables/costs'>Voir les coûts</a></li>
-              <li><a href='/tables/costs/new'>Ajouter un coût</a></li>
+              <li><a href='/tables/actions'>Voir les actions</a></li>
+              <li><a href='/tables/actions/new'>Ajouter une action</a></li>
+              <li>
+                <a href='#'>Coûts <span class='caret rotate270'></span></a>
+                <ul class='dropdown-menu sub-menu'>
+                  <li><a href='/tables/costs'>Voir les coûts</a></li>
+                  <li><a href='/tables/costs/new'>Ajouter un coût</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
           <li class='dropdown'>
@@ -53,27 +45,29 @@
             <ul class='dropdown-menu'>
               <li><a href='/tables/tasks'>Voir les tâches</a></li>
               <li><a href='/tables/tasks/new'>Ajouter une tâche</a></li>
-            </ul>
-          </li>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Liens <span class='caret'></span></a>
-            <ul class='dropdown-menu'>
-              <li><a href='/tables/links'>Voir les liens</a></li>
-              <li><a href='/tables/links/new'>Ajouter un lien</a></li>
-            </ul>
-          </li>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Photos <span class='caret'></span></a>
-            <ul class='dropdown-menu'>
-              <li><a href='/tables/pictures'>Voir les photos</a></li>
-              <li><a href='/tables/pictures/new'>Ajouter une photo</a></li>
-            </ul>
-          </li>
-          <li class='dropdown'>
-            <a href='#' class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>Périodes <span class='caret'></span></a>
-            <ul class='dropdown-menu'>
-              <li><a href='/tables/periods'>Voir les périodes</a></li>
-              <li><a href='/tables/periods/new'>Ajouter une période</a></li>
+              <li>
+                <a href='#'>Liens <span class='caret rotate270'></span></a>
+                <ul class='dropdown-menu sub-menu'>
+                  <li><a href='/tables/links'>Voir les liens</a></li>
+                  <li><a href='/tables/links/new'>Ajouter un lien</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href='#'>Photos <span class='caret rotate270'></span></a>
+                <ul class='dropdown-menu sub-menu'>
+                  <li><a href='/tables/pictures'>Voir les photos</a></li>
+                  <li><a href='/tables/pictures/new'>Ajouter une photo</a></li>
+                </ul>
+              </li>
+              <li>
+                <a href='#'>Catégories de temps / Périodes <span class='caret rotate270'></span></a>
+                <ul class='dropdown-menu sub-menu'>
+                  <li><a href='/tables/categories'>Voir les catégories de temps</a></li>
+                  <li><a href='/tables/categories/new'>Ajouter une catégorie de temps</a></li>
+                  <li><a href='/tables/periods'>Voir les périodes</a></li>
+                  <li><a href='/tables/periods/new'>Ajouter une période</a></li>
+                </ul>
+              </li>
             </ul>
           </li>
         </ul>
