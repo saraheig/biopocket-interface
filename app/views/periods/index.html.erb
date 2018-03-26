@@ -10,6 +10,53 @@
 <%= link_to 'Ajouter une nouvelle période', new_period_path %>
 <hr/>
 
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(periods_path, method: :get) do %>
+
+  <div class="field">
+    Mot-clé cherché la description :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Mois minimum :
+    <%= number_field_tag :monthmin, params[:monthmin], step: 1, min: 1, max: 12, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Mois maximum :
+    <%= number_field_tag :monthmax, params[:monthmax], step: 1, min: 1, max: 12, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Tâche :
+    <% tasks = Task.all %>
+    <% taskoptions = ['Indifférent'] %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title, task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
+  </div>
+
+  <div class="field">
+    Catégorie de temps :
+    <% categories = Category.all %>
+    <% categoryoptions = ['Indifférent'] %>
+    <% categories.each do |category| %>
+      <% categoryarray = [category.title, category.id] %>
+      <% categoryoptions.push(categoryarray) %>
+    <% end %>
+    <%= select_tag :category_id, options_for_select(categoryoptions, params[:category_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+<%= link_to 'Annuler la recherche', periods_path %><br/><br/>
+
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>

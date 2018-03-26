@@ -4,7 +4,12 @@ class PeriodsController < AuthenticateController
   # GET /periods
   # GET /periods.json
   def index
-    @periods = Period.all
+    keyword = params[:keyword]
+    monthmin = params[:monthmin]
+    monthmax = params[:monthmax]
+    task = params[:task_id]
+    category = params[:category_id]
+    @periods = Period.search(keyword, monthmin, monthmax, task, category)
   end
 
   # GET /periods/1
