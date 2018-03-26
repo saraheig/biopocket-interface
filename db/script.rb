@@ -1,0 +1,10 @@
+Theme.destroy_all
+Type.destroy_all
+Cost.destroy_all
+Period.destroy_all
+Category.destroy_all
+Link.destroy_all
+Picture.destroy_all
+Task.destroy_all
+Action.destroy_all
+User.destroy_all
