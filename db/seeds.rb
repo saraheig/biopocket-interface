@@ -6,6 +6,17 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Cost.delete_all
+Period.delete_all
+Category.delete_all
+Link.delete_all
+Picture.delete_all
+Task.delete_all
+Action.delete_all
+Theme.delete_all
+Type.delete_all
+User.delete_all
+
 hedgehog = Theme.create!(
     title: 'Hérissons',
     description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)',
