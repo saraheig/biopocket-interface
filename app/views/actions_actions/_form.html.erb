@@ -1,0 +1,69 @@
+<%= form_with(model: actions_action, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing task which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing task -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing task. -%>
+    <h2>Lien entre "<%= @actions_action.ref.title %> - <%= @actions_action.dep.title %>"</h2>
+    <%-# No <h2> title if this is a new task. -%>
+  <% end %>
+
+  <% if actions_action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(actions_action.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% actions_action.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur le lien</h3><br/>
+
+  <div class="field">
+    Action de base (Thème)* : <br/>
+    <% actions = Action.all %>
+    <% actionoptions = Array.new %>
+    <% actionselected = '' %>
+    <% actions.each do |action| %>
+      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
+      <% actionarray = [possibilities, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :ref_id, options_for_select(actionoptions, selected: actions_action.ref.id), id: :actions_action_ref_id %>
+    <% else %>
+      <%-# If this is a new task, there is no default value selected in the select form. -%>
+      <% actionoptions.unshift(['Choisir']) %>
+      <%= form.select :ref_id, options_for_select(actionoptions), id: :actions_action_ref_id %>
+    <% end %>
+  </div>
+
+  <div class="field">
+    Action requise pour faire l'action de base (Thème)* : <br/>
+    <% actions = Action.all %>
+    <% actionoptions = Array.new %>
+    <% actionselected = '' %>
+    <% actions.each do |action| %>
+      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
+      <% actionarray = [possibilities, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :dep_id, options_for_select(actionoptions, selected: actions_action.dep.id), id: :actions_action_dep_id %>
+    <% else %>
+      <%-# If this is a new task, there is no default value selected in the select form. -%>
+      <% actionoptions.unshift(['Choisir']) %>
+      <%= form.select :dep_id, options_for_select(actionoptions), id: :actions_action_dep_id %>
+    <% end %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

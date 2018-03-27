@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+ActionsAction.delete_all
 Cost.delete_all
 Period.delete_all
 Category.delete_all
@@ -369,3 +370,11 @@ Period.create!(
     description: 'Une autre période possible : pendant toute la période de végétation, à savoir entre mars et novembre.',
     task: task3,
     category: cat4)
+
+ActionsAction.create!(
+  ref: welcomeHedgehogs,
+  dep: simpleLayouts)
+
+ActionsAction.create!(
+  ref: welcomeHedgehogs,
+  dep: hedgehogHouse)

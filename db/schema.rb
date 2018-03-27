@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180323181456) do
+ActiveRecord::Schema.define(version: 20180327122423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,15 @@ ActiveRecord::Schema.define(version: 20180323181456) do
     t.integer "importance", limit: 2
     t.index ["theme_id"], name: "index_actions_on_theme_id"
     t.index ["type_id"], name: "index_actions_on_type_id"
+  end
+
+  create_table "actions_actions", force: :cascade do |t|
+    t.bigint "ref_id"
+    t.bigint "dep_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["dep_id"], name: "index_actions_actions_on_dep_id"
+    t.index ["ref_id"], name: "index_actions_actions_on_ref_id"
   end
 
   create_table "categories", force: :cascade do |t|
@@ -119,6 +128,8 @@ ActiveRecord::Schema.define(version: 20180323181456) do
 
   add_foreign_key "actions", "themes"
   add_foreign_key "actions", "types"
+  add_foreign_key "actions_actions", "actions", column: "dep_id"
+  add_foreign_key "actions_actions", "actions", column: "ref_id"
   add_foreign_key "costs", "actions"
   add_foreign_key "links", "tasks"
   add_foreign_key "periods", "categories"

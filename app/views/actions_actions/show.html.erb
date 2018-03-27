@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Lien entre "<%= @actions_action.ref.title %> - <%= @actions_action.dep.title %>"</h1>
+
+<hr/>
+<%= link_to 'Voir tous les liens entre actions', actions_actions_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Action de base (Thème)</th>
+      <th>Action requise pour faire l'action de base (Thème)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @actions_action.ref.title %> (<%= @actions_action.ref.theme.title %>)</td>
+      <td><%= @actions_action.dep.title %> (<%= @actions_action.dep.theme.title %>)</td>
+      <td>
+        <%= link_to 'Editer', edit_actions_action_path(@actions_action) %><br/>
+        <%= link_to 'Supprimer', @actions_action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>

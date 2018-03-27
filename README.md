@@ -13,6 +13,7 @@ The actual database of this project is composed by these tables:
 * Link
 * Picture
 * Period
+* ActionsAction
 
 An action belongs to exactly one theme and one type, whereas a theme and a type could both have several actions.
 
