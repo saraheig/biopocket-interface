@@ -11,10 +11,14 @@
 <%= link_to 'Ajouter une nouvelle tâche', new_task_path %>
 <hr/>
 
+<h3>Effectuer une recherche</h3><br/>
 <%= form_tag(tasks_path, method: :get) do %>
+
   <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
   <%= submit_tag 'Rechercher', name: nil %>
+
 <% end %><br/>
+
 <%= link_to 'Annuler la recherche', tasks_path %><br/><br/>
 
 <table class="table table-striped table-bordered table-hover">

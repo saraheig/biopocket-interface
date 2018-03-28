@@ -11,6 +11,27 @@
 <%= link_to 'Ajouter un nouveau lien entre deux actions', new_actions_action_path %>
 <hr/>
 
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(actions_actions_path, method: :get) do %>
+
+  <div class="field">
+    Action :
+    <% actions = Action.all %>
+    <% actionoptions = ['Indifférent'] %>
+    <% actions.each do |action| %>
+      <% actionarray = [action.title, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+<%= link_to 'Annuler la recherche', actions_actions_path %><br/><br/>
+
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>

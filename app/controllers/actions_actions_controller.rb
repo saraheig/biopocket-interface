@@ -4,7 +4,8 @@ class ActionsActionsController < AuthenticateController
   # GET /actions_actions
   # GET /actions_actions.json
   def index
-    @actions_actions = ActionsAction.all
+    actionSearch = params[:action_id]
+    @actions_actions = ActionsAction.search(actionSearch)
   end
 
   # GET /actions_actions/1

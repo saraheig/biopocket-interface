@@ -14,4 +14,19 @@ class ActionsAction < ApplicationRecord
       errors.add(:dep_id, 'L\'action requise doit être différente de l\'action de base.')
     end
   end
+
+  # Function search to search links related to an action through a form
+  def self.search(actionSearch)
+    if actionSearch != 'Indifférent' and actionSearch != nil
+      sql_action = "ref_id = #{actionSearch.to_f} OR dep_id = #{actionSearch.to_f}"
+    else
+      sql_action = ""
+    end
+
+    if sql_action != ""
+      where(sql_action).order(updated_at: :desc)
+    else
+      all.order(updated_at: :desc)
+    end
+  end
 end
