@@ -6,7 +6,7 @@ class ActionsAction < ApplicationRecord
   validates_numericality_of :dep_id, :greater_than_or_equal_to => 0, :message => 'Choisir une action requise pour l\'action de base.'
   validate :check_ref_id_and_dep_id
   # Validate uniqueness of the relation between ref_id and dep_id
-  validates_uniqueness_of :dep_id, scope: [:ref_id, :dep_id], :message => 'Le lien entre ces deux actions existent déjà.'
+  validates_uniqueness_of :dep_id, scope: [:ref_id, :dep_id], :message => 'Le lien entre ces deux actions existe déjà.'
   
   # Custom validation
   def check_ref_id_and_dep_id

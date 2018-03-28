@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+SpeciesAction.delete_all
 Species.delete_all
 TasksTask.delete_all
 ActionsAction.delete_all
@@ -438,3 +439,51 @@ species6 = Species.create!(
     name: 'Alouette des champs',
     description: 'Description Alouette des champs',
     picture: 'photo_alouette_champs.jpg')
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species1)
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species2)
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species3)
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species4)
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species5)
+
+SpeciesAction.create!(
+    action: diffMaintenance,
+    species: species6)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species1)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species2)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species3)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species4)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species5)
+
+SpeciesAction.create!(
+    action: createMeadow,
+    species: species6)

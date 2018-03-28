@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180328084729) do
+ActiveRecord::Schema.define(version: 20180328134859) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -99,6 +99,15 @@ ActiveRecord::Schema.define(version: 20180328084729) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "species_actions", force: :cascade do |t|
+    t.bigint "species_id"
+    t.bigint "action_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["action_id"], name: "index_species_actions_on_action_id"
+    t.index ["species_id"], name: "index_species_actions_on_species_id"
+  end
+
   create_table "tasks", force: :cascade do |t|
     t.string "title", limit: 100
     t.text "description"
@@ -152,6 +161,8 @@ ActiveRecord::Schema.define(version: 20180328084729) do
   add_foreign_key "periods", "categories"
   add_foreign_key "periods", "tasks"
   add_foreign_key "pictures", "tasks"
+  add_foreign_key "species_actions", "actions"
+  add_foreign_key "species_actions", "species"
   add_foreign_key "tasks", "actions"
   add_foreign_key "tasks_tasks", "tasks", column: "dep_id"
   add_foreign_key "tasks_tasks", "tasks", column: "ref_id"

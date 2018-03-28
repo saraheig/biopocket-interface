@@ -1,0 +1,65 @@
+<%= form_with(model: species_action, local: true) do |form| %>
+
+  <% part = request.path_info.split("/")[4] %>
+  <% if part == 'edit' %>
+    <%-# This is an existing link. -%>
+    <h2>Lien entre "<%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h2>
+    <%-# No <h2> title if this is a new link. -%>
+  <% end %>
+
+  <% if species_action.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(species_action.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
+
+      <ul>
+      <% species_action.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  
+  <hr/><h3>Information sur le lien</h3><br/>
+  
+  <div class="field">
+    Action (Thème)* : <br/>
+    <% actions = Action.all %>
+    <% actionoptions = Array.new %>
+    <% actionselected = '' %>
+    <% actions.each do |action| %>
+      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
+      <% actionarray = [possibilities, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :action_id, options_for_select(actionoptions, selected: species_action.action.id), id: :species_action_action_id %>
+    <% else %>
+      <% actionoptions.unshift(['Choisir']) %>
+      <%= form.select :action_id, options_for_select(actionoptions), id: :species_action_action_id %>
+    <% end %>
+  </div>
+  
+  <div class="field">
+    Espèce* : <br/>
+    <% species = Species.all %>
+    <% speciesoptions = Array.new %>
+    <% specieselected = '' %>
+    <% species.each do |species| %>
+      <% possibilities = species.name %>
+      <% speciesarray = [possibilities, species.id] %>
+      <% speciesoptions.push(speciesarray) %>
+    <% end %>
+    <% if part == 'edit' %>
+      <%= form.select :species_id, options_for_select(speciesoptions, selected: species_action.species.id), id: :species_action_species_id %>
+    <% else %>
+      <% speciesoptions.unshift(['Choisir']) %>
+      <%= form.select :species_id, options_for_select(speciesoptions), id: :species_action_species_id %>
+    <% end %>
+  </div>
+
+  <hr/>
+  <h6>* Champs obligatoires</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>
