@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Species.delete_all
 TasksTask.delete_all
 ActionsAction.delete_all
 Cost.delete_all
@@ -407,3 +408,33 @@ TasksTask.create!(
 TasksTask.create!(
   ref: task11,
   dep: task10)
+
+species1 = Species.create!(
+    name: 'Fromental',
+    description: 'Description Fromental',
+    picture: 'photo_fromental.jpg')
+
+species2 = Species.create!(
+    name: 'Knautie des champs',
+    description: 'Description Knautie des champs',
+    picture: 'photo_knautie.jpg')
+
+species3 = Species.create!(
+    name: 'Criquet des roseaux',
+    description: 'Description Criquet des roseaux',
+    picture: 'photo_criquet.jpg')
+
+species4 = Species.create!(
+    name: 'Demi-Argus',
+    description: 'Description Demi-Argus',
+    picture: 'photo_demi_argus.jpg')
+
+species5 = Species.create!(
+    name: 'Azuré du trèfle',
+    description: 'Description Azuré du trèfle',
+    picture: 'photo_azure_trefle.jpg')
+
+species6 = Species.create!(
+    name: 'Alouette des champs',
+    description: 'Description Alouette des champs',
+    picture: 'photo_alouette_champs.jpg')

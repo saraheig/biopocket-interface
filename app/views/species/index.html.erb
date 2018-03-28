@@ -1,0 +1,52 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Table des espèces</h1>
+<em>
+  Cette table représente chacune des espèces touchées par une ou plusieurs des actions (table "Actions").<br/>
+  Une seule espèce par ligne.
+</em>
+
+<hr/>
+<%-# Button to add a new species: at the top -%>
+<%= link_to 'Ajouter une nouvelle espèce', new_species_path %>
+<hr/>
+
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(species_index_path, method: :get) do %>
+
+  <div class="field">
+    Mot-clé cherché dans le nom de l'espèce, dans le nom de la photo ou dans la description :
+    <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+
+<%= link_to 'Annuler la recherche', species_index_path %><br/><br/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Description</th>
+      <th>Nom de la photo</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @species.each do |species| %>
+      <tr>
+        <td><%= species.name %></td>
+        <td><%= species.description %></td>
+        <td><%= species.picture %></td>
+        <td>
+          <%= link_to 'Editer', edit_species_path(species) %><br/>
+          <%= link_to 'Supprimer', species, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette espèce est irréversible et suprimera toutes les lignes associées dans la table "Espèce-Action".' } %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
