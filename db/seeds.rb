@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+TasksTask.delete_all
 ActionsAction.delete_all
 Cost.delete_all
 Period.delete_all
@@ -378,3 +379,31 @@ ActionsAction.create!(
 ActionsAction.create!(
   ref: welcomeHedgehogs,
   dep: hedgehogHouse)
+
+TasksTask.create!(
+  ref: task5,
+  dep: task4)
+
+TasksTask.create!(
+  ref: task7,
+  dep: task5)
+
+TasksTask.create!(
+  ref: task8,
+  dep: task7)
+
+TasksTask.create!(
+  ref: task8,
+  dep: task6)
+  
+TasksTask.create!(
+  ref: task9,
+  dep: task8)
+  
+TasksTask.create!(
+  ref: task10,
+  dep: task9)
+  
+TasksTask.create!(
+  ref: task11,
+  dep: task10)
