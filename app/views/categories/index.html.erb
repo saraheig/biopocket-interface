@@ -34,7 +34,7 @@
         <td><%= category.title %></td>
         <td>
           <%= link_to 'Editer', edit_category_path(category) %><br/>
-          <%= link_to 'Supprimer', category, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette catégorie de temps est irréversible et suprimera toutes les tâches associées.' } %>
+          <%= link_to 'Supprimer', category, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette catégorie de temps est irréversible et suprimera toutes les périodes (des tâches) (table "Périodes") associées.' } %>
         </td>
       </tr>
     <% end %>

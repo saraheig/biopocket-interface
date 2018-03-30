@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lien entre "<%= @tasks_task.ref.title %> - <%= @tasks_task.dep.title %>"</h1>
+<h1>Lien entre "<%= @tasks_task.ref.title %>" - "<%= @tasks_task.dep.title %>"</h1>
 
 <hr/>
 <%= link_to 'Voir tous les liens entre tâches', tasks_tasks_path %>
@@ -9,15 +9,15 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Tâche de base (Action)</th>
-      <th>Tâche requise pour faire la tâche de base (Action)</th>
+      <th>Tâche de base (Action - Thème)</th>
+      <th>Tâche requise pour faire la tâche de base (Action - Thème)</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <td><%= @tasks_task.ref.title %> (<%= @tasks_task.ref.action.title %>)</td>
-      <td><%= @tasks_task.dep.title %> (<%= @tasks_task.dep.action.title %>)</td>
+      <td><%= @tasks_task.ref.title %> (<%= @tasks_task.ref.action.title %> - <%= @tasks_task.ref.action.theme.title %>)</td>
+      <td><%= @tasks_task.dep.title %> (<%= @tasks_task.dep.action.title %> - <%= @tasks_task.dep.action.theme.title %>)</td>
       <td>
         <%= link_to 'Editer', edit_tasks_task_path(@tasks_task) %><br/>
         <%= link_to 'Supprimer', @tasks_task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

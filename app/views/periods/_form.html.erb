@@ -5,9 +5,9 @@
   <%-# Add a title according if this is a new or an existing period -%>
   <% if part == 'edit' %>
     <%-# This is an existing period. -%>
-    <h2>Période "<%= @period.startdate %>-<%= @period.enddate %>"</h2>
-    Tâche "<%= @period.task.title %>"<br/>
-    Catégorie de temps "<%= @period.category.title %>"
+    <h2>Période "<%= period.startdate %>-<%= period.enddate %>"</h2>
+    Tâche "<%= period.task.title %>" (Action "<%= period.task.action.title %>" - Thème "<%= period.task.action.theme.title %>")<br/>
+    Catégorie de temps "<%= period.category.title %>"
     <%-# No <h2> title if this is a new period. -%>
   <% end %>
 
@@ -26,12 +26,13 @@
   <hr/><h3>Information sur la période</h3><br/>
 
   <div class="field">
-    Tâche* : <br/>
+    Tâche (Action - Thème)* : <br/>
     <% tasks = Task.all %>
     <% taskoptions = Array.new %>
     <% taskselected = '' %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title, task.id] %>
+      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
+      <% taskarray = [possibilities, task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <% if part == 'edit' %>

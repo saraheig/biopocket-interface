@@ -60,7 +60,7 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Tâche</th>
+      <th>Tâche (Action - Thème)</th>
       <th>Catégorie de temps</th>
       <th>Mois de début</th>
       <th>Mois de fin</th>
@@ -71,7 +71,7 @@
   <tbody>
     <% @periods.each do |period| %>
       <tr>
-        <td><%= period.task.title %></td>
+        <td><%= period.task.title %> (<%= period.task.action.title %> - <%= period.task.action.theme.title %>)</td>
         <td><%= period.category.title %></td>
         <td><%= period.startdate %></td>
         <td><%= period.enddate %></td>

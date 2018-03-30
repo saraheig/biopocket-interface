@@ -6,6 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing task. -%>
     <h2>Tâche "<%= task.title %>"</h2>
+    Action "<%= task.action.title %>" (Thème "<%= task.action.theme.title %>")
     <%-# No <h2> title if this is a new task. -%>
   <% end %>
 
@@ -34,12 +35,13 @@
   </div>
 
   <div class="field">
-    Action* : <br/>
+    Action (Thème)* : <br/>
     <% actions = Action.all %>
     <% actionoptions = Array.new %>
     <% actionselected = '' %>
     <% actions.each do |action| %>
-      <% actionarray = [action.title, action.id] %>
+      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
+      <% actionarray = [possibilities, action.id] %>
       <% actionoptions.push(actionarray) %>
     <% end %>
     <% if part == 'edit' %>

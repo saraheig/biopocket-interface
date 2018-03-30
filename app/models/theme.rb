@@ -1,5 +1,6 @@
 class Theme < ApplicationRecord
   has_many :actions, dependent: :destroy
+
   before_validation :strip_blanks
 
   # Compulsory field: title

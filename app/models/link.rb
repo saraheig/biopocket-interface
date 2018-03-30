@@ -1,5 +1,6 @@
 class Link < ApplicationRecord
   belongs_to :task, optional: true
+
   before_validation :strip_blanks
 
   validates_presence_of :link, :message => 'Le lien doit être spécifié.'

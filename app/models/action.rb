@@ -2,6 +2,13 @@ class Action < ApplicationRecord
   belongs_to :theme, optional: true
   # optional: true -> to avoid fixed error message => Utilization of a customized message
   belongs_to :type, optional: true
+
+  has_many :costs, dependent: :destroy
+  has_many :tasks, dependent: :destroy
+  has_many :species_actions, dependent: :destroy
+  has_many :ref_actions, foreign_key: :ref_id, class_name: :ActionsAction, dependent: :destroy
+  has_many :dep_actions, foreign_key: :dep_id, class_name: :ActionsAction, dependent: :destroy
+
   before_validation :strip_blanks
 
   validates_presence_of :title, :message => 'Le titre de l\'action doit être spécifié.'

@@ -6,7 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing picture. -%>
     <h2>Photo "<%= picture.picture %>"</h2>
-    Tâche "<%= picture.task.title %>"
+    Tâche "<%= picture.task.title %>" (Action "<%= picture.task.action.title %>" - Thème "<%= picture.task.action.theme.title %>")
     <%-# No <h2> title if this is a new picture. -%>
   <% end %>
 
@@ -35,12 +35,13 @@
   </div>
 
   <div class="field">
-    Tâche* : <br/>
+    Tâche (Action - Thème)* : <br/>
     <% tasks = Task.all %>
     <% taskoptions = Array.new %>
     <% taskselected = '' %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title, task.id] %>
+      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
+      <% taskarray = [possibilities, task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <% if part == 'edit' %>

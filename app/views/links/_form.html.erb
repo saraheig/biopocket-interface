@@ -5,8 +5,8 @@
   <%-# Add a title according if this is a new or an existing link -%>
   <% if part == 'edit' %>
     <%-# This is an existing link. -%>
-    <h2>Lien "<%= link.link %>"</h2>
-    Tâche "<%= link.task.title %>"
+    <h2>Lien Internet "<%= link.link %>"</h2>
+    Tâche "<%= link.task.title %>" (Action "<%= link.task.action.title %>" - Thème "<%= link.task.action.theme.title %>")
     <%-# No <h2> title if this is a new link. -%>
   <% end %>
 
@@ -22,20 +22,21 @@
     </div>
   <% end %>
 
-  <hr/><h3>Information sur le lien</h3><br/>
+  <hr/><h3>Information sur le lien Internet</h3><br/>
 
   <div class="field">
-    Lien* : <br/>
+    Lien Internet* : <br/>
     <%= form.text_field :link, id: :link_link, size: '43.5' %>
   </div>
 
   <div class="field">
-    Tâche* : <br/>
+    Tâche (Action - Thème)* : <br/>
     <% tasks = Task.all %>
     <% taskoptions = Array.new %>
     <% taskselected = '' %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title, task.id] %>
+      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
+      <% taskarray = [possibilities, task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <% if part == 'edit' %>

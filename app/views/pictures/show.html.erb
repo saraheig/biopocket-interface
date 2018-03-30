@@ -11,7 +11,7 @@
     <tr>
       <th>Nom de la photo</th>
       <th>Description</th>
-      <th>Tâche</th>
+      <th>Tâche (Action - Thème)</th>
       <th></th>
     </tr>
   </thead>
@@ -19,7 +19,7 @@
     <tr>
       <td><%= @picture.picture %></td>
       <td><%= @picture.description %></td>
-      <td><%= @picture.task.title %></td>
+      <td><%= @picture.task.title %> (<%= @picture.task.action.title %> - <%= @picture.task.action.theme.title %>)</td>
       <td>
         <%= link_to 'Editer', edit_picture_path(@picture) %><br/>
         <%= link_to 'Supprimer', @picture, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette photo est irréversible.' } %>

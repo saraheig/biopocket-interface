@@ -1,7 +1,14 @@
 class Task < ApplicationRecord
   belongs_to :action, optional: true
+
+  has_many :links, dependent: :destroy
+  has_many :pictures, dependent: :destroy
+  has_many :periods, dependent: :destroy
+  has_many :ref_tasks, foreign_key: :ref_id, class_name: :TasksTask, dependent: :destroy
+  has_many :dep_tasks, foreign_key: :dep_id, class_name: :TasksTask, dependent: :destroy
+
   before_validation :strip_blanks
-  
+
   validates_presence_of :title, :message => 'Le titre de la tâche doit être spécifié.'
   validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre de la tâche est déjà utilisé.'
   validates_length_of :title, :maximum => 100, :message => 'Le titre de la tâche doit avoir maximum 100 caractères.'

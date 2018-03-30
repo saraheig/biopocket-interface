@@ -1,4 +1,6 @@
 class Category < ApplicationRecord
+  has_many :periods, dependent: :destroy
+
   before_validation :strip_blanks
 
   validates_presence_of :title, :message => 'Le titre de catégorie du temps doit être spécifié.'

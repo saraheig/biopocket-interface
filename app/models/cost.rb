@@ -1,7 +1,8 @@
 class Cost < ApplicationRecord
   belongs_to :action, optional: true
+
   before_validation :strip_blanks
-  
+
   validates_presence_of :title, :message => 'Le titre du coût de l\'action doit être spécifié.'
   validates_length_of :title, :maximum => 40, :message => 'Le titre du coût de l\'action doit avoir maximum 40 caractères.'
   validates_presence_of :value_min, :message => 'La valeur minimale du coût de l\'action doit être spécifiée.'

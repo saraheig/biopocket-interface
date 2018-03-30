@@ -26,7 +26,7 @@
     <tr>
       <th>Titre</th>
       <th>Description</th>
-      <th>Action</th>
+      <th>Action (Thème)</th>
       <th></th>
     </tr>
   </thead>
@@ -35,10 +35,10 @@
       <tr>
         <td><%= task.title %></td>
         <td><%= task.description %></td>
-        <td><%= task.action.title %></td>
+        <td><%= task.action.title %> (<%= task.action.theme.title %>)</td>
         <td>
           <%= link_to 'Editer', edit_task_path(task) %><br/>
-          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible.' } %></td>
+          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Photos" et "Périodes".' } %></td>
       </tr>
     <% end %>
   </tbody>

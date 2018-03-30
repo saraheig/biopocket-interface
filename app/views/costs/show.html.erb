@@ -13,7 +13,7 @@
       <th>Valeur mimimale</th>
       <th>Valeur maximale</th>
       <th>Unité</th>
-      <th>Action</th>
+      <th>Action (Thème)</th>
       <th></th>
     </tr>
   </thead>
@@ -23,7 +23,7 @@
       <td><%= @cost.value_min %></td>
       <td><%= @cost.value_max %></td>
       <td><%= @cost.unit %></td>
-      <td><%= @cost.action.title %></td>
+      <td><%= @cost.action.title %> (<%= @cost.action.theme.title %>)</td>
       <td>
         <%= link_to 'Editer', edit_cost_path(@cost) %><br/>
         <%= link_to 'Supprimer', @cost, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce coût est irréversible.' } %>

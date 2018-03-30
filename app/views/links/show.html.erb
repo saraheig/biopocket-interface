@@ -1,23 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lien "<%= @link.link %>"</h1>
+<h1>Lien Internet "<%= @link.link %>"</h1>
 
 <hr/>
-<%= link_to 'Voir tous les liens', links_path %>
+<%= link_to 'Voir tous les liens Internet', links_path %>
 <hr/>
 
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Lien</th>
-      <th>Tâche</th>
+      <th>Lien Internet</th>
+      <th>Tâche (Action - Thème)</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><a href='<%= @link.link %>' target='_blank'><%= @link.link %></a></td>
-      <td><%= @link.task.title %></td>
+      <td><%= @link.task.title %> (<%= @link.task.action.title %> - <%= @link.task.action.theme.title %>)</td>
       <td>
         <%= link_to 'Editer', edit_link_path(@link) %><br/>
         <%= link_to 'Supprimer', @link, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

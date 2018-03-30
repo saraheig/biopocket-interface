@@ -1,5 +1,6 @@
 class Picture < ApplicationRecord
   belongs_to :task, optional: true
+
   before_validation :strip_blanks
 
   validates_format_of :picture, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'Le nom de la photo (pas d\'espace ou de caractères spéciaux ou accentués dans le nom), ainsi que son extension (bmp, jpeg, jpg, gif, png, tif, tiff) doivent être spécifiés.'

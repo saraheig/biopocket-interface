@@ -36,7 +36,7 @@
         <td><%= theme.picture %></td>
         <td>
           <%= link_to 'Editer', edit_theme_path(theme) %><br/>
-          <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions associées.' } %>
+          <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions et donc toutes les tâches associées.' } %>
         </td>
       </tr>
     <% end %>

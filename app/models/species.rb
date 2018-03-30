@@ -1,4 +1,6 @@
 class Species < ApplicationRecord
+  has_many :species_actions, dependent: :destroy
+
   before_validation :strip_blanks
 
   validates_presence_of :name, :message => 'Le nom de l\'espèce doit être spécifié.'

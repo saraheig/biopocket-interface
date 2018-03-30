@@ -1,6 +1,6 @@
 class TasksTask < ApplicationRecord
-  belongs_to :ref, :class_name => 'Task', optional: true
-  belongs_to :dep, :class_name => 'Task', optional: true
+  belongs_to :ref, class_name: :Task, optional: true
+  belongs_to :dep, class_name: :Task, optional: true
 
   validates_numericality_of :ref_id, :greater_than_or_equal_to => 0, :message => 'Choisir une tâche de base.'
   validates_numericality_of :dep_id, :greater_than_or_equal_to => 0, :message => 'Choisir une tâche requise pour la tâche de base.'

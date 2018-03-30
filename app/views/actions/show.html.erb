@@ -74,7 +74,7 @@
       <td><%= @action.type.title %></td>
       <td>
         <%= link_to 'Editer', edit_action_path(@action) %><br/>
-        <%= link_to 'Supprimer', @action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette action est irréversible.' } %>
+        <%= link_to 'Supprimer', @action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette action est irréversible et supprimera toutes les tâches associées.' } %>
       </td>
     </tr>
   </tbody>
