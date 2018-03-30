@@ -14,8 +14,35 @@
 <h3>Effectuer une recherche</h3><br/>
 <%= form_tag(costs_path, method: :get) do %>
 
-  <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
-  <%= submit_tag 'Rechercher', name: nil %>
+  <div class="field">
+    Mot-clé cherché dans le titre et l'unité (pour les coûts) :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Coût minimum :
+    <%= number_field_tag :costmin, params[:costmin], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Coût maximum :
+    <%= number_field_tag :costmax, params[:costmax], step: 0.1, min: 0, max: 500, placeholder: 'Aucun' %>
+  </div>
+
+  <div class="field">
+    Action :
+    <% actions = Action.all %>
+    <% actionoptions = ['Indifférent'] %>
+    <% actions.each do |action| %>
+      <% actionarray = [action.title, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
 
 <% end %><br/>
 
@@ -25,9 +52,9 @@
   <thead>
     <tr>
       <th>Titre</th>
-      <th>Valeur minimale</th>
-      <th>Valeur maximale</th>
-      <th>Unité</th>
+      <th>Coût minimum</th>
+      <th>Coût maximum</th>
+      <th>Unité (pour les coûts)</th>
       <th>Action (Thème)</th>
       <th></th>
     </tr>

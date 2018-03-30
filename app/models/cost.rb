@@ -20,10 +20,26 @@ class Cost < ApplicationRecord
   end
   
   # Function search to search a keyword through a form
-  def self.search(keyword)
-    if keyword
-      where("title iLIKE :term OR unit iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+  def self.search(keyword, costmin, costmax, action)
+
+    # The minimum cost equals 0.0.
+    if costmax != ""
+      sql_cost = "value_min >= #{costmin.to_f} AND value_max <= #{costmax.to_f}"
+    else
+      sql_cost = "value_min >= #{costmin.to_f}"
+    end
+
+    if action != "Indifférent"
+      sql_action = "action_id = #{action.to_f}"
+    else
+      sql_action = ""
+    end
+
+    if keyword && sql_action == ""
+      where(sql_cost + " AND (title iLIKE :term OR unit iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
+    elsif keyword && sql_action != ""
+      where(sql_cost + " AND " + sql_action + " AND (title iLIKE :term OR unit iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

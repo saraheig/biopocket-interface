@@ -84,10 +84,10 @@ class Action < ApplicationRecord
 
     # If no search is done, all data are displayed.
     if sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype == ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # actions are ordered by updated_at desc => the most recently changed action: at the top
     elsif sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype != ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

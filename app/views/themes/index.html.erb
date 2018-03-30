@@ -12,8 +12,14 @@
 <h3>Effectuer une recherche</h3><br/>
 <%= form_tag(themes_path, method: :get) do %>
 
-  <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
-  <%= submit_tag 'Rechercher', name: nil %>
+  <div class="field">
+    Mot-clé cherché dans le titre, la description et le nom de la photo :
+    <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
 
 <% end %><br/>
 

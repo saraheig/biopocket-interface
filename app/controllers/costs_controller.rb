@@ -4,7 +4,11 @@ class CostsController < AuthenticateController
   # GET /costs
   # GET /costs.json
   def index
-    @costs = Cost.search(params[:search])
+    keyword = params[:keyword]
+    costmin = params[:costmin]
+    costmax = params[:costmax]
+    action = params[:action_id]
+    @costs = Cost.search(keyword, costmin, costmax, action)
   end
 
   # GET /costs/1
