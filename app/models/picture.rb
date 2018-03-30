@@ -12,10 +12,19 @@ class Picture < ApplicationRecord
   end
 
   # Function search to search a keyword through a form
-  def self.search(keyword)
-    if keyword
+  def self.search(keyword, task)
+
+    if task != "Indifférent"
+      sql_task = "task_id = #{task.to_f}"
+    else
+      sql_task = ""
+    end
+
+    if keyword && sql_task == ""
       where("picture iLIKE :term OR description iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
+    elsif keyword && sql_task != ""
+      where(sql_task + " AND (picture iLIKE :term OR description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

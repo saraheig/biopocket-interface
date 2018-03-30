@@ -4,7 +4,9 @@ class PicturesController < AuthenticateController
   # GET /pictures
   # GET /pictures.json
   def index
-    @pictures = Picture.search(params[:search])
+    keyword = params[:keyword]
+    task = params[:task_id]
+    @pictures = Picture.search(keyword, task)
   end
 
   # GET /pictures/1
