@@ -4,7 +4,9 @@ class LinksController < AuthenticateController
   # GET /links
   # GET /links.json
   def index
-    @links = Link.search(params[:search])
+    keyword = params[:keyword]
+    task = params[:task_id]
+    @links = Link.search(keyword, task)
   end
 
   # GET /links/1

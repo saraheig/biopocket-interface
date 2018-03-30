@@ -13,8 +13,25 @@
 <h3>Effectuer une recherche</h3><br/>
 <%= form_tag(links_path, method: :get) do %>
 
-  <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
-  <%= submit_tag 'Rechercher', name: nil %>
+<div class="field">
+    Mot-clé cherché dans le lien Internet :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Tâche :
+    <% tasks = Task.all %>
+    <% taskoptions = ['Indifférent'] %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title, task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
 
 <% end %><br/>
 
