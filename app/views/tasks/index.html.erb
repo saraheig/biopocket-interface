@@ -14,8 +14,25 @@
 <h3>Effectuer une recherche</h3><br/>
 <%= form_tag(tasks_path, method: :get) do %>
 
-  <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
-  <%= submit_tag 'Rechercher', name: nil %>
+  <div class="field">
+    Mot-clé cherché dans le titre et la description :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+
+  <div class="field">
+    Action :
+    <% actions = Action.all %>
+    <% actionoptions = ['Indifférent'] %>
+    <% actions.each do |action| %>
+      <% actionarray = [action.title, action.id] %>
+      <% actionoptions.push(actionarray) %>
+    <% end %>
+    <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
 
 <% end %><br/>
 

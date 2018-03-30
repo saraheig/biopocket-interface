@@ -21,10 +21,19 @@ class Task < ApplicationRecord
   end
   
   # Function search to search a keyword through a form
-  def self.search(keyword)
-    if keyword
+  def self.search(keyword, action)
+
+    if action != "Indifférent"
+      sql_action = "action_id = #{action.to_f}"
+    else
+      sql_action = ""
+    end
+
+    if keyword && sql_action == ""
       where("title iLIKE :term OR description iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
+    elsif keyword && sql_action != ""
+      where(sql_action + " AND (title iLIKE :term OR description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

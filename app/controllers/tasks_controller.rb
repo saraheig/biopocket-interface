@@ -4,7 +4,9 @@ class TasksController < AuthenticateController
   # GET /tasks
   # GET /tasks.json
   def index
-    @tasks = Task.search(params[:search])
+    keyword = params[:keyword]
+    action = params[:action_id]
+    @tasks = Task.search(keyword, action)
   end
 
   # GET /tasks/1
