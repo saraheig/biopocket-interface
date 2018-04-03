@@ -51,11 +51,11 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Titre</th>
+      <th>Titre / type de coût</th>
+      <th>Action (Thème)</th>
       <th>Coût minimum</th>
       <th>Coût maximum</th>
       <th>Unité (pour les coûts)</th>
-      <th>Action (Thème)</th>
       <th></th>
     </tr>
   </thead>
@@ -63,10 +63,10 @@
     <% @costs.each do |cost| %>
       <tr>
         <td><%= cost.title %></td>
+        <td><%= cost.action.title %> (<%= cost.action.theme.title %>)</td>
         <td><%= cost.value_min %></td>
         <td><%= cost.value_max %></td>
         <td><%= cost.unit %></td>
-        <td><%= cost.action.title %> (<%= cost.action.theme.title %>)</td>
         <td>
           <%= link_to 'Editer', edit_cost_path(cost) %><br/>
           <%= link_to 'Supprimer', cost, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce coût est irréversible.' } %>

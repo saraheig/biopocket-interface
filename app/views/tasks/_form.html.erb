@@ -25,14 +25,16 @@
   <hr/><h3>Information sur la tâche</h3><br/>
 
   <div class="field">
-    Titre* : <br/>
+    Titre de la tâche* : <br/>
     <%= form.text_field :title, id: :task_title, size: '43.5' %>
   </div>
 
   <div class="field">
-    Description* : <br/>
+    Description de la tâche* : <br/>
     <%= form.text_area :description, id: :task_description, size: '40x5' %>
   </div>
+
+  <hr/><h3>Classification de la tâche</h3><br/>
 
   <div class="field">
     Action (Thème)* : <br/>

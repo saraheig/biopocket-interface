@@ -24,17 +24,17 @@
   <hr/><h3>Information sur le thème</h3><br/>
 
   <div class="field">
-    Titre* : <br/>
+    Titre du thème* : <br/>
     <%= form.autocomplete_field :title, autocomplete_theme_title_themes_path, id: :theme_title, size: '43.5' %>
   </div>
 
   <div class="field">
-    Description* : <br/>
+    Description du thème* : <br/>
     <%= form.text_area :description, id: :theme_description, size: '40x5' %>
   </div>
   
   <div class="field">
-    Nom de la photo (avec son extension) : <br/>
+    Nom de la photo du thème (avec son extension) : <br/>
     <%= form.autocomplete_field :picture, autocomplete_theme_picture_themes_path, id: :theme_picture, size: '43x5' %>
   </div>
 

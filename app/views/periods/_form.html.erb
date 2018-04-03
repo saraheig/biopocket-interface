@@ -26,6 +26,23 @@
   <hr/><h3>Information sur la période</h3><br/>
 
   <div class="field">
+    Mois de début* : <br/>
+    <%= form.number_field :startdate, id: :period_startdate %>
+  </div>
+
+  <div class="field">
+    Mois de fin* : <br/>
+    <%= form.number_field :enddate, id: :period_enddate %>
+  </div>
+
+  <div class="field">
+    Description : <br/>
+    <%= form.text_area :description, id: :period_description, size: '43x5' %>
+  </div>
+
+  <hr/><h3>Classification de la période</h3><br/>
+
+  <div class="field">
     Tâche (Action - Thème)* : <br/>
     <% tasks = Task.all %>
     <% taskoptions = Array.new %>
@@ -62,21 +79,6 @@
       <%= form.select :category_id, options_for_select(categoryoptions), id: :period_category_id %>
     <% end %>
     <%= link_to 'Créer une nouvelle catégorie de temps', new_category_path %>
-  </div>
-
-  <div class="field">
-    Mois de début* : <br/>
-    <%= form.number_field :startdate, id: :period_startdate %>
-  </div>
-
-  <div class="field">
-    Mois de fin* : <br/>
-    <%= form.number_field :enddate, id: :period_enddate %>
-  </div>
-
-  <div class="field">
-    Description : <br/>
-    <%= form.text_area :description, id: :period_description, size: '43x5' %>
   </div>
 
   <hr/>
