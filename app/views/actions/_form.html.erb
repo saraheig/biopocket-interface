@@ -91,38 +91,13 @@
 
   <div class="field">
     Thème* :
-    <% themes = Theme.all %>
-    <% themeoptions = Array.new %>
-    <% themeselected = '' %>
-    <% themes.each do |theme| %>
-      <% themearray = [theme.title, theme.id] %>
-      <% themeoptions.push(themearray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :theme_id, options_for_select(themeoptions, selected: action.theme.id), id: :action_theme_id %>
-    <% else %>
-      <%-# If this is a new action, there is no default value selected in the select form. -%>
-      <% themeoptions.unshift(['Choisir']) %>
-      <%= form.select :theme_id, options_for_select(themeoptions), id: :action_theme_id %>
-    <% end %>
+    <%= form.select :theme_id, Theme.all.collect { |theme| [theme.title, theme.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer un nouveau thème', new_theme_path %>
   </div>
 
   <div class="field">
     Type d'action* :
-    <% types = Type.all %>
-    <% typeoptions = Array.new %>
-    <% typeselected = '' %>
-    <% types.each do |type| %>
-      <% typearray = [type.title, type.id] %>
-      <% typeoptions.push(typearray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :type_id, options_for_select(typeoptions, selected: action.type.id), id: :action_type_id %>
-    <% else %>
-      <% typeoptions.unshift(['Choisir']) %>
-      <%= form.select :type_id, options_for_select(typeoptions), id: :action_type_id %>
-    <% end %>
+    <%= form.select :type_id, Type.all.collect { |type| [type.title, type.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer un nouveau type d\'action', new_type_path %>
   </div>
 

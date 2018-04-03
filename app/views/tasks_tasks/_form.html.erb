@@ -23,38 +23,12 @@
   
   <div class="field">
     Tâche de base (Action - Thème)* : <br/>
-    <% tasks = Task.all %>
-    <% taskoptions = Array.new %>
-    <% taskselected = '' %>
-    <% tasks.each do |task| %>
-      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
-      <% taskarray = [possibilities, task.id] %>
-      <% taskoptions.push(taskarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :ref_id, options_for_select(taskoptions, selected: tasks_task.ref.id), id: :tasks_task_ref_id %>
-    <% else %>
-      <% taskoptions.unshift(['Choisir']) %>
-      <%= form.select :ref_id, options_for_select(taskoptions), id: :tasks_task_ref_id %>
-    <% end %>
+    <%= form.select :ref_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <div class="field">
     Tâche requise pour faire la tâche de base (Action - Thème)* : <br/>
-    <% tasks = Task.all %>
-    <% taskoptions = Array.new %>
-    <% taskselected = '' %>
-    <% tasks.each do |task| %>
-      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
-      <% taskarray = [possibilities, task.id] %>
-      <% taskoptions.push(taskarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :dep_id, options_for_select(taskoptions, selected: tasks_task.dep.id), id: :tasks_task_dep_id %>
-    <% else %>
-      <% taskoptions.unshift(['Choisir']) %>
-      <%= form.select :dep_id, options_for_select(taskoptions), id: :tasks_task_dep_id %>
-    <% end %>
+    <%= form.select :dep_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <hr/>

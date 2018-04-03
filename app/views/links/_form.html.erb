@@ -33,21 +33,7 @@
 
   <div class="field">
     Tâche (Action - Thème)* : <br/>
-    <% tasks = Task.all %>
-    <% taskoptions = Array.new %>
-    <% taskselected = '' %>
-    <% tasks.each do |task| %>
-      <% possibilities = task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')' %>
-      <% taskarray = [possibilities, task.id] %>
-      <% taskoptions.push(taskarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :task_id, options_for_select(taskoptions, selected: link.task.id), id: :link_task_id %>
-    <% else %>
-      <%-# If this is a new task, there is no default value selected in the select form. -%>
-      <% taskoptions.unshift(['Choisir']) %>
-      <%= form.select :task_id, options_for_select(taskoptions), id: :link_task_id %>
-    <% end %>
+    <%= form.select :task_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer une nouvelle tâche', new_task_path %>
   </div>
 

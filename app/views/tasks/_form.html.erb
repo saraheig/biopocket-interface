@@ -38,21 +38,7 @@
 
   <div class="field">
     Action (Thème)* : <br/>
-    <% actions = Action.all %>
-    <% actionoptions = Array.new %>
-    <% actionselected = '' %>
-    <% actions.each do |action| %>
-      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
-      <% actionarray = [possibilities, action.id] %>
-      <% actionoptions.push(actionarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :action_id, options_for_select(actionoptions, selected: task.action.id), id: :task_action_id %>
-    <% else %>
-      <%-# If this is a new task, there is no default value selected in the select form. -%>
-      <% actionoptions.unshift(['Choisir']) %>
-      <%= form.select :action_id, options_for_select(actionoptions), id: :task_action_id %>
-    <% end %>
+    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ')', action.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer une nouvelle action', new_action_path %>
   </div>
 

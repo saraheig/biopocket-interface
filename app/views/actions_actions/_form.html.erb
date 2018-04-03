@@ -23,38 +23,12 @@
 
   <div class="field">
     Action de base (Thème)* : <br/>
-    <% actions = Action.all %>
-    <% actionoptions = Array.new %>
-    <% actionselected = '' %>
-    <% actions.each do |action| %>
-      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
-      <% actionarray = [possibilities, action.id] %>
-      <% actionoptions.push(actionarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :ref_id, options_for_select(actionoptions, selected: actions_action.ref.id), id: :actions_action_ref_id %>
-    <% else %>
-      <% actionoptions.unshift(['Choisir']) %>
-      <%= form.select :ref_id, options_for_select(actionoptions), id: :actions_action_ref_id %>
-    <% end %>
+    <%= form.select :ref_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <div class="field">
     Action requise pour faire l'action de base (Thème)* : <br/>
-    <% actions = Action.all %>
-    <% actionoptions = Array.new %>
-    <% actionselected = '' %>
-    <% actions.each do |action| %>
-      <% possibilities = action.title + ' (' + action.theme.title + ')' %>
-      <% actionarray = [possibilities, action.id] %>
-      <% actionoptions.push(actionarray) %>
-    <% end %>
-    <% if part == 'edit' %>
-      <%= form.select :dep_id, options_for_select(actionoptions, selected: actions_action.dep.id), id: :actions_action_dep_id %>
-    <% else %>
-      <% actionoptions.unshift(['Choisir']) %>
-      <%= form.select :dep_id, options_for_select(actionoptions), id: :actions_action_dep_id %>
-    <% end %>
+    <%= form.select :dep_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <hr/>
