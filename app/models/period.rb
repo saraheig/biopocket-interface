@@ -11,9 +11,9 @@ class Period < ApplicationRecord
   def self.search(keyword, monthmin, monthmax, task, category)
 
     if monthmax != "0"
-      sql_month = "startdate >= #{monthmin} AND enddate <= #{monthmax}"
+      sql_month = "startdate >= #{monthmin.to_f} AND enddate <= #{monthmax.to_f}"
     else
-      sql_month = "startdate >= #{monthmin}"
+      sql_month = "startdate >= #{monthmin.to_f}"
     end
 
     if task != "Indifférent" && category != "Indifférent"

@@ -12,6 +12,10 @@
       <th>Titre de la tâche</th>
       <th>Action (Thème)</th>
       <th>Description de la tâche</th>
+      <th>Tâches liées à la présente tâche</th>
+      <th>Liens Internet relatifs à la tâche</th>
+      <th>Photos relatives à la tâche</th>
+      <th>Périodes relatives à la tâche</th>
       <th></th>
     </tr>
   </thead>
@@ -20,6 +24,10 @@
       <td><%= @task.title %></td>
       <td><%= @task.action.title %> (<%= @task.action.theme.title %>)</td>
       <td><%= @task.description %></td>
+      <td><%= link_to 'Voir les différentes tâches liées à cette tâche', tasks_tasks_url + '?utf8=✓&task_id=' + @task.id.to_s %></td>
+      <td><%= link_to 'Voir les différents liens Internet relatifs à cette tâche', links_url + '?utf8=✓&keyword=&task_id=' + @task.id.to_s %></td>
+      <td><%= link_to 'Voir les différentes photos relatives à cette tâche', pictures_url + '?utf8=✓&keyword=&task_id=' + @task.id.to_s %></td>
+      <td><%= link_to 'Voir les différentes périodes relatives à cette tâche', periods_url + '?utf8=✓&keyword=&monthmin=0&monthmax=0&category_id=Indifférent&task_id=' + @task.id.to_s %></td>
       <td>
         <%= link_to 'Editer', edit_task_path(@task) %><br/>
         <%= link_to 'Supprimer', @task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Photos" et "Périodes".' } %>
