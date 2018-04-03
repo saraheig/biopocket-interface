@@ -1,4 +1,6 @@
 <p id="notice"><%= notice %></p>
+<% # List of the months (in french) %>
+<% monthsFr = [['Indifférent', 0], ['Janvier', 1], ['Février', 2], ['Mars', 3], ['Avril', 4], ['Mai', 5], ['Juin', 6], ['Juillet', 7], ['Août', 8], ['Septembre', 9], ['Octobre', 10], ['Novembre', 11], ['Décembre', 12]] %>
 
 <h1>Table des périodes (pour les tâches)</h1>
 <em>
@@ -20,12 +22,12 @@
 
   <div class="field">
     Mois minimum :
-    <%= number_field_tag :monthmin, params[:monthmin], step: 1, min: 1, max: 12, placeholder: 'Aucun' %>
+    <%= select_tag :monthmin, options_for_select(monthsFr, params[:monthmin]) %>
   </div>
 
   <div class="field">
     Mois maximum :
-    <%= number_field_tag :monthmax, params[:monthmax], step: 1, min: 1, max: 12, placeholder: 'Aucun' %>
+    <%= select_tag :monthmax, options_for_select(monthsFr, params[:monthmax]) %>
   </div>
 
   <div class="field">
@@ -73,8 +75,8 @@
       <tr>
         <td><%= period.task.title %> (<%= period.task.action.title %> - <%= period.task.action.theme.title %>)</td>
         <td><%= period.category.title %></td>
-        <td><%= period.startdate %></td>
-        <td><%= period.enddate %></td>
+        <td><%= monthsFr[period.startdate][0] %></td>
+        <td><%= monthsFr[period.enddate][0] %></td>
         <td><%= period.description %></td>
         <td>
           <%= link_to 'Editer', edit_period_path(period) %><br/>

@@ -1,11 +1,13 @@
 <%= form_with(model: period, local: true) do |form| %>
+<% # List of the months (in french) %>
+<% monthsFr = [['Choisir', 0], ['Janvier', 1], ['Février', 2], ['Mars', 3], ['Avril', 4], ['Mai', 5], ['Juin', 6], ['Juillet', 7], ['Août', 8], ['Septembre', 9], ['Octobre', 10], ['Novembre', 11], ['Décembre', 12]] %>
 
   <%-# The part variable: to know if this is a new or an existing period which is modified (see below) -%>
   <% part = request.path_info.split("/")[4] %>
   <%-# Add a title according if this is a new or an existing period -%>
   <% if part == 'edit' %>
     <%-# This is an existing period. -%>
-    <h2>Période "<%= period.startdate %>-<%= period.enddate %>"</h2>
+    <h2>Période "<%= monthsFr[period.startdate][0] %>-<%= monthsFr[period.enddate][0] %>"</h2>
     Tâche "<%= period.task.title %>" (Action "<%= period.task.action.title %>" - Thème "<%= period.task.action.theme.title %>")<br/>
     Catégorie de temps "<%= period.category.title %>"
     <%-# No <h2> title if this is a new period. -%>
@@ -27,12 +29,12 @@
 
   <div class="field">
     Mois de début* : <br/>
-    <%= form.number_field :startdate, id: :period_startdate %>
+    <%= form.select :startdate, options_for_select(monthsFr, selected: period.startdate), id: :period_startdate %>
   </div>
 
   <div class="field">
     Mois de fin* : <br/>
-    <%= form.number_field :enddate, id: :period_enddate %>
+    <%= form.select :enddate, options_for_select(monthsFr, selected: period.enddate), id: :period_enddate %>
   </div>
 
   <div class="field">

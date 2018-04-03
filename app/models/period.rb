@@ -2,18 +2,18 @@ class Period < ApplicationRecord
   belongs_to :task, optional: true
   belongs_to :category, optional: true
 
-  validates_numericality_of :startdate, :only_integer => true, :greater_than_or_equal_to => 1, :less_than_or_equal_to => :enddate, :message => 'La date de début doit être spécifiée et doit se situer entre 1 (pour janvier) et 12 (pour décembre). De plus, le mois de début doit être égal ou inférieur au mois de fin.'
-  validates_numericality_of :enddate, :only_integer => true, :greater_than_or_equal_to => :startdate, :less_than_or_equal_to => 12, :message => 'La date de fin doit être spécifiée et doit se situer entre 1 (pour janvier) et 12 (pour décembre). De plus, le mois de fin doit être égal ou supérieur au mois de début.'
+  validates_numericality_of :startdate, :only_integer => true, :greater_than_or_equal_to => 1, :message => 'Choisir un mois de début.'
+  validates_numericality_of :enddate, :only_integer => true, :greater_than => 0, :greater_than_or_equal_to => :startdate, :less_than_or_equal_to => 12, :message => 'Choisir un mois de fin. Attention : Le mois de fin doit être égal ou supérieur au mois de début.'
   validates_numericality_of :task_id, :greater_than_or_equal_to => 0, :message => 'Choisir une tâche pour cette période.'
   validates_numericality_of :category_id, :greater_than_or_equal_to => 0, :message => 'Choisir une catégorie pour cette période.'
 
   # Function search to search a keyword through a form
   def self.search(keyword, monthmin, monthmax, task, category)
 
-    if monthmax != ""
-      sql_month = "startdate >= #{monthmin.to_f} AND enddate <= #{monthmax.to_f}"
+    if monthmax != "0"
+      sql_month = "startdate >= #{monthmin} AND enddate <= #{monthmax}"
     else
-      sql_month = "startdate >= #{monthmin.to_f}"
+      sql_month = "startdate >= #{monthmin}"
     end
 
     if task != "Indifférent" && category != "Indifférent"

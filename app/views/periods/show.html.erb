@@ -1,6 +1,8 @@
 <p id="notice"><%= notice %></p>
+<% # List of the months (in french) %>
+<% monthsFr = [['Indifférent', 0], ['Janvier', 1], ['Février', 2], ['Mars', 3], ['Avril', 4], ['Mai', 5], ['Juin', 6], ['Juillet', 7], ['Août', 8], ['Septembre', 9], ['Octobre', 10], ['Novembre', 11], ['Décembre', 12]] %>
 
-<h1>Période "<%= @period.startdate %>-<%= @period.enddate %>"</h1>
+<h1>Période "<%= monthsFr[@period.startdate][0] %>-<%= monthsFr[@period.enddate][0] %>"</h1>
 
 <hr/>
 <%= link_to 'Voir toutes les périodes', periods_path %>
@@ -21,8 +23,8 @@
     <tr>
       <td><%= @period.task.title %> (<%= @period.task.action.title %> - <%= @period.task.action.theme.title %>)</td>
       <td><%= @period.category.title %></td>
-      <td><%= @period.startdate %></td>
-      <td><%= @period.enddate %></td>
+      <td><%= monthsFr[@period.startdate][0] %></td>
+      <td><%= monthsFr[@period.enddate][0] %></td>
       <td><%= @period.description %></td>
       <td>
         <%= link_to 'Editer', edit_period_path(@period) %><br/>
