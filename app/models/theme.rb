@@ -15,6 +15,11 @@ class Theme < ApplicationRecord
     self.title = self.title.strip
   end
 
+  # Function to get the name of the uploaded picture
+  def load_picture=(data)
+    self.picture = data.original_filename
+  end
+
   # Function search to search a keyword through a form
   def self.search(keyword)
     if keyword
