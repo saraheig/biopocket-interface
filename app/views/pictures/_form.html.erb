@@ -26,7 +26,21 @@
 
   <div class="field">
     Nom de la photo (avec son extension)* : <br/>
-    <%= form.text_field :picture, id: :picture_picture, size: '43.5' %>
+    <% if @picture.picture? %>
+      "<em><%= @picture.picture %></em>"
+      <%= link_to '-> Supprimer', picture_path(@picture, :picture => { :picture => '' }), :method => :put %><br/>
+    <% else %>
+      <%= form.file_field :load_picture %>
+    <% end %>
+    <%= form.hidden_field :picture, id: :picture_picture %>
+    <br/>
+    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
+    <ul>
+      <li><strong>Ne pas changer le nom de la photo !</strong></li>
+      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
+      <li>Utiliser la qualité maximale possible</li>
+      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
+    </ul>
   </div>
 
   <div class="field">

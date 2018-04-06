@@ -104,8 +104,8 @@
       <th>Description sur le temps</th>
       <th>Surface minimale</th>
       <th>Investissement / Difficulté</th>
-      <th>Nom de la photo</th>
       <th>Importance pour la biodiversité</th>
+      <th>Nom de la photo</th>
       <th>Actions liées à la présente action</th>
       <th>Coûts qui composent l'action</th>
       <th>Espèces touchées par l'action</th>
@@ -157,8 +157,8 @@
             -
           <% end %>
         </td>
-        <td><%= action.picture %></td>
         <td><%= action.importance %></td>
+        <td><%= action.picture %></td>
         <td><%= link_to 'Voir les différentes actions liées à cette action', actions_actions_url + '?utf8=✓&action_id=' + action.id.to_s %></td>
         <td><%= link_to 'Voir les différents coûts qui composent cette action', costs_url + '?utf8=✓&keyword=&costmin=&costmax=&action_id=' + action.id.to_s %></td>
         <td><%= link_to 'Voir les différentes espèces touchées par cette action', species_actions_url + '?utf8=✓&species_id=Indifférent&action_id=' + action.id.to_s %></td>

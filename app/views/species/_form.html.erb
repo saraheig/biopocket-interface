@@ -33,7 +33,21 @@
 
   <div class="field">
     Nom de la photo de l'espèce (avec son extension)* : <br/>
-    <%= form.text_field :picture, id: :species_picture, size: '43.5' %>
+    <% if @species.picture? %>
+      "<em><%= @species.picture %></em>"
+      <%= link_to '-> Supprimer', species_path(@species, :species => { :picture => '' }), :method => :put %><br/>
+    <% else %>
+      <%= form.file_field :load_picture %>
+    <% end %>
+    <%= form.hidden_field :picture, id: :species_picture %>
+    <br/>
+    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
+    <ul>
+      <li><strong>Ne pas changer le nom de la photo !</strong></li>
+      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
+      <li>Utiliser la qualité maximale possible</li>
+      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
+    </ul>
   </div>
 
   <hr/>

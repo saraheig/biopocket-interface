@@ -33,6 +33,11 @@ class Action < ApplicationRecord
     self.title = self.title.strip
   end
 
+  # Function to get the name of the uploaded picture
+  def load_picture=(data)
+    self.picture = data.original_filename
+  end
+
   # Function search to search a keyword and/or other elements through a form 
   def self.search(keyword, spot, investment, costmin, costmax, surfmin, surfmax, importmin, importmax, theme, type)
     if spot == "Oui"

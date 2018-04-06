@@ -76,15 +76,29 @@
     <%-# Difficulty level has only three possibilities: 1, 2 or 3. -%>
     <%= form.select :investment, options_for_select([["Choisir", 0], ["Facile", 1], ["Moyen", 2], ["Difficile", 3]], selected: action.investment), id: :action_investment %>
   </div>
-
-  <div class="field">
-    Nom de la photo (avec son extension)* : <br/>
-    <%= form.autocomplete_field :picture, autocomplete_action_picture_actions_path, id: :action_picture, size: '43.5' %>
-  </div>
-
+  
   <div class="field">
     Importance pour la biodiversité (1 = forte importance ; 4 = faible importance) : <br/>
     <%= form.text_field :importance, id: :action_importance, size: '10' %>
+  </div>
+
+  <div class="field">
+    Nom de la photo (avec son extension)* : <br/>
+    <% if @action.picture? %>
+      "<em><%= @action.picture %></em>"
+      <%= link_to '-> Supprimer', action_path(@action, :bioaction => { :picture => '' }), :method => :put %><br/>
+    <% else %>
+      <%= form.file_field :load_picture %>
+    <% end %>
+    <%= form.hidden_field :picture, id: :action_picture %>
+    <br/>
+    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
+    <ul>
+      <li><strong>Ne pas changer le nom de la photo !</strong></li>
+      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
+      <li>Utiliser la qualité maximale possible</li>
+      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
+    </ul>
   </div>
 
   <hr/><h3>Classification de l'action</h3><br/>
