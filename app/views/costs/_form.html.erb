@@ -26,7 +26,7 @@
 
   <div class="field">
     Titre* : <br/>
-    <%= form.text_field :title, id: :cost_title, size: '43.5' %>
+    <%= form.autocomplete_field :title, autocomplete_cost_title_costs_path, id: :cost_title, size: '43.5' %>
   </div>
 
   <div class="field">
@@ -41,7 +41,7 @@
 
   <div class="field">
     Unité (pour les coûts)* : <br/>
-    <%= form.text_field :unit, id: :cost_unit, size: '43.5' %>
+    <%= form.autocomplete_field :unit, autocomplete_cost_unit_costs_path, id: :cost_unit, size: '43.5' %>
   </div>
 
   <hr/><h3>Classification du coût</h3><br/>

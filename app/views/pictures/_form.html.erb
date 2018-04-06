@@ -48,7 +48,7 @@
 
   <div class="field">
     Source de la photo : <br/>
-    <%= form.text_field :source, id: :picture_source, size: '43.5' %>
+    <%= form.autocomplete_field :source, autocomplete_picture_source_pictures_path, id: :picture_source, size: '43.5' %>
   </div>
 
   <div class="field">

@@ -57,7 +57,7 @@
 
   <div class="field">
     Source de la photo du thème : <br/>
-    <%= form.text_field :source, id: :theme_source, size: '43.5' %>
+    <%= form.autocomplete_field :source, autocomplete_theme_source_themes_path, id: :theme_source, size: '43.5' %>
   </div>
 
   <hr/>

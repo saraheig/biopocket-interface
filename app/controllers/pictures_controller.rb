@@ -1,5 +1,6 @@
 class PicturesController < AuthenticateController
   before_action :set_picture, only: [:show, :edit, :update, :destroy]
+  autocomplete :picture, :source, :full => true
 
   # GET /pictures
   # GET /pictures.json

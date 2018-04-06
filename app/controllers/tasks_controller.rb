@@ -1,5 +1,6 @@
 class TasksController < AuthenticateController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
+  autocomplete :task, :title, :full => true
 
   # GET /tasks
   # GET /tasks.json

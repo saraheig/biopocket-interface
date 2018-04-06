@@ -1,5 +1,6 @@
 class LinksController < AuthenticateController
   before_action :set_link, only: [:show, :edit, :update, :destroy]
+  autocomplete :link, :link, :full => true
 
   # GET /links
   # GET /links.json

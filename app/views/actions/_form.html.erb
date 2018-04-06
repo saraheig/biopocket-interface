@@ -106,7 +106,7 @@
 
   <div class="field">
     Source de la photo de l'action : <br/>
-    <%= form.text_field :source, id: :action_source, size: '43.5' %>
+    <%= form.autocomplete_field :source, autocomplete_action_source_actions_path, id: :action_source, size: '43.5' %>
   </div>
 
   <hr/><h3>Classification de l'action</h3><br/>

@@ -1,5 +1,7 @@
 class SpeciesController < AuthenticateController
   before_action :set_species, only: [:show, :edit, :update, :destroy]
+  autocomplete :species, :name, :full => true
+  autocomplete :species, :source, :full => true
 
   # GET /species
   # GET /species.json

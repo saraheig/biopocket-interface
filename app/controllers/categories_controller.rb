@@ -1,6 +1,7 @@
 class CategoriesController < AuthenticateController
   before_action :set_category, only: [:show, :edit, :update, :destroy]
-  
+  autocomplete :category, :title, :full => true
+
   # GET /categories
   # GET /categories.json
   def index

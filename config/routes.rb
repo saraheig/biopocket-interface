@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :actions, path: '/tables/actions' do
     get :autocomplete_action_title, :on => :collection
     get :autocomplete_action_picture, :on => :collection
+    get :autocomplete_action_source, :on => :collection
   end
 
   resources :types, path: '/tables/types' do
@@ -17,17 +18,38 @@ Rails.application.routes.draw do
   resources :themes, path: '/tables/themes' do
     get :autocomplete_theme_title, :on => :collection
     get :autocomplete_theme_picture, :on => :collection
+    get :autocomplete_theme_source, :on => :collection
   end
 
-  resources :categories, path: '/tables/categories'
-  resources :costs, path: '/tables/costs'
-  resources :tasks, path: '/tables/tasks'
-  resources :links, path: '/tables/links'
-  resources :pictures, path: '/tables/pictures'
+  resources :costs, path: '/tables/costs' do
+    get :autocomplete_cost_title, :on => :collection
+    get :autocomplete_cost_unit, :on => :collection
+  end
+
+  resources :species, path: '/tables/species' do
+    get :autocomplete_species_name, :on => :collection
+    get :autocomplete_species_source, :on => :collection
+  end
+
+  resources :tasks, path: '/tables/tasks' do
+    get :autocomplete_task_title, :on => :collection
+  end
+
+  resources :links, path: '/tables/links' do
+    get :autocomplete_link_link, :on => :collection
+  end
+
+  resources :pictures, path: '/tables/pictures' do
+    get :autocomplete_picture_source, :on => :collection
+  end
+
+  resources :categories, path: '/tables/categories' do
+    get :autocomplete_category_title, :on => :collection
+  end
+
   resources :periods, path: '/tables/periods'
   resources :actions_actions, path: '/tables/actionsActions'
   resources :tasks_tasks, path: '/tables/tasksTasks'
-  resources :species, path: '/tables/species'
   resources :species_actions, path: '/tables/speciesActions'
 
   # Default route (if unknown url)

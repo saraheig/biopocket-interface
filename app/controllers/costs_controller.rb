@@ -1,5 +1,7 @@
 class CostsController < AuthenticateController
   before_action :set_cost, only: [:show, :edit, :update, :destroy]
+  autocomplete :cost, :title, :full => true
+  autocomplete :cost, :unit, :full => true
 
   # GET /costs
   # GET /costs.json

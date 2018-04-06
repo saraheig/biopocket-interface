@@ -26,7 +26,7 @@
 
   <div class="field">
     Titre de la tâche* : <br/>
-    <%= form.text_field :title, id: :task_title, size: '43.5' %>
+    <%= form.autocomplete_field :title, autocomplete_task_title_tasks_path, id: :task_title, size: '43.5' %>
   </div>
 
   <div class="field">
