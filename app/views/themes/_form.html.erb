@@ -35,7 +35,12 @@
   
   <div class="field">
     Nom de la photo du thème (avec son extension) : <br/>
-    <%= form.file_field :load_picture %>
+    <% if @theme.picture? %>
+      <em>"<%= @theme.picture %>"</em>
+    <% else %>
+      <%= form.file_field :load_picture %>
+    <% end %>
+    <%= form.hidden_field :picture, id: :theme_picture %>
   </div>
 
   <hr/>
