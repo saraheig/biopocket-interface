@@ -33,6 +33,7 @@
       <th>Nom de l'espèce</th>
       <th>Description de l'espèce</th>
       <th>Nom de la photo de l'espèce</th>
+      <th>Source de la photo de l'espèce</th>
       <th></th>
     </tr>
   </thead>
@@ -42,6 +43,7 @@
         <td><%= species.name %></td>
         <td><%= species.description %></td>
         <td><%= species.picture %></td>
+        <td><%= species.source %></td>
         <td>
           <%= link_to 'Editer', edit_species_path(species) %><br/>
           <%= link_to 'Supprimer', species, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette espèce est irréversible et suprimera toutes les lignes associées dans la table des liens entre les actions et les espèces.' } %>

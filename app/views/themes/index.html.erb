@@ -31,6 +31,7 @@
       <th>Titre du thème</th>
       <th>Description du thème</th>
       <th>Nom de la photo du thème</th>
+      <th>Source de la photo du thème</th>
       <th></th>
     </tr>
   </thead>
@@ -40,6 +41,7 @@
         <td><%= theme.title %></td>
         <td><%= theme.description %></td>
         <td><%= theme.picture %></td>
+        <td><%= theme.source %></td>
         <td>
           <%= link_to 'Editer', edit_theme_path(theme) %><br/>
           <%= link_to 'Supprimer', theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions et donc toutes les tâches associées.' } %>

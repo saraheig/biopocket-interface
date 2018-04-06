@@ -41,6 +41,7 @@
   <thead>
     <tr>
       <th>Nom de la photo</th>
+      <th>Source de la photo</th>
       <th>Tâche (Action - Thème)</th>
       <th>Description de la photo</th>
       <th></th>
@@ -50,6 +51,7 @@
     <% @pictures.each do |picture| %>
       <tr>
         <td><%= picture.picture %></td>
+        <td><%= picture.source %></td>
         <td><%= picture.task.title %> (<%= picture.task.action.title %> - <%= picture.task.action.theme.title %>)</td>
         <td><%= picture.description %></td>
         <td>

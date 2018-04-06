@@ -71,6 +71,6 @@ class ThemesController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:title, :description, :picture, :load_picture)
+      params.require(:theme).permit(:title, :description, :picture, :load_picture, :source)
     end
 end

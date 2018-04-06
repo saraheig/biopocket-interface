@@ -24,12 +24,14 @@ User.delete_all
 hedgehog = Theme.create!(
     title: 'Hérissons',
     description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)',
-    picture: 'image_herisson.jpeg')
+    picture: 'image_herisson.jpeg',
+    source: 'source photo hérisson')
 
 meadow = Theme.create!(
     title: 'Prairies fleuries',
     description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).',
-    picture: 'image_prairie.png')
+    picture: 'image_prairie.png',
+    source: 'source photo prairies')
 
 observation = Type.create!(
     title: 'Observation',
@@ -77,6 +79,7 @@ welcomeHedgehogs = Action.create!(
     surface_min: 1.0,
     investment: 1,
     picture: 'image_accueillir_herissons.jpg',
+    source: 'source photo welcome hedgehog',
     importance: 1)
     
 simpleLayouts = Action.create!(
@@ -93,6 +96,7 @@ simpleLayouts = Action.create!(
     surface_min: 1.0,
     investment: 2,
     picture: 'image_amenagements_simples.gif',
+    source: 'source photo aménagements simples',
     importance: 1)
     
 hedgehogHouse = Action.create!(
@@ -109,6 +113,7 @@ hedgehogHouse = Action.create!(
     surface_min: 3.0,
     investment: 3,
     picture: 'image_abri_a_herissons.png',
+    source: 'source photo abri à hérisson',
     importance: 1)
     
 discoverMeadows = Action.create!(
@@ -125,6 +130,7 @@ discoverMeadows = Action.create!(
     surface_min: 0.0,
     investment: 1,
     picture: 'image_decouvrir_les_prairies.jpeg',
+    source: 'source photo découvrir les prairies',
     importance: 2)
     
 diffMaintenance = Action.create!(
@@ -141,6 +147,7 @@ diffMaintenance = Action.create!(
     surface_min: 10.0,
     investment: 2,
     picture: 'image_entretien_differencie.jpg',
+    source: 'source photo entretien différencié',
     importance: 1)
     
 createMeadow = Action.create!(
@@ -157,6 +164,7 @@ createMeadow = Action.create!(
     surface_min: 10.0,
     investment: 3,
     picture: 'image_amenager_une_prairie_fleurie.png',
+    source: 'source photo aménager prairie fleurie',
     importance: 1)
 
 User.create!(
@@ -251,11 +259,11 @@ Link.create!(
     task: task1)
 
 Link.create!(
-    link: 'https://www.etat.ge.ch/geoportail/pro/?mapresources=CATALOGUE&visiblelayerindexes={%22CATALOGUE%22:[4274]} ',
+    link: 'https://www.etat.ge.ch/geoportail/pro/?mapresources=CATALOGUE&visiblelayerindexes={%22CATALOGUE%22:[4274]}',
     task: task1)
 
 Link.create!(
-    link: 'http://ge.ch/nature/media/nature/files/fichiers/documents/prairie_de_fauche_2014.pdf ',
+    link: 'http://ge.ch/nature/media/nature/files/fichiers/documents/prairie_de_fauche_2014.pdf',
     task: task2)
 
 Link.create!(
@@ -316,26 +324,25 @@ Link.create!(
 
 Picture.create!(
     picture: 'image_1.jpg',
-    description: 'description image 1',
-    task: task1)
-
-Picture.create!(
-    picture: 'image_1.jpg',
+    source: 'source photo 1',
     description: 'description image 1',
     task: task1)
 
 Picture.create!(
     picture: 'image_2.tif',
+    source: 'source photo 2',
     description: 'description image 2',
     task: task1)
 
 Picture.create!(
     picture: 'image_3.gif',
+    source: 'source photo 3',
     description: 'description image 3',
     task: task2)
 
 Picture.create!(
     picture: 'image_4.jpeg',
+    source: 'source photo 4',
     description: 'description image 4',
     task: task5)
 
@@ -413,32 +420,38 @@ TasksTask.create!(
 species1 = Species.create!(
     name: 'Fromental',
     description: 'Description Fromental',
-    picture: 'photo_fromental.jpg')
+    picture: 'photo_fromental.jpg',
+    source: 'source photo fromental')
 
 species2 = Species.create!(
     name: 'Knautie des champs',
     description: 'Description Knautie des champs',
-    picture: 'photo_knautie.jpg')
+    picture: 'photo_knautie.jpg',
+    source: 'source photo knautie des champs')
 
 species3 = Species.create!(
     name: 'Criquet des roseaux',
     description: 'Description Criquet des roseaux',
-    picture: 'photo_criquet.jpg')
+    picture: 'photo_criquet.jpg',
+    source: 'source photo criquet roseaux')
 
 species4 = Species.create!(
     name: 'Demi-Argus',
     description: 'Description Demi-Argus',
-    picture: 'photo_demi_argus.jpg')
+    picture: 'photo_demi_argus.jpg',
+    source: 'source photo demi-argus')
 
 species5 = Species.create!(
     name: 'Azuré du trèfle',
     description: 'Description Azuré du trèfle',
-    picture: 'photo_azure_trefle.jpg')
+    picture: 'photo_azure_trefle.jpg',
+    source: 'source photo azuré du trèfle')
 
 species6 = Species.create!(
     name: 'Alouette des champs',
     description: 'Description Alouette des champs',
-    picture: 'photo_alouette_champs.jpg')
+    picture: 'photo_alouette_champs.jpg',
+    source: 'source photo alouette des champs')
 
 SpeciesAction.create!(
     action: diffMaintenance,
