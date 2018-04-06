@@ -37,7 +37,10 @@
     Nom de la photo du thème (avec son extension) : <br/>
     <% if @theme.picture? %>
       "<em><%= @theme.picture %></em>"
-      <%= link_to '-> Supprimer', theme_path(@theme, :theme => { :picture => '' }), :method => :put %><br/>
+      <% if @theme.id? %>
+        <%= link_to '-> Supprimer', theme_path(@theme, :theme => { :picture => '' }), :method => :put %><br/>
+      <% end %>
+      <br/>
     <% else %>
       <%= form.file_field :load_picture %>
     <% end %>

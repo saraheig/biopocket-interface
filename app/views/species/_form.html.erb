@@ -35,7 +35,10 @@
     Nom de la photo de l'espèce (avec son extension)* : <br/>
     <% if @species.picture? %>
       "<em><%= @species.picture %></em>"
-      <%= link_to '-> Supprimer', species_path(@species, :species => { :picture => '' }), :method => :put %><br/>
+      <% if @species.id? %>
+        <%= link_to '-> Supprimer', species_path(@species, :species => { :picture => '' }), :method => :put %>
+      <% end %>
+      <br/>
     <% else %>
       <%= form.file_field :load_picture %>
     <% end %>

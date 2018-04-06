@@ -86,7 +86,10 @@
     Nom de la photo (avec son extension)* : <br/>
     <% if @action.picture? %>
       "<em><%= @action.picture %></em>"
-      <%= link_to '-> Supprimer', action_path(@action, :bioaction => { :picture => '' }), :method => :put %><br/>
+      <% if @action.id? %>
+        <%= link_to '-> Supprimer', action_path(@action, :bioaction => { :picture => '' }), :method => :put %>
+      <% end %>
+      <br/>
     <% else %>
       <%= form.file_field :load_picture %>
     <% end %>
