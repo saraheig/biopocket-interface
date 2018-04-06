@@ -9,6 +9,14 @@ class Theme < ApplicationRecord
   validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre du thème est déjà utilisé.'
   validates_presence_of :description, :message => 'La description du thème doit être spécifiée.'
   validates_format_of :picture, :allow_blank => true, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'L\'extension de la photo (bmp, jpeg, jpg, gif, png, tif, tiff) doit être spécifiée (pas d\'espace ou de caractères spéciaux ou accentués dans le nom de la photo).'
+  validate :check_picture_if_source
+
+  # Custom validation
+  def check_picture_if_source
+    if self.source != "" && self.picture == ""
+      errors.add(:picture, 'Il ne peut y avoir de source de l\'image sans spécifier le nom de l\'image.')
+    end
+  end
 
   # Function to remove spaces in the title field
   def strip_blanks
