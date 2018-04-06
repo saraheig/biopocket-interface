@@ -15,7 +15,7 @@
 <%= form_tag(actions_path, method: :get) do %>
 
   <div class="field">
-    Mot-clé cherché dans le titre, le nom de la photo, les descriptions de l'action, de l'impact et sur le temps :
+    Mot-clé cherché dans le titre, le nom et la source de la photo, les descriptions de l'action, de l'impact et sur le temps :
     <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
   </div>
 

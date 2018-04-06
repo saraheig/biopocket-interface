@@ -21,7 +21,7 @@ class Species < ApplicationRecord
   # Function search to search a keyword through a form
   def self.search(keyword)
     if keyword
-      where("name iLIKE :term OR description iLIKE :term  OR picture iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      where("name iLIKE :term OR description iLIKE :term  OR picture iLIKE :term OR source iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
     else
       all.order(updated_at: :desc)

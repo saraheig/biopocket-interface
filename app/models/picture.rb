@@ -26,10 +26,10 @@ class Picture < ApplicationRecord
     end
 
     if keyword && sql_task == ""
-      where("picture iLIKE :term OR description iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      where("picture iLIKE :term OR description iLIKE :term OR source iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
     elsif keyword && sql_task != ""
-      where(sql_task + " AND (picture iLIKE :term OR description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_task + " AND (picture iLIKE :term OR description iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end
