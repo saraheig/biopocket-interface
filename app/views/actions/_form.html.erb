@@ -88,6 +88,8 @@
       "<em><%= @action.picture %></em>"
       <% if @action.id? %>
         <%= link_to '-> Supprimer', action_path(@action, :bioaction => { :picture => '' }), :method => :put %>
+      <% else %>
+        -> Pour modifier le nom de la photo : enregistrer cette action, puis l'éditer.
       <% end %>
       <br/>
     <% else %>

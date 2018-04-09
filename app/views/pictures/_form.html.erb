@@ -30,6 +30,8 @@
       "<em><%= @picture.picture %></em>"
       <% if @picture.id? %>
         <%= link_to '-> Supprimer', picture_path(@picture, :picture => { :picture => '' }), :method => :put %>
+      <% else %>
+        -> Pour modifier le nom de la photo : enregistrer cette photo, puis l'éditer.
       <% end %>
       <br/>
     <% else %>
