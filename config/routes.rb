@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: redirect('/tables')
 
-  resources :users, only: %i[new create]
   resource :session, only: %i[new create destroy]
   get '/tables', to: 'tables#index'
 
