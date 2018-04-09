@@ -39,3 +39,13 @@ main { padding: 60px; }
     border-top-color: black !important;
     border-bottom-color: black !important;
 }
+
+.with-features:link, .with-features:visited {
+    color: green;
+    text-decoration: underline;
+}
+
+.no-feature:link, .no-feature:visited {
+    color: red;
+    text-decoration: underline;
+}

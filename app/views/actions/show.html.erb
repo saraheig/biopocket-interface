@@ -77,9 +77,27 @@
       <td><%= @action.importance %></td>
       <td><%= @action.picture %></td>
       <td><%= @action.source %></td>
-      <td><%= link_to 'Voir les différentes actions liées à cette action', actions_actions_url + '?utf8=✓&action_id=' + @action.id.to_s %></td>
-      <td><%= link_to 'Voir les différents coûts qui composent cette action', costs_url + '?utf8=✓&keyword=&costmin=&costmax=&action_id=' + @action.id.to_s %></td>
-      <td><%= link_to 'Voir les différentes espèces touchées par cette action', species_actions_url + '?utf8=✓&species_id=Indifférent&action_id=' + @action.id.to_s %></td>
+      <td>
+        <% if ActionsAction.where(["ref_id = ? OR dep_id = ?", @action.id, @action.id]).count > 0 %>
+          <%= link_to 'Voir les différentes actions liées à cette action', actions_actions_url + '?utf8=✓&action_id=' + @action.id.to_s, class: 'with-features' %>
+        <% else %>
+          <%= link_to 'Il n\'y aucune autre action liée à cette action.', actions_actions_url + '?utf8=✓&action_id=' + @action.id.to_s, class: 'no-feature' %>
+        <% end %>
+      </td>
+      <td>
+        <% if Cost.where(["action_id = ?", @action.id]).count > 0 %>
+          <%= link_to 'Voir les différents coûts qui composent cette action', costs_url + '?utf8=✓&keyword=&costmin=&costmax=&action_id=' + @action.id.to_s, class: 'with-features' %>
+        <% else %>
+          <%= link_to 'Il n\'y a aucun coût qui compose cette action.', costs_url + '?utf8=✓&keyword=&costmin=&costmax=&action_id=' + @action.id.to_s, class: 'no-feature' %>
+        <% end %>
+      </td>
+      <td>
+        <% if SpeciesAction.where(["action_id = ?", @action.id]).count > 0 %>
+          <%= link_to 'Voir les différentes espèces touchées par cette action', species_actions_url + '?utf8=✓&species_id=Indifférent&action_id=' + @action.id.to_s, class: 'with-features' %>
+        <% else %>
+          <%= link_to 'Il n\'y a aucune espèce touchée par cette action.', species_actions_url + '?utf8=✓&species_id=Indifférent&action_id=' + @action.id.to_s, class: 'no-feature' %>
+        <% end %>
+      </td>
       <td>
         <%= link_to 'Editer', edit_action_path(@action) %><br/>
         <%= link_to 'Supprimer', @action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette action est irréversible et supprimera toutes les tâches associées.' } %>
