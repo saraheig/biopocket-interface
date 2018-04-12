@@ -167,13 +167,6 @@ createMeadow = Action.create!(
     source: 'source photo aménager prairie fleurie',
     importance: 1)
 
-User.create!(
-    firstname: 'toto',
-    lastname: 'tutu',
-    pseudo: 'tototutu',
-    email: 'toto@tutu.com',
-    password: 'tototutu')
-
 cat1 = Category.create!(
     title: 'Période idéale')
 
