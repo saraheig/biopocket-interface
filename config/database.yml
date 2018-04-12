@@ -80,6 +80,8 @@ test:
 #
 production:
   <<: *default
-  database: <%= ENV['BIO_RAILS_DATABASE_NAME'] %>
-  username: <%= ENV['BIO_RAILS_DATABASE_USERNAME'] %>
-  password: <%= ENV['BIO_RAILS_DATABASE_PASSWORD'] %>
+  database: <%= ENV['BIOPOCKET_INTERFACE_DATABASE_NAME'] %>
+  username: <%= ENV['BIOPOCKET_INTERFACE_DATABASE_USERNAME'] %>
+  password: <%= ENV['BIOPOCKET_INTERFACE_DATABASE_PASSWORD'] %>
+  host: <%= ENV['BIOPOCKET_INTERFACE_DATABASE_HOST'] %>
+  port: <%= ENV['BIOPOCKET_INTERFACE_DATABASE_PORT'] %>
