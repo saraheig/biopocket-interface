@@ -5,7 +5,7 @@ class AuthenticateController < ApplicationController
 
   def authenticate!
     unless current_user
-      redirect_to new_session_path, notice: 'Veuillez vous connecter / vous enregistrer pour entrer dans le site.'
+      redirect_to new_session_path, notice: 'Veuillez vous connecter pour entrer dans le site.'
     end
   end
 end
