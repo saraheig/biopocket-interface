@@ -35,35 +35,35 @@ meadow = Theme.create!(
 
 observation = Type.create!(
   title: 'Observation',
-  description: 'description_observation')
+  description: 'Description type observation')
 
 reporting = Type.create!(
   title: 'Signalement',
-  description: 'description_signalement')
+  description: 'Description type signalement')
 
 information = Type.create!(
   title: 'Renseignement',
-  description: 'description_renseignement')
+  description: 'Description type renseignement')
 
 management = Type.create!(
   title: 'Gestion',
-  description: 'description_gestion')
+  description: 'Description type gestion')
 
 building = Type.create!(
   title: 'Construction',
-  description: 'description_construction')
+  description: 'Description type construction')
 
 awareness = Type.create!(
   title: 'Sensibilisation',
-  description: 'description_sensibilisation')
+  description: 'Description type sensibilisation')
 
 promotion = Type.create!(
   title: 'Valorisation',
-  description: 'description_valorisation')
+  description: 'Description type valorisation')
 
 engagement = Type.create!(
   title: 'Engagement',
-  description: 'description_engagement')
+  description: 'Description type engagement')
 
 welcomeHedgehogs = Action.create!(
   theme: hedgehog,
