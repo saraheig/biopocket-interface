@@ -4,6 +4,7 @@ class Picture < ApplicationRecord
   before_validation :strip_blanks
 
   validates_format_of :picture, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'Le nom de la photo (pas d\'espace ou de caractères spéciaux ou accentués dans le nom), ainsi que son extension (bmp, jpeg, jpg, gif, png, tif, tiff) doivent être spécifiés.'
+  validates_uniqueness_of :picture, :case_sensitive => false, :message => 'Le nom de la photo est déjà utilisé.'
   validates_numericality_of :task_id, :greater_than_or_equal_to => 0, :message => 'Choisir une tâche pour cette photo.'
 
   # Function to remove spaces in the title field
