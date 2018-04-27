@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
+Unit.delete_all
 SpeciesAction.delete_all
 Species.delete_all
 TasksTask.delete_all
@@ -457,6 +458,90 @@ SpeciesAction.create!([{
   action: createMeadow,
   species: species6
 }])
+
+minute = Unit.create!(
+  abbreviation: 'min',
+  name: 'minute')
+
+heure = Unit.create!(
+  abbreviation: 'H',
+  name: 'heure')
+
+jour = Unit.create!(
+  abbreviation: 'jour',
+  name: 'jour')
+
+semaine = Unit.create!(
+  abbreviation: 'sem',
+  name: 'semaine')
+
+mois = Unit.create!(
+  abbreviation: 'mois',
+  name: 'mois')
+
+minConstr = Unit.create!(
+  abbreviation: 'min/construction',
+  name: 'minute par construction ')
+
+heureConstr = Unit.create!(
+  abbreviation: 'H/construction',
+  name: 'heure par construction ')
+
+minM2 = Unit.create!(
+  abbreviation: 'min/m2',
+  name: 'minute par mètres carrés ')
+
+heureM2 = Unit.create!(
+  abbreviation: 'H/m2',
+  name: 'heure par mètres carrés ')
+
+minAmenag = Unit.create!(
+  abbreviation: 'min/aménagement',
+  name: 'minute par aménagement ')
+
+heureAmenag = Unit.create!(
+  abbreviation: 'H/aménagement',
+  name: 'heure par aménagement ')
+
+minSite = Unit.create!(
+  abbreviation: 'min/site',
+  name: 'minute par site ')
+
+heureSite = Unit.create!(
+  abbreviation: 'H/site',
+  name: 'heure par site ')
+
+minObs = Unit.create!(
+  abbreviation: 'min/obs.',
+  name: 'minute par observation ')
+
+heureObs = Unit.create!(
+  abbreviation: 'H/obs.',
+  name: 'heure par observation ')
+
+minSignal = Unit.create!(
+  abbreviation: 'min/signalement',
+  name: 'minute par signalement ')
+
+heureSignal = Unit.create!(
+  abbreviation: 'H/signalement',
+  name: 'heure par signalement ')
+
+minMLin = Unit.create!(
+  abbreviation: 'min/m.l.',
+  name: 'minute par mètre linéaire ')
+
+heureMLin = Unit.create!(
+  abbreviation: 'H/m.l.',
+  name: 'heure par mètre linéaire ')
+
+minUnite = Unit.create!(
+  abbreviation: 'min/unité',
+  name: 'minute par unité ')
+
+heureUnite = Unit.create!(
+  abbreviation: 'H/unité',
+  name: 'heure par unité ')
 
 case Rails.env
 when "development"

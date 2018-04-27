@@ -9,6 +9,7 @@ The actual database of this project is composed by these tables:
 * Type
 * Category
 * Cost
+* Unit
 * Task
 * Link
 * Picture

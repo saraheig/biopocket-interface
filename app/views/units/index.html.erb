@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Table des unités de temps (pour les actions)</h1>
+<em>
+  Cette table concerne les unités de temps des actions.
+</em>
+
+<hr/>
+<%= link_to 'Ajouter une nouvelle unité de temps', new_unit_path %>
+<hr/>
+
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Abréviation de l'unité de temps</th>
+      <th>Nom complet de l'unité de temps</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @units.each do |unit| %>
+      <tr>
+        <td><%= unit.abbreviation %></td>
+        <td><%= unit.name %></td>
+        <td><%= link_to 'Editer', edit_unit_path(unit) %></td>
+        <td><%= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette unité de temps est irréversible et suprimera toutes les actions associées.' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

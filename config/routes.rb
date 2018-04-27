@@ -50,6 +50,7 @@ Rails.application.routes.draw do
   resources :actions_actions, path: '/tables/actionsActions'
   resources :tasks_tasks, path: '/tables/tasksTasks'
   resources :species_actions, path: '/tables/speciesActions'
+  resources :units, path: '/tables/units'
 
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]

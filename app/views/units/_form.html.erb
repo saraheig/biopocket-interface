@@ -1,0 +1,31 @@
+<%= form_with(model: unit, local: true) do |form| %>
+  <% if unit.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(unit.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>
+
+      <ul>
+      <% unit.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <hr/><h3>Information sur l'unité de temps</h3><br/>
+
+  <div class="field">
+    Abréviation de l'unité de temps* : <br/>
+    <%= form.text_field :abbreviation, id: :unit_abbreviation, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Nom complet de l'unité de temps : <br/>
+    <%= form.text_field :name, id: :unit_name, size: '43.5' %>
+  </div>
+
+  <hr/>
+  <h6>* Champ obligatoire</h6>
+  <div class="actions">
+    <%= form.submit 'Enregistrer' %>
+  </div>
+<% end %>

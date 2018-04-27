@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Abréviation de l'unité de temps : </strong>
+  <%= @unit.abbreviation %>
+</p>
+
+<p>
+  <strong>Nom de l'unité de temps : </strong>
+  <%= @unit.name %>
+</p>
+
+
+<%= link_to 'Editer', edit_unit_path(@unit) %> |
+<%= link_to 'Annuler', units_path %>
