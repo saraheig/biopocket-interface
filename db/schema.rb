@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180406150701) do
+ActiveRecord::Schema.define(version: 20180413133458) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.integer "importance", limit: 2
     t.text "source"
     t.index ["theme_id"], name: "index_actions_on_theme_id"
+    t.index ["title"], name: "index_actions_on_title", unique: true
     t.index ["type_id"], name: "index_actions_on_type_id"
   end
 
@@ -43,6 +44,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dep_id"], name: "index_actions_actions_on_dep_id"
+    t.index ["ref_id", "dep_id"], name: "index_actions_actions_on_ref_id_and_dep_id", unique: true
     t.index ["ref_id"], name: "index_actions_actions_on_ref_id"
   end
 
@@ -50,6 +52,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.string "title", limit: 20
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["title"], name: "index_categories_on_title", unique: true
   end
 
   create_table "costs", force: :cascade do |t|
@@ -100,6 +103,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "source"
+    t.index ["name"], name: "index_species_on_name", unique: true
   end
 
   create_table "species_actions", force: :cascade do |t|
@@ -107,6 +111,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.bigint "action_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["action_id", "species_id"], name: "index_species_actions_on_action_id_and_species_id", unique: true
     t.index ["action_id"], name: "index_species_actions_on_action_id"
     t.index ["species_id"], name: "index_species_actions_on_species_id"
   end
@@ -118,6 +123,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["action_id"], name: "index_tasks_on_action_id"
+    t.index ["title"], name: "index_tasks_on_title", unique: true
   end
 
   create_table "tasks_tasks", force: :cascade do |t|
@@ -126,6 +132,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["dep_id"], name: "index_tasks_tasks_on_dep_id"
+    t.index ["ref_id", "dep_id"], name: "index_tasks_tasks_on_ref_id_and_dep_id", unique: true
     t.index ["ref_id"], name: "index_tasks_tasks_on_ref_id"
   end
 
@@ -136,6 +143,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "updated_at", null: false
     t.text "picture"
     t.text "source"
+    t.index ["title"], name: "index_themes_on_title", unique: true
   end
 
   create_table "types", force: :cascade do |t|
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "description"
+    t.index ["title"], name: "index_types_on_title", unique: true
   end
 
   create_table "users", force: :cascade do |t|
@@ -154,6 +163,7 @@ ActiveRecord::Schema.define(version: 20180406150701) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["pseudo"], name: "index_users_on_pseudo", unique: true
   end
 
   add_foreign_key "actions", "themes"
