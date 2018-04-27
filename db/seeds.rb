@@ -19,7 +19,6 @@ Task.delete_all
 Action.delete_all
 Theme.delete_all
 Type.delete_all
-User.delete_all
 
 hedgehog = Theme.create!(
   title: 'Hérissons',
@@ -461,6 +460,7 @@ SpeciesAction.create!([{
 
 case Rails.env
 when "development"
+  User.delete_all
   User.create!(
     firstname: 'toto',
     lastname: 'tutu',
