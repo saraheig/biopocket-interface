@@ -29,6 +29,11 @@
   </div>
 
   <div class="field">
+    Code du thème : <br/>
+    <%= form.autocomplete_field :code, autocomplete_theme_code_themes_path, id: :theme_code, size: '10' %>
+  </div>
+
+  <div class="field">
     Description du thème* : <br/>
     <%= form.text_area :description, id: :theme_description, size: '40x5' %>
   </div>

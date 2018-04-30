@@ -1,6 +1,7 @@
 class ThemesController < AuthenticateController
   before_action :set_theme, only: [:show, :edit, :update, :destroy]
   autocomplete :theme, :title, :full => true
+  autocomplete :theme, :code, :full => true
   autocomplete :theme, :picture, :full => true
   autocomplete :theme, :source, :full => true
 
@@ -72,6 +73,6 @@ class ThemesController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def theme_params
-      params.require(:theme).permit(:title, :description, :picture, :load_picture, :source)
+      params.require(:theme).permit(:title, :code, :description, :picture, :load_picture, :source)
     end
 end

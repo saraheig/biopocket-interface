@@ -23,12 +23,14 @@ Unit.delete_all
 
 hedgehog = Theme.create!(
   title: 'Hérissons',
+  code: 'F5',
   description: 'Le hérisson est un insectivore apprécié des jardiniers puisqu’en ce nourrissant, il contribue à réguler passablement d’organismes considérés comme nuisibles (limaces, charançons, hannetons, vers, …)',
   picture: 'photo_herisson.jpeg',
   source: 'source photo hérisson')
 
 meadow = Theme.create!(
   title: 'Prairies fleuries',
+  code: 'M8',
   description: 'Les prairies fleuries sont des milieux potentiellement très riches en biodiversité, composées d’un grand nombre d’espèces végétales (jusqu’à plus de 60 espèces /are).',
   picture: 'photo_prairie.png',
   source: 'source photo prairies')

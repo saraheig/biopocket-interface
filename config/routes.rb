@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   resources :themes, path: '/tables/themes' do
     get :autocomplete_theme_title, :on => :collection
+    get :autocomplete_theme_code, :on => :collection
     get :autocomplete_theme_picture, :on => :collection
     get :autocomplete_theme_source, :on => :collection
   end
