@@ -8,8 +8,8 @@
   <% if part == 'edit' %>
     <%-# This is an existing period. -%>
     <h2>Période "<%= monthsFr[period.startdate][0] %>-<%= monthsFr[period.enddate][0] %>"</h2>
-    Tâche "<%= period.task.title %>" (Action "<%= period.task.action.title %>" - Thème "<%= period.task.action.theme.title %>")<br/>
-    Catégorie de temps "<%= period.category.title %>"
+    Tâche : <%= period.task.title %> (Action : <%= period.task.action.title %> - Thème : <%= period.task.action.theme.title %> - Code du thème : <%= period.task.action.theme.code %>)<br/>
+    Catégorie de temps : <%= period.category.title %>
     <%-# No <h2> title if this is a new period. -%>
   <% end %>
 

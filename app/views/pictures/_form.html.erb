@@ -6,7 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing picture. -%>
     <h2>Photo "<%= picture.picture %>"</h2>
-    Tâche "<%= picture.task.title %>" (Action "<%= picture.task.action.title %>" - Thème "<%= picture.task.action.theme.title %>")
+    Tâche : <%= picture.task.title %> (Action : <%= picture.task.action.title %> - Thème : <%= picture.task.action.theme.title %> - Code du thème : <%= picture.task.action.theme.code %>)
     <%-# No <h2> title if this is a new picture. -%>
   <% end %>
 

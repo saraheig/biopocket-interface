@@ -1,4 +1,14 @@
 <%= form_with(model: unit, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing unit which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing unit -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing unit. -%>
+    <h2>Unité de temps "<%= unit.abbreviation %>"</h2>
+    <%-# No <h2> title if this is a new unit. -%>
+  <% end %>
+
   <% if unit.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(unit.errors.count, "erreur identifiée", "erreurs identifiées") %> : </h2>

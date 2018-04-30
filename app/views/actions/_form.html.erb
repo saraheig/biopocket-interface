@@ -7,8 +7,8 @@
   <% if part == 'edit' %>
     <%-# This is an existing action. -%>
     <h2>Action "<%= action.title %>"</h2>
-    Thème "<%= action.theme.title %>" (code du thème : <%= action.theme.code %>)<br/>
-    Type d'action "<%= action.type.title %>"
+    Thème : <%= action.theme.title %> - Code du thème : <%= action.theme.code %><br/>
+    Type d'action : <%= action.type.title %>
     <%-# No <h2> title if this is a new action. -%>
   <% end %>
 
@@ -84,7 +84,7 @@
   </div>
 
   <div class="field">
-    Nom de la photo (avec son extension)* : <br/>
+    Nom de la photo (avec son extension) : <br/>
     <% if @action.picture? %>
       "<em><%= @action.picture %></em>"
       <% if @action.id? %>

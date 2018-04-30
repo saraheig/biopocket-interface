@@ -14,7 +14,7 @@
     <tr>
       <th>Abréviation de l'unité de temps</th>
       <th>Nom complet de l'unité de temps</th>
-      <th colspan="2"></th>
+      <th></th>
     </tr>
   </thead>
 
@@ -23,8 +23,10 @@
       <tr>
         <td><%= unit.abbreviation %></td>
         <td><%= unit.name %></td>
-        <td><%= link_to 'Editer', edit_unit_path(unit) %></td>
-        <td><%= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette unité de temps est irréversible et suprimera toutes les actions associées.' } %></td>
+        <td>
+          <%= link_to 'Editer', edit_unit_path(unit) %><br/>
+          <%= link_to 'Supprimer', unit, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette unité de temps est irréversible et suprimera toutes les actions associées.' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
