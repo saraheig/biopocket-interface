@@ -1,5 +1,7 @@
 class UnitsController < AuthenticateController
   before_action :set_unit, only: [:show, :edit, :update, :destroy]
+  autocomplete :unit, :abbreviation, :full => true
+  autocomplete :unit, :name, :full => true
 
   # GET /units
   # GET /units.json

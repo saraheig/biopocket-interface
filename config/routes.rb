@@ -47,11 +47,15 @@ Rails.application.routes.draw do
     get :autocomplete_category_title, :on => :collection
   end
 
+  resources :units, path: '/tables/units' do
+    get :autocomplete_unit_abbreviation, :on => :collection
+    get :autocomplete_unit_name, :on => :collection
+  end
+
   resources :periods, path: '/tables/periods'
   resources :actions_actions, path: '/tables/actionsActions'
   resources :tasks_tasks, path: '/tables/tasksTasks'
   resources :species_actions, path: '/tables/speciesActions'
-  resources :units, path: '/tables/units'
 
   # Default route (if unknown url)
   match '*path' => redirect('/tables'), via: [:get, :post]

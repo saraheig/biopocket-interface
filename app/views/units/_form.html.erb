@@ -15,12 +15,12 @@
 
   <div class="field">
     Abréviation de l'unité de temps* : <br/>
-    <%= form.text_field :abbreviation, id: :unit_abbreviation, size: '43.5' %>
+    <%= form.autocomplete_field :abbreviation, autocomplete_unit_abbreviation_units_path, id: :unit_abbreviation, size: '43.5' %>
   </div>
 
   <div class="field">
     Nom complet de l'unité de temps : <br/>
-    <%= form.text_field :name, id: :unit_name, size: '43.5' %>
+    <%= form.autocomplete_field :name, autocomplete_unit_name_units_path, id: :unit_name, size: '43.5' %>
   </div>
 
   <hr/>
