@@ -1,7 +1,7 @@
 namespace :db do
 
   desc "Creates a user with a firstname, lastname, pseudo, email and password"
-  task :user, %(firstname lastname pseudo email password) => :environment do |t,args|
+  task :user, %i(firstname lastname pseudo email password) => :environment do |t,args|
 
     u = User.where("pseudo = ? OR email = ?", args[:pseudo], args[:email])
 
