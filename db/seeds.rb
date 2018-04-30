@@ -6,7 +6,6 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Unit.delete_all
 SpeciesAction.delete_all
 Species.delete_all
 TasksTask.delete_all
@@ -20,6 +19,7 @@ Task.delete_all
 Action.delete_all
 Theme.delete_all
 Type.delete_all
+Unit.delete_all
 
 hedgehog = Theme.create!(
   title: 'Hérissons',
@@ -65,6 +65,90 @@ engagement = Type.create!(
   title: 'Engagement',
   description: 'Description type engagement')
 
+minute = Unit.create!(
+  abbreviation: 'min',
+  name: 'minute')
+
+heure = Unit.create!(
+  abbreviation: 'H',
+  name: 'heure')
+
+jour = Unit.create!(
+  abbreviation: 'jour',
+  name: 'jour')
+
+semaine = Unit.create!(
+  abbreviation: 'sem',
+  name: 'semaine')
+
+mois = Unit.create!(
+  abbreviation: 'mois',
+  name: 'mois')
+
+minConstr = Unit.create!(
+  abbreviation: 'min/construction',
+  name: 'minute par construction ')
+
+heureConstr = Unit.create!(
+  abbreviation: 'H/construction',
+  name: 'heure par construction ')
+
+minM2 = Unit.create!(
+  abbreviation: 'min/m2',
+  name: 'minute par mètres carrés ')
+
+heureM2 = Unit.create!(
+  abbreviation: 'H/m2',
+  name: 'heure par mètres carrés ')
+
+minAmenag = Unit.create!(
+  abbreviation: 'min/aménagement',
+  name: 'minute par aménagement ')
+
+heureAmenag = Unit.create!(
+  abbreviation: 'H/aménagement',
+  name: 'heure par aménagement ')
+
+minSite = Unit.create!(
+  abbreviation: 'min/site',
+  name: 'minute par site ')
+
+heureSite = Unit.create!(
+  abbreviation: 'H/site',
+  name: 'heure par site ')
+
+minObs = Unit.create!(
+  abbreviation: 'min/obs.',
+  name: 'minute par observation ')
+
+heureObs = Unit.create!(
+  abbreviation: 'H/obs.',
+  name: 'heure par observation ')
+
+minSignal = Unit.create!(
+  abbreviation: 'min/signalement',
+  name: 'minute par signalement ')
+
+heureSignal = Unit.create!(
+  abbreviation: 'H/signalement',
+  name: 'heure par signalement ')
+
+minMLin = Unit.create!(
+  abbreviation: 'min/m.l.',
+  name: 'minute par mètre linéaire ')
+
+heureMLin = Unit.create!(
+  abbreviation: 'H/m.l.',
+  name: 'heure par mètre linéaire ')
+
+minUnite = Unit.create!(
+  abbreviation: 'min/unité',
+  name: 'minute par unité ')
+
+heureUnite = Unit.create!(
+  abbreviation: 'H/unité',
+  name: 'heure par unité ')
+
 welcomeHedgehogs = Action.create!(
   theme: hedgehog,
   type: management,
@@ -74,7 +158,7 @@ welcomeHedgehogs = Action.create!(
   spot: true,
   cost_min: 0.0,
   time_min: 15,
-  time_unit: 1,
+  unit: minute,
   time_description: 'Le temps pour réaliser cette action dépend de la surface et des obstacles.',
   surface_min: 1.0,
   investment: 1,
@@ -91,7 +175,7 @@ simpleLayouts = Action.create!(
   spot: true,
   cost_min: 0.0,
   time_min: 30,
-  time_unit: 1,
+  unit: minute,
   time_description: 'Le temps pour réaliser cette action dépend du nombre de tas constitués.',
   surface_min: 1.0,
   investment: 2,
@@ -108,7 +192,7 @@ hedgehogHouse = Action.create!(
   spot: true,
   cost_min: 50.0,
   time_min: 90,
-  time_unit: 1,
+  unit: minute,
   time_description: 'Le temps pour réaliser cette action dépend de la grandeur de l\'abri.',
   surface_min: 3.0,
   investment: 3,
@@ -125,7 +209,7 @@ discoverMeadows = Action.create!(
   spot: false,
   cost_min: 0.0,
   time_min: 2,
-  time_unit: 2,
+  unit: heure,
   time_description: 'Cette action peut prendre entre 1 et 8 heures de temps.',
   surface_min: 0.0,
   investment: 1,
@@ -142,7 +226,7 @@ diffMaintenance = Action.create!(
   spot: true,
   cost_min: 0.0,
   time_min: 3,
-  time_unit: 2,
+  unit: heure,
   time_description: 'Le temps pour réaliser cette action peut être calculé de la manière suivante : temps de tonte normal + 20%.',
   surface_min: 10.0,
   investment: 2,
@@ -159,7 +243,7 @@ createMeadow = Action.create!(
   spot: true,
   cost_min: 30.0,
   time_min: 4,
-  time_unit: 2,
+  unit: heure,
   time_description: 'Il faut compter 1 heure de temps pour 10 mètres carrés.',
   surface_min: 10.0,
   investment: 3,
@@ -458,90 +542,6 @@ SpeciesAction.create!([{
   action: createMeadow,
   species: species6
 }])
-
-minute = Unit.create!(
-  abbreviation: 'min',
-  name: 'minute')
-
-heure = Unit.create!(
-  abbreviation: 'H',
-  name: 'heure')
-
-jour = Unit.create!(
-  abbreviation: 'jour',
-  name: 'jour')
-
-semaine = Unit.create!(
-  abbreviation: 'sem',
-  name: 'semaine')
-
-mois = Unit.create!(
-  abbreviation: 'mois',
-  name: 'mois')
-
-minConstr = Unit.create!(
-  abbreviation: 'min/construction',
-  name: 'minute par construction ')
-
-heureConstr = Unit.create!(
-  abbreviation: 'H/construction',
-  name: 'heure par construction ')
-
-minM2 = Unit.create!(
-  abbreviation: 'min/m2',
-  name: 'minute par mètres carrés ')
-
-heureM2 = Unit.create!(
-  abbreviation: 'H/m2',
-  name: 'heure par mètres carrés ')
-
-minAmenag = Unit.create!(
-  abbreviation: 'min/aménagement',
-  name: 'minute par aménagement ')
-
-heureAmenag = Unit.create!(
-  abbreviation: 'H/aménagement',
-  name: 'heure par aménagement ')
-
-minSite = Unit.create!(
-  abbreviation: 'min/site',
-  name: 'minute par site ')
-
-heureSite = Unit.create!(
-  abbreviation: 'H/site',
-  name: 'heure par site ')
-
-minObs = Unit.create!(
-  abbreviation: 'min/obs.',
-  name: 'minute par observation ')
-
-heureObs = Unit.create!(
-  abbreviation: 'H/obs.',
-  name: 'heure par observation ')
-
-minSignal = Unit.create!(
-  abbreviation: 'min/signalement',
-  name: 'minute par signalement ')
-
-heureSignal = Unit.create!(
-  abbreviation: 'H/signalement',
-  name: 'heure par signalement ')
-
-minMLin = Unit.create!(
-  abbreviation: 'min/m.l.',
-  name: 'minute par mètre linéaire ')
-
-heureMLin = Unit.create!(
-  abbreviation: 'H/m.l.',
-  name: 'heure par mètre linéaire ')
-
-minUnite = Unit.create!(
-  abbreviation: 'min/unité',
-  name: 'minute par unité ')
-
-heureUnite = Unit.create!(
-  abbreviation: 'H/unité',
-  name: 'heure par unité ')
 
 case Rails.env
 when "development"

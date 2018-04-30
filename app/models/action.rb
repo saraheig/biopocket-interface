@@ -2,6 +2,7 @@ class Action < ApplicationRecord
   belongs_to :theme, optional: true
   # optional: true -> to avoid fixed error message => Utilization of a customized message
   belongs_to :type, optional: true
+  belongs_to :unit, optional: true
 
   has_many :costs, dependent: :destroy
   has_many :tasks, dependent: :destroy
@@ -20,7 +21,7 @@ class Action < ApplicationRecord
   validates_inclusion_of :spot, :in => [true, false], :message => 'Les valeurs possibles pour la nécessité d\'une maison est true ou false.'
   validates_numericality_of :cost_min, :only_integer => true, :greater_than_or_equal_to => 0, :message => 'Le coût minimal pour réaliser l\'action doit être spécifié et doit être défini par un nombre entier positif (>= 0).'
   validates_numericality_of :time_min, :only_integer => true, :greater_than_or_equal_to => 0, :message => 'Le temps minimal pour réaliser l\'action doit être spécifié et doit être défini par un nombre entier positif (>= 0).'
-  validates_inclusion_of :time_unit, :in => [1, 2, 3, 4, 5], :message => 'Choisir une unité de temps pour la réalisation de l\'action.'
+  validates_numericality_of :unit_id, :greater_than_or_equal_to => 0, :message => 'Choisir une unité de temps pour la réalisation de l\'action.'
   validates_numericality_of :surface_min, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'La surface doit être nulle ou définie par un nombre positif (arrondi à deux décimales).'
   validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Choisir un niveau d\'investissement pour réaliser l\'action.'
   validates_format_of :picture, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'Le nom de la photo (pas d\'espace ou de caractères spéciaux ou accentués dans le nom), ainsi que son extension (bmp, jpeg, jpg, gif, png, tif, tiff) doivent être spécifiés.'

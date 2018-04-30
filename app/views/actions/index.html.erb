@@ -130,21 +130,7 @@
         </td>
         <td><%= action.cost_min %></td>
         <td><%= action.time_min %></td>
-        <td>
-          <% if action.time_unit == 1 %>
-            Minute
-          <% elsif action.time_unit == 2 %>
-            Heure
-          <% elsif action.time_unit == 3 %>
-            Jour
-          <% elsif action.time_unit == 4 %>
-            Semaine
-          <% elsif action.time_unit == 5 %>
-            Mois
-          <% else %>
-            -
-          <% end %>
-        </td>
+        <td><%= action.unit.abbreviation %></td>
         <td><%= action.time_description %></td>
         <td><%= action.surface_min %></td>
         <td>

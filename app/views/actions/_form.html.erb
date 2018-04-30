@@ -58,7 +58,8 @@
 
   <div class="field">
     Unité de temps* :
-    <%= form.select :time_unit, options_for_select([["Choisir", 0], ["Minute", 1], ["Heure", 2], ["Jour", 3], ["Semaine", 4], ["Mois", 5]], selected: action.time_unit), id: :action_time_unit %>
+    <%= form.select :unit_id, Unit.all.collect { |unit| [unit.abbreviation, unit.id] }, { :include_blank => "Choisir" } %>
+    <%= link_to 'Créer une nouvelle unité de temps', new_unit_path %>
   </div>
 
   <div class="field">

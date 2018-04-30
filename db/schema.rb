@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180427155837) do
+ActiveRecord::Schema.define(version: 20180430082306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,15 +27,16 @@ ActiveRecord::Schema.define(version: 20180427155837) do
     t.boolean "spot"
     t.integer "cost_min"
     t.integer "time_min"
-    t.integer "time_unit", limit: 2
     t.text "time_description"
     t.decimal "surface_min", precision: 10, scale: 2
     t.text "picture"
     t.integer "importance", limit: 2
     t.text "source"
+    t.bigint "unit_id"
     t.index ["theme_id"], name: "index_actions_on_theme_id"
     t.index ["title"], name: "index_actions_on_title", unique: true
     t.index ["type_id"], name: "index_actions_on_type_id"
+    t.index ["unit_id"], name: "index_actions_on_unit_id"
   end
 
   create_table "actions_actions", force: :cascade do |t|
