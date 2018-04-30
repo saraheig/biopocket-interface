@@ -24,7 +24,7 @@ class Action < ApplicationRecord
   validates_numericality_of :unit_id, :greater_than_or_equal_to => 0, :message => 'Choisir une unité de temps pour la réalisation de l\'action.'
   validates_numericality_of :surface_min, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'La surface doit être nulle ou définie par un nombre positif (arrondi à deux décimales).'
   validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Choisir un niveau d\'investissement pour réaliser l\'action.'
-  validates_format_of :picture, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'Le nom de la photo (pas d\'espace ou de caractères spéciaux ou accentués dans le nom), ainsi que son extension (bmp, jpeg, jpg, gif, png, tif, tiff) doivent être spécifiés.'
+  validates_format_of :picture, :allow_blank => true, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'L\'extension de la photo (bmp, jpeg, jpg, gif, png, tif, tiff) doit être spécifiée (pas d\'espace ou de caractères spéciaux ou accentués dans le nom de la photo).'
   validates_inclusion_of :importance, :in => [1, 2, 3, 4], :allow_nil => true, :message => 'Les valeurs possibles pour l\'importance sont 1, 2, 3, 4 ou pas de valeur.'
   validates_numericality_of :theme_id, :greater_than_or_equal_to => 0, :message => 'Choisir un thème pour cette action.'
   validates_numericality_of :type_id, :greater_than_or_equal_to => 0, :message => 'Choisir un type d\'action pour cette action.'
