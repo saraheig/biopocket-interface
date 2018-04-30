@@ -37,35 +37,35 @@ meadow = Theme.create!(
 
 observation = Type.create!(
   title: 'Observation',
-  description: 'Description type observation')
+  description: 'Ce type d\'actions regroupent les actions de type simple observation / observation pure.')
 
 reporting = Type.create!(
   title: 'Signalement',
-  description: 'Description type signalement')
+  description: 'Ce type d\'actions regroupent les actions de type observation avec signalement.')
 
 information = Type.create!(
   title: 'Renseignement',
-  description: 'Description type renseignement')
+  description: 'Ce type d\'actions regroupent les actions de type renseignement.')
 
 management = Type.create!(
   title: 'Gestion',
-  description: 'Description type gestion')
+  description: 'Ce type d\'actions regroupent les actions de type aménagement / gestion / entretien / transformation.')
 
 building = Type.create!(
   title: 'Construction',
-  description: 'Description type construction')
+  description: 'Ce type d\'actions regroupent les actions de type construction / acheter.')
 
 awareness = Type.create!(
   title: 'Sensibilisation',
-  description: 'Description type sensibilisation')
+  description: 'Ce type d\'actions regroupent les actions de type action militante.')
 
 promotion = Type.create!(
   title: 'Valorisation',
-  description: 'Description type valorisation')
+  description: 'Ce type d\'actions regroupent les actions de type profiter de la production.')
 
 engagement = Type.create!(
   title: 'Engagement',
-  description: 'Description type engagement')
+  description: 'Ce type d\'actions regroupent les actions de type engagement personnel de faire / de ne pas faire quelque chose.')
 
 minute = Unit.create!(
   abbreviation: 'min',
