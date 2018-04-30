@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root to: redirect('/tables')
 
-  resource :session, only: %i[new create destroy]
+  resource :session, only: [:new, :create, :destroy]
   get '/tables', to: 'tables#index'
 
   resources :actions, path: '/tables/actions' do
