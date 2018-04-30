@@ -20,11 +20,11 @@
   </div>
 
   <div class="field">
-    Action :
+    Action (Thème - Code du thème) :
     <% actions = Action.all %>
     <% actionoptions = ['Indifférent'] %>
     <% actions.each do |action| %>
-      <% actionarray = [action.title, action.id] %>
+      <% actionarray = [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
       <% actionoptions.push(actionarray) %>
     <% end %>
     <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
@@ -42,7 +42,7 @@
   <thead>
     <tr>
       <th>Titre de la tâche</th>
-      <th>Action (Thème)</th>
+      <th>Action (Thème - Code du thème)</th>
       <th>Description de la tâche</th>
       <th>Tâches liées à la présente tâche</th>
       <th>Liens Internet relatifs à la tâche</th>
@@ -55,7 +55,7 @@
     <% @tasks.each do |task| %>
       <tr>
         <td><%= task.title %></td>
-        <td><%= task.action.title %> (<%= task.action.theme.title %>)</td>
+        <td><%= task.action.title %> (<%= task.action.theme.title %> - <%= task.action.theme.code %>)</td>
         <td><%= task.description %></td>
         <td>
           <% if TasksTask.where(["ref_id = ? OR dep_id = ?", task.id, task.id]).count > 0 %>

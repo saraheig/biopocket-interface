@@ -276,7 +276,7 @@ Cost.create!(
   value_min: 0.8,
   value_max: 1.4,
   unit: 'CHF/m2',
-  action: discoverMeadows)
+  action: createMeadow)
 
 task1 = Task.create!(
   title: 'Visiter une prairie fleurie exemplaire',

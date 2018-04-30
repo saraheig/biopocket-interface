@@ -60,11 +60,11 @@
   </div>
 
   <div class="field">
-    Thème :
+    Thème (code du thème) :
     <% themes = Theme.all %>
     <% themeoptions = ['Indifférent'] %>
     <% themes.each do |theme| %>
-      <% themearray = [theme.title, theme.id] %>
+      <% themearray = [theme.title + " (" + theme.code + ")", theme.id] %>
       <% themeoptions.push(themearray) %>
     <% end %>
     <%= select_tag :theme_id, options_for_select(themeoptions, params[:theme_id]) %>
@@ -93,7 +93,7 @@
   <thead>
     <tr>
       <th>Titre de l'action</th>
-      <th>Thème</th>
+      <th>Thème (code du thème)</th>
       <th>Type d'action</th>
       <th>Description de l'action</th>
       <th>Description de l'impact de l'action</th>
@@ -117,7 +117,7 @@
     <% @actions.each do |action| %>
       <tr>
         <td><%= action.title %></td>
-        <td><%= action.theme.title %></td>
+        <td><%= action.theme.title %> (<%= action.theme.code %>)</td>
         <td><%= action.type.title %></td>
         <td><%= action.description %></td>
         <td><%= action.impact %></td>

@@ -10,7 +10,7 @@
   <thead>
     <tr>
       <th>Titre de l'action</th>
-      <th>Thème</th>
+      <th>Thème (code du thème)</th>
       <th>Type d'action</th>
       <th>Description de l'action</th>
       <th>Description de l'impact de l'action</th>
@@ -33,7 +33,7 @@
   <tbody>
     <tr>
       <td><%= @action.title %></td>
-      <td><%= @action.theme.title %></td>
+      <td><%= @action.theme.title %> (<%= @action.theme.code %>)</td>
       <td><%= @action.type.title %></td>
       <td><%= @action.description %></td>
       <td><%= @action.impact %></td>

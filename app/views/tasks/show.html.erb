@@ -10,7 +10,7 @@
   <thead>
     <tr>
       <th>Titre de la tâche</th>
-      <th>Action (Thème)</th>
+      <th>Action (Thème - Code du thème)</th>
       <th>Description de la tâche</th>
       <th>Tâches liées à la présente tâche</th>
       <th>Liens Internet relatifs à la tâche</th>
@@ -22,7 +22,7 @@
   <tbody>
     <tr>
       <td><%= @task.title %></td>
-      <td><%= @task.action.title %> (<%= @task.action.theme.title %>)</td>
+      <td><%= @task.action.title %> (<%= @task.action.theme.title %> - <%= @task.action.theme.code %>)</td>
       <td><%= @task.description %></td>
       <td>
         <% if TasksTask.where(["ref_id = ? OR dep_id = ?", @task.id, @task.id]).count > 0 %>

@@ -61,8 +61,8 @@
   <hr/><h3>Classification de la photo</h3><br/>
 
   <div class="field">
-    Tâche (Action - Thème)* : <br/>
-    <%= form.select :task_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
+    Tâche (Action - Thème - Code du thème)* : <br/>
+    <%= form.select :task_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ' - ' + task.action.theme.code + ')', task.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer une nouvelle tâche', new_task_path %>
   </div>
 

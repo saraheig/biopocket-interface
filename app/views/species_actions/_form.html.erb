@@ -22,8 +22,8 @@
   <hr/><h3>Information sur le lien</h3><br/>
   
   <div class="field">
-    Action (Thème)* : <br/>
-    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ')', action.id] }, { :include_blank => "Choisir" } %>
+    Action (Thème - Code du thème)* : <br/>
+    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
   
   <div class="field">

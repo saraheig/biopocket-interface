@@ -30,11 +30,11 @@
   </div>
 
   <div class="field">
-    Action :
+    Action (Thème - Code du thème) :
     <% actions = Action.all %>
     <% actionoptions = ['Indifférent'] %>
     <% actions.each do |action| %>
-      <% actionarray = [action.title, action.id] %>
+      <% actionarray = [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
       <% actionoptions.push(actionarray) %>
     <% end %>
     <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
@@ -52,7 +52,7 @@
   <thead>
     <tr>
       <th>Titre / type de coût</th>
-      <th>Action (Thème)</th>
+      <th>Action (Thème - Code du thème)</th>
       <th>Coût minimum</th>
       <th>Coût maximum</th>
       <th>Unité (pour les coûts)</th>
@@ -63,7 +63,7 @@
     <% @costs.each do |cost| %>
       <tr>
         <td><%= cost.title %></td>
-        <td><%= cost.action.title %> (<%= cost.action.theme.title %>)</td>
+        <td><%= cost.action.title %> (<%= cost.action.theme.title %> - <%= cost.action.theme.code %>)</td>
         <td><%= cost.value_min %></td>
         <td><%= cost.value_max %></td>
         <td><%= cost.unit %></td>

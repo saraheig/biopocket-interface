@@ -19,11 +19,11 @@
   </div>
 
   <div class="field">
-    Tâche :
+    Tâche (Action - Thème - Code du thème) :
     <% tasks = Task.all %>
     <% taskoptions = ['Indifférent'] %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title, task.id] %>
+      <% taskarray = [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ' - ' + task.action.theme.code + ')', task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
@@ -42,7 +42,7 @@
     <tr>
       <th>Nom de la photo</th>
       <th>Source de la photo</th>
-      <th>Tâche (Action - Thème)</th>
+      <th>Tâche (Action - Thème - Code du thème)</th>
       <th>Description de la photo</th>
       <th></th>
     </tr>
@@ -52,7 +52,7 @@
       <tr>
         <td><%= picture.picture %></td>
         <td><%= picture.source %></td>
-        <td><%= picture.task.title %> (<%= picture.task.action.title %> - <%= picture.task.action.theme.title %>)</td>
+        <td><%= picture.task.title %> (<%= picture.task.action.title %> - <%= picture.task.action.theme.title %> - <%= picture.task.action.theme.code %>)</td>
         <td><%= picture.description %></td>
         <td>
           <%= link_to 'Editer', edit_picture_path(picture) %><br/>

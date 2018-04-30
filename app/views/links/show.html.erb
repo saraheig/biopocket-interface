@@ -10,14 +10,14 @@
   <thead>
     <tr>
       <th>Lien Internet</th>
-      <th>Tâche (Action - Thème)</th>
+      <th>Tâche (Action - Thème - Code du thème)</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <td><a href='<%= @link.link %>' target='_blank'><%= @link.link %></a></td>
-      <td><%= @link.task.title %> (<%= @link.task.action.title %> - <%= @link.task.action.theme.title %>)</td>
+      <td><%= @link.task.title %> (<%= @link.task.action.title %> - <%= @link.task.action.theme.title %> - <%= @link.task.action.theme.code %>)</td>
       <td>
         <%= link_to 'Editer', edit_link_path(@link) %><br/>
         <%= link_to 'Supprimer', @link, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

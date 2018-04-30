@@ -31,11 +31,11 @@
   </div>
 
   <div class="field">
-    Tâche :
+    Tâche (Action - Thème - Code du thème) :
     <% tasks = Task.all %>
     <% taskoptions = ['Indifférent'] %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title, task.id] %>
+      <% taskarray = [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ' - ' + task.action.theme.code + ')', task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
@@ -62,7 +62,7 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Tâche (Action - Thème)</th>
+      <th>Tâche (Action - Thème - Code du thème)</th>
       <th>Catégorie de temps</th>
       <th>Mois de début</th>
       <th>Mois de fin</th>
@@ -73,7 +73,7 @@
   <tbody>
     <% @periods.each do |period| %>
       <tr>
-        <td><%= period.task.title %> (<%= period.task.action.title %> - <%= period.task.action.theme.title %>)</td>
+        <td><%= period.task.title %> (<%= period.task.action.title %> - <%= period.task.action.theme.title %> - <%= period.task.action.theme.code %>)</td>
         <td><%= period.category.title %></td>
         <td><%= monthsFr[period.startdate][0] %></td>
         <td><%= monthsFr[period.enddate][0] %></td>

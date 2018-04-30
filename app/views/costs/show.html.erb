@@ -10,7 +10,7 @@
   <thead>
     <tr>
       <th>Titre / type de coût</th>
-      <th>Action (Thème)</th>
+      <th>Action (Thème - Code du thème)</th>
       <th>Coût minimum</th>
       <th>Coût maximum</th>
       <th>Unité (pour les coûts)</th>
@@ -20,7 +20,7 @@
   <tbody>
     <tr>
       <td><%= @cost.title %></td>
-      <td><%= @cost.action.title %> (<%= @cost.action.theme.title %>)</td>
+      <td><%= @cost.action.title %> (<%= @cost.action.theme.title %> - <%= @cost.action.theme.code %>)</td>
       <td><%= @cost.value_min %></td>
       <td><%= @cost.value_max %></td>
       <td><%= @cost.unit %></td>

@@ -7,7 +7,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing action. -%>
     <h2>Action "<%= action.title %>"</h2>
-    Thème "<%= action.theme.title %>"<br/>
+    Thème "<%= action.theme.title %>" (code du thème : <%= action.theme.code %>)<br/>
     Type d'action "<%= action.type.title %>"
     <%-# No <h2> title if this is a new action. -%>
   <% end %>
@@ -115,8 +115,8 @@
   <hr/><h3>Classification de l'action</h3><br/>
 
   <div class="field">
-    Thème* :
-    <%= form.select :theme_id, Theme.all.collect { |theme| [theme.title, theme.id] }, { :include_blank => "Choisir" } %>
+    Thème (code du thème)* :
+    <%= form.select :theme_id, Theme.all.collect { |theme| [theme.title + " (" + theme.code + ")", theme.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer un nouveau thème', new_theme_path %>
   </div>
 
