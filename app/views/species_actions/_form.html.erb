@@ -3,7 +3,7 @@
   <% part = request.path_info.split("/")[4] %>
   <% if part == 'edit' %>
     <%-# This is an existing link. -%>
-    <h2>Lien entre "<%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h2>
+    <h2>Lien entre "<%= @species_action.action.code %> <%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h2>
     <%-# No <h2> title if this is a new link. -%>
   <% end %>
 
@@ -23,7 +23,7 @@
   
   <div class="field">
     Action (Thème - Code du thème)* : <br/>
-    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :action_id, Action.all.collect { |action| [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
   
   <div class="field">

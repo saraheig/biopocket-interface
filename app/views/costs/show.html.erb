@@ -20,7 +20,7 @@
   <tbody>
     <tr>
       <td><%= @cost.title %></td>
-      <td><%= @cost.action.title %> (<%= @cost.action.theme.title %> - <%= @cost.action.theme.code %>)</td>
+      <td><%= @cost.action.code %> <%= @cost.action.title %> (<%= @cost.action.theme.title %> - <%= @cost.action.theme.code %>)</td>
       <td><%= @cost.value_min %></td>
       <td><%= @cost.value_max %></td>
       <td><%= @cost.unit %></td>

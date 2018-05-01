@@ -22,13 +22,13 @@
   <hr/><h3>Information sur le lien</h3><br/>
   
   <div class="field">
-    Tâche de base (Action - Thème - Code du thème)* : <br/>
-    <%= form.select :ref_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ' - ' + task.action.theme.code + ')', task.id] }, { :include_blank => "Choisir" } %>
+    Tâche de base (Action - Thème)* : <br/>
+    <%= form.select :ref_id, Task.all.collect { |task| [task.title + ' (' + task.action.code + ' ' + task.action.title + ' - ' + task.action.theme.code + ' ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <div class="field">
     Tâche requise pour faire la tâche de base (Action - Thème)* : <br/>
-    <%= form.select :dep_id, Task.all.collect { |task| [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :dep_id, Task.all.collect { |task| [task.title + ' (' + task.action.code + ' ' + task.action.title + ' - ' + task.action.theme.code + ' ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <hr/>

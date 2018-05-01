@@ -15,11 +15,11 @@
 <%= form_tag(tasks_tasks_path, method: :get) do %>
 
   <div class="field">
-    Tâche (Action - Thème - Code du thème) :
+    Tâche (Action - Thème) :
     <% tasks = Task.all %>
     <% taskoptions = ['Indifférent'] %>
     <% tasks.each do |task| %>
-      <% taskarray = [task.title + ' (' + task.action.title + ' - ' + task.action.theme.title + ' - ' + task.action.theme.code + ')', task.id] %>
+      <% taskarray = [task.title + ' (' + task.action.code + ' ' + task.action.title + ' - ' + task.action.theme.code + ' ' + task.action.theme.title + ')', task.id] %>
       <% taskoptions.push(taskarray) %>
     <% end %>
     <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
@@ -35,16 +35,16 @@
 <table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Tâche de base (Action - Thème - Code du thème)</th>
-      <th>Tâche requise pour faire la tâche de base (Action - Thème - Code du thème)</th>
+      <th>Tâche de base (Action - Thème)</th>
+      <th>Tâche requise pour faire la tâche de base (Action - Thème)</th>
       <th></th>
     </tr>
   </thead>
   <tbody>
     <% @tasks_tasks.each do |tasks_task| %>
       <tr>
-        <td><%= tasks_task.ref.title %> (<%= tasks_task.ref.action.title %> - <%= tasks_task.ref.action.theme.title %> - <%= tasks_task.ref.action.theme.code %>)</td>
-        <td><%= tasks_task.dep.title %> (<%= tasks_task.dep.action.title %> - <%= tasks_task.dep.action.theme.title %> - <%= tasks_task.ref.action.theme.code %>)</td>
+        <td><%= tasks_task.ref.title %> (<%= tasks_task.ref.action.code %> <%= tasks_task.ref.action.title %> - <%= tasks_task.ref.action.theme.code %> <%= tasks_task.ref.action.theme.title %>)</td>
+        <td><%= tasks_task.dep.title %> (<%= tasks_task.dep.action.code %> <%= tasks_task.dep.action.title %> - <%= tasks_task.dep.action.theme.code %> <%= tasks_task.dep.action.theme.title %>)</td>
         <td>
           <%= link_to 'Editer', edit_tasks_task_path(tasks_task) %><br/>
           <%= link_to 'Supprimer', tasks_task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

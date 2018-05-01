@@ -6,7 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing task. -%>
     <h2>Tâche "<%= task.title %>"</h2>
-    Action : <%= task.action.title %> (Thème : <%= task.action.theme.title %> - Code du thème : <%= task.action.theme.code %>)
+    Action : <%= task.action.code %> <%= task.action.title %> (Thème : <%= task.action.theme.code %> <%= task.action.theme.title %>)
     <%-# No <h2> title if this is a new task. -%>
   <% end %>
 
@@ -37,8 +37,8 @@
   <hr/><h3>Classification de la tâche</h3><br/>
 
   <div class="field">
-    Action (Thème - Code du thème)* : <br/>
-    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
+    Action (Thème)* : <br/>
+    <%= form.select :action_id, Action.all.collect { |action| [action.code + ' ' + action.title + ' (' + action.theme.code + ' ' + action.theme.title + ')', action.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer une nouvelle action', new_action_path %>
   </div>
 

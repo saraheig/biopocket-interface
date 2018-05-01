@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lien entre "<%= @actions_action.ref.title %>" - "<%= @actions_action.dep.title %>"</h1>
+<h1>Lien entre "<%= @actions_action.ref.code %> <%= @actions_action.ref.title %>" - "<%= @actions_action.dep.code %> <%= @actions_action.dep.title %>"</h1>
 
 <hr/>
 <%= link_to 'Voir tous les liens entre actions', actions_actions_path %>
@@ -16,8 +16,8 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @actions_action.ref.title %> (<%= @actions_action.ref.theme.title %> - <%= @actions_action.ref.theme.code %>)</td>
-      <td><%= @actions_action.dep.title %> (<%= @actions_action.dep.theme.title %> - <%= @actions_action.ref.theme.code %>)</td>
+      <td><%= @actions_action.ref.code %> <%= @actions_action.ref.title %> (<%= @actions_action.ref.theme.title %> - <%= @actions_action.ref.theme.code %>)</td>
+      <td><%= @actions_action.dep.code %> <%= @actions_action.dep.title %> (<%= @actions_action.dep.theme.title %> - <%= @actions_action.ref.theme.code %>)</td>
       <td>
         <%= link_to 'Editer', edit_actions_action_path(@actions_action) %><br/>
         <%= link_to 'Supprimer', @actions_action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

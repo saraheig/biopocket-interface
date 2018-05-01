@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180430085636) do
+ActiveRecord::Schema.define(version: 20180501083903) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20180430085636) do
     t.integer "importance", limit: 2
     t.text "source"
     t.bigint "unit_id"
+    t.string "code", limit: 10
     t.index ["theme_id"], name: "index_actions_on_theme_id"
     t.index ["title"], name: "index_actions_on_title", unique: true
     t.index ["type_id"], name: "index_actions_on_type_id"

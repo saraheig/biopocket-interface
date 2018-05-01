@@ -32,6 +32,11 @@
   </div>
 
   <div class="field">
+    Code de l'action : <br/>
+    <%= form.autocomplete_field :code, autocomplete_action_code_actions_path, id: :action_code, size: '10' %>
+  </div>
+
+  <div class="field">
     Description de l'action* : <br/>
     <%= form.text_area :description, id: :action_description, size: '40x5' %>
   </div>

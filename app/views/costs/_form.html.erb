@@ -6,7 +6,7 @@
   <% if part == 'edit' %>
     <%-# This is an existing cost. -%>
     <h2>Coût "<%= cost.title %>"</h2>
-    Action : <%= @cost.action.title %> (Thème : <%= @cost.action.theme.title %> - Code du thème : <%= @cost.action.theme.code %>)
+    Action : <%= @cost.action.code %> <%= @cost.action.title %> (Thème : <%= @cost.action.theme.title %> - Code du thème : <%= @cost.action.theme.code %>)
     <%-# No <h2> title if this is a new cost. -%>
   <% end %>
 
@@ -48,7 +48,7 @@
 
   <div class="field">
     Action (Thème - Code du thème)* : <br/>
-    <%= form.select :action_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :action_id, Action.all.collect { |action| [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
     <%= link_to 'Créer une nouvelle action', new_action_path %>
   </div>
   

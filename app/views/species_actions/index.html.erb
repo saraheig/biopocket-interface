@@ -19,7 +19,7 @@
     <% actions = Action.all %>
     <% actionoptions = ['Indifférent'] %>
     <% actions.each do |action| %>
-      <% actionarray = [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
+      <% actionarray = [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
       <% actionoptions.push(actionarray) %>
     <% end %>
     <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
@@ -54,7 +54,7 @@
   <tbody>
     <% @species_actions.each do |species_action| %>
       <tr>
-        <td><%= species_action.action.title %> (<%= species_action.action.theme.title %> - <%= species_action.action.theme.code %>)</td>
+        <td><%= species_action.action.code %> <%= species_action.action.title %> (<%= species_action.action.theme.title %> - <%= species_action.action.theme.code %>)</td>
         <td><%= species_action.species.name %></td>
         <td>
           <%= link_to 'Editer', edit_species_action_path(species_action) %><br/>

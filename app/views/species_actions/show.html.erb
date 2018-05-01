@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Lien entre "<%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h1>
+<h1>Lien entre "<%= @species_action.action.code %> <%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h1>
 
 <hr/>
 <%= link_to 'Voir tous les liens entre actions et espèces', species_actions_path %>
@@ -16,7 +16,7 @@
   </thead>
   <tbody>
     <tr>
-      <td><%= @species_action.action.title %> (<%= @species_action.action.theme.title %> - <%= @species_action.action.theme.code %>)</td>
+      <td><%= @species_action.action.code %> <%= @species_action.action.title %> (<%= @species_action.action.theme.title %> - <%= @species_action.action.theme.code %>)</td>
       <td><%= @species_action.species.name %></td>
       <td>
         <%= link_to 'Editer', edit_species_action_path(@species_action) %><br/>

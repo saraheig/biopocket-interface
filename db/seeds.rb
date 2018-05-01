@@ -152,6 +152,7 @@ heureUnite = Unit.create!(
   name: 'heure par unité ')
 
 welcomeHedgehogs = Action.create!(
+  code: 'F5-1',
   theme: hedgehog,
   type: management,
   title: 'Accueillir les hérissons',
@@ -169,6 +170,7 @@ welcomeHedgehogs = Action.create!(
   importance: 1)
 
 simpleLayouts = Action.create!(
+  code: 'F5-2',
   theme: hedgehog,
   type: management,
   title: 'Aménagements simples',
@@ -186,6 +188,7 @@ simpleLayouts = Action.create!(
   importance: 1)
 
 hedgehogHouse = Action.create!(
+  code: 'F5-3',
   theme: hedgehog,
   type: building,
   title: 'Abri à hérissons',
@@ -203,6 +206,7 @@ hedgehogHouse = Action.create!(
   importance: 1)
 
 discoverMeadows = Action.create!(
+  code: 'M8-1',
   theme: meadow,
   type: information,
   title: 'Découvrir les prairies',
@@ -220,6 +224,7 @@ discoverMeadows = Action.create!(
   importance: 2)
 
 diffMaintenance = Action.create!(
+  code: 'M8-2',
   theme: meadow,
   type: engagement,
   title: 'Entretien différencié',
@@ -237,6 +242,7 @@ diffMaintenance = Action.create!(
   importance: 1)
 
 createMeadow = Action.create!(
+  code: 'M8-3',
   theme: meadow,
   type: management,
   title: 'Aménager une prairie fleurie',

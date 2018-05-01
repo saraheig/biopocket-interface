@@ -34,7 +34,7 @@
     <% actions = Action.all %>
     <% actionoptions = ['Indifférent'] %>
     <% actions.each do |action| %>
-      <% actionarray = [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
+      <% actionarray = [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] %>
       <% actionoptions.push(actionarray) %>
     <% end %>
     <%= select_tag :action_id, options_for_select(actionoptions, params[:action_id]) %>
@@ -63,7 +63,7 @@
     <% @costs.each do |cost| %>
       <tr>
         <td><%= cost.title %></td>
-        <td><%= cost.action.title %> (<%= cost.action.theme.title %> - <%= cost.action.theme.code %>)</td>
+        <td><%= cost.action.code %> <%= cost.action.title %> (<%= cost.action.theme.title %> - <%= cost.action.theme.code %>)</td>
         <td><%= cost.value_min %></td>
         <td><%= cost.value_max %></td>
         <td><%= cost.unit %></td>

@@ -15,6 +15,7 @@ class Action < ApplicationRecord
   validates_presence_of :title, :message => 'Le titre de l\'action doit être spécifié.'
   validates_length_of :title, :maximum => 40, :message => 'Le titre de l\'action doit avoir maximum 40 caractères.'
   validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre de l\'action est déjà utilisé.'
+  validates_length_of :code, :maximum => 10, :message => 'Le code de l\'action doit avoir maximum 10 caractères.'
   validates_presence_of :description, :message => 'La description de l\'action doit être spécifiée.'
   validates_length_of :description, :maximum => 255, :message => 'La description de l\'action doit avoir maximum 255 caractères.'
   validates_presence_of :impact, :message => 'La description de l\'impact de l\'action doit être spécifiée.'
@@ -32,6 +33,7 @@ class Action < ApplicationRecord
   # Function to remove spaces in the title field
   def strip_blanks
     self.title = self.title.strip
+    self.code = self.code.strip
   end
 
   # Function to get the name of the uploaded picture
@@ -90,10 +92,10 @@ class Action < ApplicationRecord
 
     # If no search is done, all data are displayed.
     if sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype == ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # actions are ordered by updated_at desc => the most recently changed action: at the top
     elsif sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype != ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

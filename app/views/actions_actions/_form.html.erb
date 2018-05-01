@@ -3,7 +3,7 @@
   <% part = request.path_info.split("/")[4] %>
   <% if part == 'edit' %>
     <%-# This is an existing action link. -%>
-    <h2>Lien entre "<%= @actions_action.ref.title %>" - "<%= @actions_action.dep.title %>"</h2>
+    <h2>Lien entre "<%= @actions_action.ref.code %> <%= @actions_action.ref.title %>" - "<%= @actions_action.dep.code %> <%= @actions_action.dep.title %>"</h2>
     <%-# No <h2> title if this is a new action link. -%>
   <% end %>
 
@@ -23,12 +23,12 @@
 
   <div class="field">
     Action de base (Thème - Code du thème)* : <br/>
-    <%= form.select :ref_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :ref_id, Action.all.collect { |action| [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <div class="field">
     Action requise pour faire l'action de base (Thème - Code du thème)* : <br/>
-    <%= form.select :dep_id, Action.all.collect { |action| [action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :dep_id, Action.all.collect { |action| [action.code + ' ' + action.title + ' (' + action.theme.title + ' - ' + action.theme.code + ')', action.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <hr/>

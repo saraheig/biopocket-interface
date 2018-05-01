@@ -6,6 +6,7 @@ Rails.application.routes.draw do
 
   resources :actions, path: '/tables/actions' do
     get :autocomplete_action_title, :on => :collection
+    get :autocomplete_action_code, :on => :collection
     get :autocomplete_action_picture, :on => :collection
     get :autocomplete_action_source, :on => :collection
   end
