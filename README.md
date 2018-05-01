@@ -4,7 +4,7 @@ This is a Web application which allows users not only to easily create, read, up
 
 ***
 
-The actual database of this project is composed by these tables: 
+The actual database of this project is composed by these tables ([model](/lib/assets/mcd.pdf)):
 
 * Action
 * Theme
@@ -20,8 +20,6 @@ The actual database of this project is composed by these tables:
 * TasksTask
 * Species
 * SpeciesAction
-
-[MCD](/lib/assets/mcd.pdf)
 
 ***
 
