@@ -15,13 +15,13 @@
       <th>Type d'action</th>
       <th>Description de l'action</th>
       <th>Description de l'impact de l'action</th>
-      <th>Nécessité d'une maison ?</th>
+      <th>Nécessité d'un terrain ?</th>
       <th>Coût minimum [CHF]</th>
       <th>Temps minimum</th>
       <th>Unité de temps</th>
       <th>Description sur le temps</th>
       <th>Surface minimale</th>
-      <th>Investissement / Difficulté</th>
+      <th>Niveau d'engagement</th>
       <th>Importance pour la biodiversité</th>
       <th>Nom de la photo</th>
       <th>Source de la photo</th>
@@ -53,11 +53,11 @@
       <td><%= @action.surface_min %></td>
       <td>
         <% if @action.investment == 1 %>
-          Facile
+          Faible
         <% elsif @action.investment == 2 %>
           Moyen
         <% elsif @action.investment == 3 %>
-          Difficile
+          Important
         <% else %>
           -
         <% end %>

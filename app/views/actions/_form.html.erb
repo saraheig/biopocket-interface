@@ -47,7 +47,7 @@
   </div>
 
   <div class="field">
-    Nécessité d'une maison ?
+    Nécessité d'un terrain ?
     <%= form.check_box :spot, id: :action_spot %>
   </div>
 
@@ -78,9 +78,9 @@
   </div>
 
   <div class="field">
-    Investissement / Difficulté* :
+    Niveau d'engagement* :
     <%-# Difficulty level has only three possibilities: 1, 2 or 3. -%>
-    <%= form.select :investment, options_for_select([["Choisir", 0], ["Facile", 1], ["Moyen", 2], ["Difficile", 3]], selected: action.investment), id: :action_investment %>
+    <%= form.select :investment, options_for_select([["Choisir", 0], ["Faible", 1], ["Moyen", 2], ["Important", 3]], selected: action.investment), id: :action_investment %>
   </div>
   
   <div class="field">
