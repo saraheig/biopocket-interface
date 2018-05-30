@@ -3,7 +3,7 @@
   <% part = request.path_info.split("/")[4] %>
   <% if part == 'edit' %>
     <%-# This is an existing link. -%>
-    <h2>Lien entre "<%= @species_action.action.code %> <%= @species_action.action.title %>" - "<%= @species_action.species.name %>"</h2>
+    <h2>Lien entre "<%= @species_action.action.code %> <%= @species_action.action.title %>" - "<%= @species_action.species.common_name %>"</h2>
     <%-# No <h2> title if this is a new link. -%>
   <% end %>
 
@@ -28,7 +28,7 @@
   
   <div class="field">
     Espèce* : <br/>
-    <%= form.select :species_id, Species.all.collect { |species| [species.name, species.id] }, { :include_blank => "Choisir" } %>
+    <%= form.select :species_id, Species.all.collect { |species| [species.common_name, species.id] }, { :include_blank => "Choisir" } %>
   </div>
 
   <hr/>

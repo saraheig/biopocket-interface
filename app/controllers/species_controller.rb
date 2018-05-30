@@ -1,6 +1,7 @@
 class SpeciesController < AuthenticateController
   before_action :set_species, only: [:show, :edit, :update, :destroy]
-  autocomplete :species, :name, :full => true
+  autocomplete :species, :common_name, :full => true
+  autocomplete :species, :latin_name, :full => true
   autocomplete :species, :source, :full => true
 
   # GET /species
@@ -71,6 +72,6 @@ class SpeciesController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def species_params
-      params.require(:species).permit(:name, :picture, :load_picture, :source, :description)
+      params.require(:species).permit(:common_name, :latin_name, :picture, :load_picture, :source, :description)
     end
 end

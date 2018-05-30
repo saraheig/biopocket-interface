@@ -28,7 +28,8 @@ Rails.application.routes.draw do
   end
 
   resources :species, path: '/tables/species' do
-    get :autocomplete_species_name, :on => :collection
+    get :autocomplete_species_common_name, :on => :collection
+    get :autocomplete_species_latin_name, :on => :collection
     get :autocomplete_species_source, :on => :collection
   end
 

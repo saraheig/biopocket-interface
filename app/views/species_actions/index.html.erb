@@ -30,7 +30,7 @@
     <% species = Species.all %>
     <% speciesoptions = ['Indifférent'] %>
     <% species.each do |species| %>
-      <% speciesarray = [species.name, species.id] %>
+      <% speciesarray = [species.common_name, species.id] %>
       <% speciesoptions.push(speciesarray) %>
     <% end %>
     <%= select_tag :species_id, options_for_select(speciesoptions, params[:species_id]) %>
@@ -55,7 +55,7 @@
     <% @species_actions.each do |species_action| %>
       <tr>
         <td><%= species_action.action.code %> <%= species_action.action.title %> (<%= species_action.action.theme.title %> - <%= species_action.action.theme.code %>)</td>
-        <td><%= species_action.species.name %></td>
+        <td><%= species_action.species.common_name %></td>
         <td>
           <%= link_to 'Editer', edit_species_action_path(species_action) %><br/>
           <%= link_to 'Supprimer', species_action, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce lien est irréversible.' } %>

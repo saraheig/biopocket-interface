@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180530090641) do
+ActiveRecord::Schema.define(version: 20180530095338) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -100,13 +100,14 @@ ActiveRecord::Schema.define(version: 20180530090641) do
   end
 
   create_table "species", force: :cascade do |t|
-    t.string "name", limit: 40
+    t.string "common_name", limit: 40
     t.text "picture"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "source"
-    t.index ["name"], name: "index_species_on_name", unique: true
+    t.string "latin_name", limit: 100
+    t.index ["common_name"], name: "index_species_on_common_name", unique: true
   end
 
   create_table "species_actions", force: :cascade do |t|
