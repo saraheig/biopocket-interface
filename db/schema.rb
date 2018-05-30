@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180501083903) do
+ActiveRecord::Schema.define(version: 20180530090641) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 20180501083903) do
     t.bigint "theme_id"
     t.bigint "type_id"
     t.string "title", limit: 40
-    t.string "description", limit: 255
+    t.text "description"
     t.text "impact"
     t.integer "investment", limit: 2
     t.datetime "created_at", null: false
@@ -34,6 +34,7 @@ ActiveRecord::Schema.define(version: 20180501083903) do
     t.text "source"
     t.bigint "unit_id"
     t.string "code", limit: 10
+    t.string "short_description", limit: 255
     t.index ["theme_id"], name: "index_actions_on_theme_id"
     t.index ["title"], name: "index_actions_on_title", unique: true
     t.index ["type_id"], name: "index_actions_on_type_id"
@@ -124,6 +125,7 @@ ActiveRecord::Schema.define(version: 20180501083903) do
     t.bigint "action_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "short_description", limit: 255
     t.index ["action_id"], name: "index_tasks_on_action_id"
     t.index ["title"], name: "index_tasks_on_title", unique: true
   end
@@ -146,6 +148,7 @@ ActiveRecord::Schema.define(version: 20180501083903) do
     t.text "picture"
     t.text "source"
     t.string "code", limit: 5
+    t.string "short_description", limit: 255
     t.index ["title"], name: "index_themes_on_title", unique: true
   end
 

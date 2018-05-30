@@ -8,7 +8,8 @@ class Theme < ApplicationRecord
   validates_length_of :title, :maximum => 40, :message => 'Le titre du thème doit avoir maximum 40 caractères.'
   validates_uniqueness_of :title, :case_sensitive => false, :message => 'Le titre du thème est déjà utilisé.'
   validates_length_of :code, :maximum => 5, :message => 'Le code du thème doit avoir maximum 5 caractères.'
-  validates_presence_of :description, :message => 'La description du thème doit être spécifiée.'
+  validates_presence_of :description, :message => 'La description complète du thème doit être spécifiée.'
+  validates_length_of :short_description, :maximum => 255, :message => 'La description succincte du thème doit avoir maximum 255 caractères.'
   validates_format_of :picture, :allow_blank => true, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'L\'extension de la photo (bmp, jpeg, jpg, gif, png, tif, tiff) doit être spécifiée (pas d\'espace ou de caractères spéciaux ou accentués dans le nom de la photo).'
   validate :check_picture_if_source
 
@@ -33,7 +34,7 @@ class Theme < ApplicationRecord
   # Function search to search a keyword through a form
   def self.search(keyword)
     if keyword
-      where("title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR picture iLIKE :term OR source iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      where("title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR short_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
     else
       all.order(updated_at: :desc)

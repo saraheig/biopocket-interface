@@ -37,7 +37,12 @@
   </div>
 
   <div class="field">
-    Description de l'action* : <br/>
+    Description succincte de l'action* : <br/>
+    <%= form.text_area :short_description, id: :action_short_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Description complète de l'action : <br/>
     <%= form.text_area :description, id: :action_description, size: '40x5' %>
   </div>
 

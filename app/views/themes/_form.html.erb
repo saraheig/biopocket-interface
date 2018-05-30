@@ -34,10 +34,15 @@
   </div>
 
   <div class="field">
-    Description du thème* : <br/>
+    Description complète du thème* : <br/>
     <%= form.text_area :description, id: :theme_description, size: '40x5' %>
   </div>
-  
+
+  <div class="field">
+    Description succincte du thème : <br/>
+    <%= form.text_area :short_description, id: :theme_short_description, size: '40x5' %>
+  </div>
+
   <div class="field">
     Nom de la photo du thème (avec son extension) : <br/>
     <% if @theme.picture? %>

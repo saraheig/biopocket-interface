@@ -72,6 +72,6 @@ class TasksController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :action_id)
+      params.require(:task).permit(:title, :description, :short_description, :action_id)
     end
 end

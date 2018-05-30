@@ -30,8 +30,13 @@
   </div>
 
   <div class="field">
-    Description de la tâche* : <br/>
+    Description complète de la tâche* : <br/>
     <%= form.text_area :description, id: :task_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Description succincte de la tâche : <br/>
+    <%= form.text_area :short_description, id: :task_short_description, size: '40x5' %>
   </div>
 
   <hr/><h3>Classification de la tâche</h3><br/>

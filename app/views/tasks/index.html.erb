@@ -15,7 +15,7 @@
 <%= form_tag(tasks_path, method: :get) do %>
 
   <div class="field">
-    Mot-clé cherché dans le titre et la description :
+    Mot-clé cherché dans le titre et les descriptions :
     <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
   </div>
 
@@ -43,7 +43,8 @@
     <tr>
       <th>Titre de la tâche</th>
       <th>Action (Thème)</th>
-      <th>Description de la tâche</th>
+      <th>Description complète de la tâche</th>
+      <th>Description succincte de la tâche</th>
       <th>Tâches liées à la présente tâche</th>
       <th>Liens Internet relatifs à la tâche</th>
       <th>Photos relatives à la tâche</th>
@@ -57,6 +58,7 @@
         <td><%= task.title %></td>
         <td><%= task.action.code %> <%= task.action.title %> (<%= task.action.theme.code %> <%= task.action.theme.title %>)</td>
         <td><%= task.description %></td>
+        <td><%= task.short_description %></td>
         <td>
           <% if TasksTask.where(["ref_id = ? OR dep_id = ?", task.id, task.id]).count > 0 %>
             <%= link_to 'Voir les différentes tâches liées à cette tâche', tasks_tasks_url + '?utf8=✓&task_id=' + task.id.to_s, class: 'with-features' %>
