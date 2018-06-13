@@ -10,9 +10,13 @@
   <thead>
     <tr>
       <th>Titre de la tâche</th>
+      <th>Code de la tâche</th>
       <th>Action (Thème)</th>
       <th>Description complète de la tâche</th>
       <th>Description succincte de la tâche</th>
+      <th>Contrainte temporelle</th>
+      <th>Contrainte tâche</th>
+      <th>Information / recommandation</th>
       <th>Tâches liées à la présente tâche</th>
       <th>Liens Internet relatifs à la tâche</th>
       <th>Photos relatives à la tâche</th>
@@ -23,9 +27,13 @@
   <tbody>
     <tr>
       <td><%= @task.title %></td>
+      <td><%= @task.code %></td>
       <td><%= @task.action.code %> <%= @task.action.title %> (<%= @task.action.theme.code %> <%= @task.action.theme.title %>)</td>
       <td><%= simple_format(@task.description) %></td>
       <td><%= simple_format(@task.short_description) %></td>
+      <td><%= simple_format(@task.constraint_time) %></td>
+      <td><%= simple_format(@task.constraint_task) %></td>
+      <td><%= simple_format(@task.recommendation) %></td>
       <td>
         <% if TasksTask.where(["ref_id = ? OR dep_id = ?", @task.id, @task.id]).count > 0 %>
           <%= link_to 'Voir les différentes tâches liées à cette tâche', tasks_tasks_url + '?utf8=✓&task_id=' + @task.id.to_s, class: 'with-features' %>

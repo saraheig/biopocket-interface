@@ -30,6 +30,11 @@
   </div>
 
   <div class="field">
+    Code de la tâche : <br/>
+    <%= form.autocomplete_field :code, autocomplete_task_code_tasks_path, id: :task_code, size: '10' %>
+  </div>
+
+  <div class="field">
     Description complète de la tâche* : <br/>
     <%= form.text_area :description, id: :task_description, size: '40x5' %>
   </div>
@@ -37,6 +42,21 @@
   <div class="field">
     Description succincte de la tâche : <br/>
     <%= form.text_area :short_description, id: :task_short_description, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Contrainte temporelle de la tâche : <br/>
+    <%= form.text_area :constraint_time, id: :task_constraint_time, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Contrainte de la tâche : <br/>
+    <%= form.text_area :constraint_task, id: :task_constraint_task, size: '40x5' %>
+  </div>
+
+  <div class="field">
+    Information / recommandation de la tâche : <br/>
+    <%= form.text_area :recommendation, id: :task_recommendation, size: '40x5' %>
   </div>
 
   <hr/><h3>Classification de la tâche</h3><br/>

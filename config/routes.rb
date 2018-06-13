@@ -35,6 +35,7 @@ Rails.application.routes.draw do
 
   resources :tasks, path: '/tables/tasks' do
     get :autocomplete_task_title, :on => :collection
+    get :autocomplete_task_code, :on => :collection
   end
 
   resources :links, path: '/tables/links' do

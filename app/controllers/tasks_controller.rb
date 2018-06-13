@@ -1,6 +1,7 @@
 class TasksController < AuthenticateController
   before_action :set_task, only: [:show, :edit, :update, :destroy]
   autocomplete :task, :title, :full => true
+  autocomplete :task, :code, :full => true
 
   # GET /tasks
   # GET /tasks.json
@@ -72,6 +73,6 @@ class TasksController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def task_params
-      params.require(:task).permit(:title, :description, :short_description, :action_id)
+      params.require(:task).permit(:title, :code, :description, :short_description, :constraint_time, :constraint_task, :recommendation, :action_id)
     end
 end
