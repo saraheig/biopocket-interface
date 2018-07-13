@@ -22,8 +22,8 @@
     <tr>
       <td><%= @theme.title %></td>
       <td><%= @theme.code %></td>
-      <td><%= simple_format(@theme.description) %></td>
-      <td><%= simple_format(@theme.short_description) %></td>
+      <td><%= simple_format(markdown(@theme.description)) %></td>
+      <td><%= simple_format(markdown(@theme.short_description)) %></td>
       <td><%= @theme.picture %></td>
       <td><%= @theme.source %></td>
       <td>

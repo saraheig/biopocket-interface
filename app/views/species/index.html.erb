@@ -43,7 +43,7 @@
       <tr>
         <td><%= species.common_name %></td>
         <td><%= species.latin_name %></td>
-        <td><%= simple_format(species.description) %></td>
+        <td><%= simple_format(markdown(species.description)) %></td>
         <td><%= species.picture %></td>
         <td><%= species.source %></td>
         <td>

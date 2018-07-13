@@ -21,7 +21,7 @@
       <td><%= @picture.picture %></td>
       <td><%= @picture.source %></td>
       <td><%= @picture.task.title %> (<%= @picture.task.action.code %> <%= @picture.task.action.title %> - <%= @picture.task.action.theme.code %> <%= @picture.task.action.theme.title %>)</td>
-      <td><%= simple_format(@picture.description) %></td>
+      <td><%= simple_format(markdown(@picture.description)) %></td>
       <td>
         <%= link_to 'Editer', edit_picture_path(@picture) %><br/>
         <%= link_to 'Supprimer', @picture, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette photo est irréversible.' } %>

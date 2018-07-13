@@ -17,7 +17,7 @@
   <tbody>
     <tr>
       <td><%= @type.title %></td>
-      <td><%= simple_format(@type.description) %></td>
+      <td><%= simple_format(markdown(@type.description)) %></td>
       <td>
         <%= link_to 'Editer', edit_type_path(@type) %><br/>
         <%= link_to 'Supprimer', @type, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce type d\'action est irréversible et suprimera toutes les actions associées.' } %>

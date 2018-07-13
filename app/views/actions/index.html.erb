@@ -122,9 +122,9 @@
         <td><%= action.code %></td>
         <td><%= action.theme.title %> (<%= action.theme.code %>)</td>
         <td><%= action.type.title %></td>
-        <td><%= simple_format(action.short_description) %></td>
-        <td><%= simple_format(action.description) %></td>
-        <td><%= simple_format(action.impact) %></td>
+        <td><%= simple_format(markdown(action.short_description)) %></td>
+        <td><%= simple_format(markdown(action.description)) %></td>
+        <td><%= simple_format(markdown(action.impact)) %></td>
         <td>
           <% if action.spot == true %>
             Oui
@@ -135,7 +135,7 @@
         <td><%= action.cost_min %></td>
         <td><%= action.time_min %></td>
         <td><%= action.unit.abbreviation %></td>
-        <td><%= simple_format(action.time_description) %></td>
+        <td><%= simple_format(markdown(action.time_description)) %></td>
         <td><%= action.surface_min %></td>
         <td>
           <% if action.investment == 1 %>
