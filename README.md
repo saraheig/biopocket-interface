@@ -1,6 +1,6 @@
 # Database interface for the BioPocket project
 
-This is a Web application which allows users not only to easily create, read, update and delete (CRUD application) data, but also to quickly search a keyword and other parameters into data contents.
+This is a Web application which allows users not only to easily create, read, update and delete (CRUD application) data, but also to quickly search a keyword and other parameters into data contents. Markdown ([Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) - [Documentation](https://daringfireball.net/projects/markdown/syntax)) can be used in some text fields.
 
 ***
 
