@@ -41,10 +41,6 @@ Rails.application.routes.draw do
     get :autocomplete_link_link, :on => :collection
   end
 
-  resources :pictures, path: '/tables/pictures' do
-    get :autocomplete_picture_source, :on => :collection
-  end
-
   resources :categories, path: '/tables/categories' do
     get :autocomplete_category_title, :on => :collection
   end

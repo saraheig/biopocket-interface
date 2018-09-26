@@ -53,7 +53,6 @@
       <th>Description de l'encart curiosité</th>
       <th>Tâches liées à la présente tâche</th>
       <th>Liens Internet relatifs à la tâche</th>
-      <th>Photos relatives à la tâche</th>
       <th>Périodes relatives à la tâche</th>
       <th></th>
     </tr>
@@ -92,13 +91,6 @@
           <% end %>
         </td>
         <td>
-          <% if Picture.where(["task_id = ?", task.id]).count > 0 %>
-            <%= link_to 'Voir les différentes photos relatives à cette tâche', pictures_url + '?utf8=✓&keyword=&task_id=' + task.id.to_s, class: 'with-features' %>
-          <% else %>
-            <%= link_to 'Il n\'y aucune photo relative à cette tâche.', pictures_url + '?utf8=✓&keyword=&task_id=' + task.id.to_s, class: 'no-feature' %>
-          <% end %>
-        </td>
-        <td>
           <% if Period.where(["task_id = ?", task.id]).count > 0 %>
             <%= link_to 'Voir les différentes périodes relatives à cette tâche', periods_url + '?utf8=✓&keyword=&monthmin=0&monthmax=0&category_id=Indifférent&task_id=' + task.id.to_s, class: 'with-features' %>
           <% else %>
@@ -107,7 +99,7 @@
         </td>
         <td>
           <%= link_to 'Editer', edit_task_path(task) %><br/>
-          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Contraintes", "Photos" et "Périodes".' } %></td>
+          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Contraintes" et "Périodes".' } %></td>
       </tr>
     <% end %>
   </tbody>
