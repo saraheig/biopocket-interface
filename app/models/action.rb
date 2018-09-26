@@ -25,7 +25,6 @@ class Action < ApplicationRecord
   validates_numericality_of :unit_id, :greater_than_or_equal_to => 0, :message => 'Choisir une unité de temps pour la réalisation de l\'action.'
   validates_numericality_of :surface_min, :allow_nil => true, :greater_than_or_equal_to => 0, :message => 'La surface doit être nulle ou définie par un nombre positif (arrondi à deux décimales).'
   validates_inclusion_of :investment, :in => [1, 2, 3], :message => 'Choisir un niveau d\'investissement pour réaliser l\'action.'
-  validates_format_of :picture, :allow_blank => true, :with => /\A[a-zA-Z0-9_-]+.(bmp|jpe?g|gif|png|tif?f)\z/, :message => 'L\'extension de la photo (bmp, jpeg, jpg, gif, png, tif, tiff) doit être spécifiée (pas d\'espace ou de caractères spéciaux ou accentués dans le nom de la photo).'
   validates_inclusion_of :importance, :in => [1, 2, 3, 4], :allow_nil => true, :message => 'Les valeurs possibles pour l\'importance sont 1, 2, 3, 4 ou pas de valeur.'
   validates_numericality_of :theme_id, :greater_than_or_equal_to => 0, :message => 'Choisir un thème pour cette action.'
   validates_numericality_of :type_id, :greater_than_or_equal_to => 0, :message => 'Choisir un type d\'action pour cette action.'
@@ -34,11 +33,6 @@ class Action < ApplicationRecord
   def strip_blanks
     self.title = self.title.strip
     self.code = self.code.strip
-  end
-
-  # Function to get the name of the uploaded picture
-  def load_picture=(data)
-    self.picture = data.original_filename
   end
 
   # Function search to search a keyword and/or other elements through a form 
@@ -92,10 +86,10 @@ class Action < ApplicationRecord
 
     # If no search is done, all data are displayed.
     if sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype == ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR short_description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR short_description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
       # actions are ordered by updated_at desc => the most recently changed action: at the top
     elsif sql_spot && sql_invest && sql_cost && sql_surf && sql_import && keyword && sql_themetype != ""
-      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR short_description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term OR picture iLIKE :term OR source iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_spot + " AND " + sql_invest + " AND " + sql_cost + " AND " + sql_surf + " AND " + sql_import + " AND " + sql_themetype + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR short_description iLIKE :term OR impact iLIKE :term OR time_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

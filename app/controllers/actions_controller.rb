@@ -2,8 +2,6 @@ class ActionsController < AuthenticateController
   before_action :set_action, only: [:show, :edit, :update, :destroy]
   autocomplete :action, :title, :full => true
   autocomplete :action, :code, :full => true
-  autocomplete :action, :picture, :full => true
-  autocomplete :action, :source, :full => true
 
   # GET /actions
   # GET /actions.json
@@ -84,6 +82,6 @@ class ActionsController < AuthenticateController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def action_params
-      params.require(:bioaction).permit(:theme_id, :type_id, :title, :code, :description, :short_description, :impact, :spot, :cost_min, :time_min, :unit_id, :time_description, :surface_min, :investment, :picture, :load_picture, :source, :importance)
+      params.require(:bioaction).permit(:theme_id, :type_id, :title, :code, :description, :short_description, :impact, :spot, :cost_min, :time_min, :unit_id, :time_description, :surface_min, :investment, :importance)
     end
 end

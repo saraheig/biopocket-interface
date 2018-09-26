@@ -15,7 +15,7 @@
 <%= form_tag(species_index_path, method: :get) do %>
 
   <div class="field">
-    Mot-clé cherché dans le nom commun et latin de l'espèce, dans le nom et la source de la photo ou dans la description :
+    Mot-clé cherché dans le nom commun et latin et dans la description de l'espèce :
     <%= text_field_tag :search, params[:search], size: '30', placeholder: 'Aucun mot-clé' %>
   </div>
 
@@ -33,8 +33,6 @@
       <th>Nom commun de l'espèce</th>
       <th>Nom latin de l'espèce</th>
       <th>Description de l'espèce</th>
-      <th>Nom de la photo de l'espèce</th>
-      <th>Source de la photo de l'espèce</th>
       <th></th>
     </tr>
   </thead>
@@ -44,8 +42,6 @@
         <td><%= species.common_name %></td>
         <td><%= species.latin_name %></td>
         <td><%= simple_format(markdown(species.description)) %></td>
-        <td><%= species.picture %></td>
-        <td><%= species.source %></td>
         <td>
           <%= link_to 'Editer', edit_species_path(species) %><br/>
           <%= link_to 'Supprimer', species, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette espèce est irréversible et suprimera toutes les lignes associées dans la table des liens entre les actions et les espèces.' } %>

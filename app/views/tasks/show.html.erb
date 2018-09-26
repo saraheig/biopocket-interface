@@ -13,8 +13,7 @@
       <th>Code de la tâche</th>
       <th>Action (Thème)</th>
       <th>Description complète de la tâche</th>
-      <th>Description succincte de la tâche</th>
-      <th>Contrainte temporelle</th>
+      <th>Temps</th>
       <th>Contrainte tâche</th>
       <th>Information / recommandation</th>
       <th>Tâches liées à la présente tâche</th>
@@ -30,8 +29,7 @@
       <td><%= @task.code %></td>
       <td><%= @task.action.code %> <%= @task.action.title %> (<%= @task.action.theme.code %> <%= @task.action.theme.title %>)</td>
       <td><%= simple_format(markdown(@task.description)) %></td>
-      <td><%= simple_format(markdown(@task.short_description)) %></td>
-      <td><%= simple_format(markdown(@task.constraint_time)) %></td>
+      <td><%= simple_format(markdown(@task.time)) %></td>
       <td><%= simple_format(markdown(@task.constraint_task)) %></td>
       <td><%= simple_format(markdown(@task.recommendation)) %></td>
       <td>

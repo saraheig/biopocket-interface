@@ -13,8 +13,6 @@
       <th>Code du thème</th>
       <th>Description complète du thème</th>
       <th>Description succincte du thème</th>
-      <th>Nom de la photo du thème</th>
-      <th>Source de la photo du thème</th>
       <th></th>
     </tr>
   </thead>
@@ -24,8 +22,6 @@
       <td><%= @theme.code %></td>
       <td><%= simple_format(markdown(@theme.description)) %></td>
       <td><%= simple_format(markdown(@theme.short_description)) %></td>
-      <td><%= @theme.picture %></td>
-      <td><%= @theme.source %></td>
       <td>
         <%= link_to 'Editer', edit_theme_path(@theme) %><br/>
         <%= link_to 'Supprimer', @theme, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de ce thème est irréversible et suprimera toutes les actions et donc toutes les tâches associées.' } %></td>

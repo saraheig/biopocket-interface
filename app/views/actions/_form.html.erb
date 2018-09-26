@@ -93,35 +93,6 @@
     <%= form.text_field :importance, id: :action_importance, size: '10' %>
   </div>
 
-  <div class="field">
-    Nom de la photo (avec son extension) : <br/>
-    <% if @action.picture? %>
-      "<em><%= @action.picture %></em>"
-      <% if @action.id? %>
-        <%= link_to '-> Supprimer', action_path(@action, :bioaction => { :picture => '' }), :method => :put %>
-      <% else %>
-        -> Pour modifier le nom de la photo : enregistrer cette action, puis l'éditer.
-      <% end %>
-      <br/>
-    <% else %>
-      <%= form.file_field :load_picture %>
-    <% end %>
-    <%= form.hidden_field :picture, id: :action_picture %>
-    <br/>
-    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
-    <ul>
-      <li><strong>Ne pas changer le nom de la photo !</strong></li>
-      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
-      <li>Utiliser la qualité maximale possible</li>
-      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
-    </ul>
-  </div>
-
-  <div class="field">
-    Source de la photo de l'action : <br/>
-    <%= form.autocomplete_field :source, autocomplete_action_source_actions_path, id: :action_source, size: '43.5' %>
-  </div>
-
   <hr/><h3>Classification de l'action</h3><br/>
 
   <div class="field">

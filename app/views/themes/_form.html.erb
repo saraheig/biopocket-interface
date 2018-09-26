@@ -43,35 +43,6 @@
     <%= form.text_area :short_description, id: :theme_short_description, size: '40x5' %>
   </div>
 
-  <div class="field">
-    Nom de la photo du thème (avec son extension) : <br/>
-    <% if @theme.picture? %>
-      "<em><%= @theme.picture %></em>"
-      <% if @theme.id? %>
-        <%= link_to '-> Supprimer', theme_path(@theme, :theme => { :picture => '' }), :method => :put %><br/>
-      <% else %>
-        -> Pour modifier le nom de la photo : enregistrer ce thème, puis l'éditer.
-      <% end %>
-      <br/>
-    <% else %>
-      <%= form.file_field :load_picture %>
-    <% end %>
-    <%= form.hidden_field :picture, id: :theme_picture %>
-    <br/>
-    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
-    <ul>
-      <li><strong>Ne pas changer le nom de la photo !</strong></li>
-      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
-      <li>Utiliser la qualité maximale possible</li>
-      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
-    </ul>
-  </div>
-
-  <div class="field">
-    Source de la photo du thème : <br/>
-    <%= form.autocomplete_field :source, autocomplete_theme_source_themes_path, id: :theme_source, size: '43.5' %>
-  </div>
-
   <hr/>
   <h6>* Champs obligatoires</h6>
   <div class="actions">

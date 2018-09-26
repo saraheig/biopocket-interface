@@ -36,37 +36,8 @@
     <%= form.text_area :description, id: :species_description, size: '40x5' %>
   </div>
 
-  <div class="field">
-    Nom de la photo de l'espèce (avec son extension) : <br/>
-    <% if @species.picture? %>
-      "<em><%= @species.picture %></em>"
-      <% if @species.id? %>
-        <%= link_to '-> Supprimer', species_path(@species, :species => { :picture => '' }), :method => :put %>
-      <% else %>
-        -> Pour modifier le nom de la photo : enregistrer cette espèce, puis l'éditer.
-      <% end %>
-      <br/>
-    <% else %>
-      <%= form.file_field :load_picture %>
-    <% end %>
-    <%= form.hidden_field :picture, id: :species_picture %>
-    <br/>
-    Attention à bien déposer la photo sur le dossier de partage prévu à cet effet (Switch Drive) :
-    <ul>
-      <li><strong>Ne pas changer le nom de la photo !</strong></li>
-      <li>Ne pas créer de sous-dossiers (déposer toutes les photos dans un seul et même dossier)</li>
-      <li>Utiliser la qualité maximale possible</li>
-      <li>Spécifier, dans le champ ci-dessous, la source de la photo</li>
-    </ul>
-  </div>
-
-  <div class="field">
-    Source de la photo de l'espèce : <br/>
-    <%= form.autocomplete_field :source, autocomplete_species_source_species_index_path, id: :species_source, size: '43.5' %>
-  </div>
-
   <hr/>
-  <h6>* Champs obligatoires</h6>
+  <h6>* Champ obligatoire</h6>
   <div class="actions">
     <%= form.submit 'Enregistrer' %>
   </div>

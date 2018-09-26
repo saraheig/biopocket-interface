@@ -15,7 +15,7 @@
 <%= form_tag(actions_path, method: :get) do %>
 
   <div class="field">
-    Mot-clé cherché dans le titre, le code, le nom et la source de la photo, les descriptions de l'action, de l'impact et sur le temps :
+    Mot-clé cherché dans le titre, le code, les descriptions de l'action, de l'impact et sur le temps :
     <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
   </div>
 
@@ -107,8 +107,6 @@
       <th>Surface minimale</th>
       <th>Niveau d'engagement</th>
       <th>Importance pour la biodiversité</th>
-      <th>Nom de la photo</th>
-      <th>Source de la photo</th>
       <th>Actions liées à la présente action</th>
       <th>Coûts qui composent l'action</th>
       <th>Espèces touchées par l'action</th>
@@ -149,8 +147,6 @@
           <% end %>
         </td>
         <td><%= action.importance %></td>
-        <td><%= action.picture %></td>
-        <td><%= action.source %></td>
         <td>
           <% if ActionsAction.where(["ref_id = ? OR dep_id = ?", action.id, action.id]).count > 0 %>
             <%= link_to 'Voir les différentes actions liées à cette action', actions_actions_url + '?utf8=✓&action_id=' + action.id.to_s, class: 'with-features' %>
