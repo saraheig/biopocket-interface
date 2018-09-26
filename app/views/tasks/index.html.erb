@@ -107,7 +107,7 @@
         </td>
         <td>
           <%= link_to 'Editer', edit_task_path(task) %><br/>
-          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Photos" et "Périodes".' } %></td>
+          <%= link_to 'Supprimer', task, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette tâche est irréversible et supprimera toutes les lignes associées dans les tables "Liens", "Contraintes", "Photos" et "Périodes".' } %></td>
       </tr>
     <% end %>
   </tbody>

@@ -2,6 +2,7 @@ class Task < ApplicationRecord
   belongs_to :action, optional: true
 
   has_many :links, dependent: :destroy
+  has_many :constraints, dependent: :destroy
   has_many :pictures, dependent: :destroy
   has_many :periods, dependent: :destroy
   has_many :ref_tasks, foreign_key: :ref_id, class_name: :TasksTask, dependent: :destroy
