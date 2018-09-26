@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180926134428) do
+ActiveRecord::Schema.define(version: 20180926155800) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,15 @@ ActiveRecord::Schema.define(version: 20180926134428) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["title"], name: "index_categories_on_title", unique: true
+  end
+
+  create_table "constraints", force: :cascade do |t|
+    t.string "title", limit: 40
+    t.text "description"
+    t.bigint "task_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["task_id"], name: "index_constraints_on_task_id"
   end
 
   create_table "costs", force: :cascade do |t|
@@ -186,6 +195,7 @@ ActiveRecord::Schema.define(version: 20180926134428) do
   add_foreign_key "actions", "types"
   add_foreign_key "actions_actions", "actions", column: "dep_id"
   add_foreign_key "actions_actions", "actions", column: "ref_id"
+  add_foreign_key "constraints", "tasks"
   add_foreign_key "costs", "actions"
   add_foreign_key "links", "tasks"
   add_foreign_key "periods", "categories"
