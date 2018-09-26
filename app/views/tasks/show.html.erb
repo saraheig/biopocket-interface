@@ -15,6 +15,7 @@
       <th>Description complète de la tâche</th>
       <th>Temps</th>
       <th>Contrainte tâche</th>
+      <th>Contraintes de la tâche</th>
       <th>Information / recommandation</th>
       <th>Titre de l'encart curiosité</th>
       <th>Description de l'encart curiosité</th>
@@ -32,6 +33,13 @@
       <td><%= simple_format(markdown(@task.description)) %></td>
       <td><%= simple_format(markdown(@task.time)) %></td>
       <td><%= simple_format(markdown(@task.constraint_task)) %></td>
+      <td>
+        <% if Constraint.where(["task_id = ?", @task.id]).count > 0 %>
+          <%= link_to 'Voir les différentes contraintes relatives à cette tâche', constraints_url + '?utf8=✓&keyword=&task_id=' + @task.id.to_s, class: 'with-features' %>
+        <% else %>
+          <%= link_to 'Il n\'y a aucune contrainte relative à cette tâche.', constraints_url + '?utf8=✓&keyword=&task_id=' + @task.id.to_s, class: 'no-feature' %>
+        <% end %>
+      </td>
       <td><%= simple_format(markdown(@task.recommendation)) %></td>
       <td><%= @task.complement_title %></td>
       <td><%= simple_format(markdown(@task.complement_description)) %></td>
