@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Constraints</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Task</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @constraints.each do |constraint| %>
+      <tr>
+        <td><%= constraint.title %></td>
+        <td><%= constraint.description %></td>
+        <td><%= constraint.task %></td>
+        <td><%= link_to 'Show', constraint %></td>
+        <td><%= link_to 'Edit', edit_constraint_path(constraint) %></td>
+        <td><%= link_to 'Destroy', constraint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Constraint', new_constraint_path %>

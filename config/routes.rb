@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :constraints
   root to: redirect('/tables')
 
   resource :session, only: [:new, :create, :destroy]

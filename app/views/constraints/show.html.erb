@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  <%= @constraint.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @constraint.description %>
+</p>
+
+<p>
+  <strong>Task:</strong>
+  <%= @constraint.task %>
+</p>
+
+<%= link_to 'Edit', edit_constraint_path(@constraint) %> |
+<%= link_to 'Back', constraints_path %>
