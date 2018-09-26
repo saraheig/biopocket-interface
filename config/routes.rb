@@ -7,8 +7,6 @@ Rails.application.routes.draw do
   resources :actions, path: '/tables/actions' do
     get :autocomplete_action_title, :on => :collection
     get :autocomplete_action_code, :on => :collection
-    get :autocomplete_action_picture, :on => :collection
-    get :autocomplete_action_source, :on => :collection
   end
 
   resources :types, path: '/tables/types' do
@@ -18,8 +16,6 @@ Rails.application.routes.draw do
   resources :themes, path: '/tables/themes' do
     get :autocomplete_theme_title, :on => :collection
     get :autocomplete_theme_code, :on => :collection
-    get :autocomplete_theme_picture, :on => :collection
-    get :autocomplete_theme_source, :on => :collection
   end
 
   resources :costs, path: '/tables/costs' do
@@ -30,7 +26,6 @@ Rails.application.routes.draw do
   resources :species, path: '/tables/species' do
     get :autocomplete_species_common_name, :on => :collection
     get :autocomplete_species_latin_name, :on => :collection
-    get :autocomplete_species_source, :on => :collection
   end
 
   resources :tasks, path: '/tables/tasks' do

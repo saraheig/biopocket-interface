@@ -93,6 +93,18 @@
     <%= form.text_field :importance, id: :action_importance, size: '10' %>
   </div>
 
+  <hr/><h3>Encart curiosité de l'action</h3><br/>
+
+  <div class="field">
+    Titre de l'encart curiosité de l'action : <br/>
+    <%= form.text_field :complement_title, id: :action_complement_title, size: '43.5' %>
+  </div>
+
+  <div class="field">
+    Description de l'encart curiosité de l'action : <br/>
+    <%= form.text_area :complement_description, id: :action_complement_description, size: '40x5' %>
+  </div>
+
   <hr/><h3>Classification de l'action</h3><br/>
 
   <div class="field">

@@ -24,6 +24,8 @@
       <th>Surface minimale</th>
       <th>Niveau d'engagement</th>
       <th>Importance pour la biodiversité</th>
+      <th>Titre de l'encart curiosité</th>
+      <th>Description de l'encart curiosité</th>
       <th>Actions liées à la présente action</th>
       <th>Coûts qui composent l'action</th>
       <th>Espèces touchées par l'action</th>
@@ -63,6 +65,8 @@
         <% end %>
       </td>
       <td><%= @action.importance %></td>
+      <td><%= @action.complement_title %></td>
+      <td><%= simple_format(markdown(@action.complement_description)) %></td>
       <td>
         <% if ActionsAction.where(["ref_id = ? OR dep_id = ?", @action.id, @action.id]).count > 0 %>
           <%= link_to 'Voir les différentes actions liées à cette action', actions_actions_url + '?utf8=✓&action_id=' + @action.id.to_s, class: 'with-features' %>
