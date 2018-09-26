@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180613081538) do
+ActiveRecord::Schema.define(version: 20180926134428) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(version: 20180613081538) do
     t.integer "time_min"
     t.text "time_description"
     t.decimal "surface_min", precision: 10, scale: 2
-    t.text "picture"
     t.integer "importance", limit: 2
-    t.text "source"
     t.bigint "unit_id"
     t.string "code", limit: 10
     t.string "short_description", limit: 255
+    t.string "complement_title", limit: 30
+    t.text "complement_description"
     t.index ["theme_id"], name: "index_actions_on_theme_id"
     t.index ["title"], name: "index_actions_on_title", unique: true
     t.index ["type_id"], name: "index_actions_on_type_id"
@@ -101,11 +101,9 @@ ActiveRecord::Schema.define(version: 20180613081538) do
 
   create_table "species", force: :cascade do |t|
     t.string "common_name", limit: 40
-    t.text "picture"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "source"
     t.string "latin_name", limit: 100
     t.index ["common_name"], name: "index_species_on_common_name", unique: true
   end
@@ -126,11 +124,12 @@ ActiveRecord::Schema.define(version: 20180613081538) do
     t.bigint "action_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "short_description", limit: 255
     t.string "code", limit: 10
-    t.string "constraint_time", limit: 1500
+    t.string "time", limit: 1500
     t.string "constraint_task", limit: 1500
     t.string "recommendation", limit: 1500
+    t.string "complement_title", limit: 30
+    t.text "complement_description"
     t.index ["action_id"], name: "index_tasks_on_action_id"
     t.index ["title"], name: "index_tasks_on_title", unique: true
   end
@@ -150,8 +149,6 @@ ActiveRecord::Schema.define(version: 20180613081538) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "picture"
-    t.text "source"
     t.string "code", limit: 5
     t.string "short_description", limit: 255
     t.index ["title"], name: "index_themes_on_title", unique: true
