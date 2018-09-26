@@ -15,7 +15,6 @@ The actual database of this project is composed by these tables ([model](/lib/as
 * Task
 * Constraint
 * Link
-* Picture
 * Period
 * ActionsAction
 * TasksTask
