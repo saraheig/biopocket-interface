@@ -5,6 +5,7 @@ class Constraint < ApplicationRecord
 
   validates_presence_of :title, :message => 'Le titre de la contrainte doit être spécifié.'
   validates_length_of :title, :maximum => 40, :message => 'Le titre de la contrainte doit avoir maximum 40 caractères.'
+  validates_numericality_of :task_id, :greater_than_or_equal_to => 0, :message => 'Choisir une tâche pour cette contrainte.'
 
   # Function to remove spaces in the field
   def strip_blanks
