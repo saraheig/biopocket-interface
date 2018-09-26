@@ -1,32 +1,48 @@
 <%= form_with(model: constraint, local: true) do |form| %>
+
+  <%-# The part variable: to know if this is a new or an existing constraint which is modified (see below) -%>
+  <% part = request.path_info.split("/")[4] %>
+  <%-# Add a title according if this is a new or an existing constraint -%>
+  <% if part == 'edit' %>
+    <%-# This is an existing constraint. -%>
+    <h2>Contrainte "<%= constraint.title %>"</h2>
+    Tâche : <%= constraint.task.title %> (Action : <%= constraint.task.action.code %> <%= constraint.task.action.title %> - Thème : <%= constraint.task.action.theme.code %> <%= constraint.task.action.theme.title %>)
+    <%-# No <h2> title if this is a new constraint. -%>
+  <% end %>
+
   <% if constraint.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(constraint.errors.count, "error") %> prohibited this constraint from being saved:</h2>
+      <h2><%= pluralize(constraint.errors.count, "erreur identifiée", "erreurs identifiées") %> :</h2>
 
       <ul>
-      <% constraint.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+      <% constraint.errors.messages.values.each do |message| %>
+        <li><%= message[0] %></li>
       <% end %>
       </ul>
     </div>
   <% end %>
 
+  <hr/><h3>Information sur la contrainte</h3><br/>
+
   <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title, id: :constraint_title %>
+    Titre de la contrainte* : <br/>
+    <%= form.autocomplete_field :title, autocomplete_constraint_title_constraints_path, id: :constraint_title, size: '43.5' %>
   </div>
 
   <div class="field">
-    <%= form.label :description %>
-    <%= form.text_area :description, id: :constraint_description %>
+    Description de la contrainte : <br/>
+    <%= form.text_area :description, id: :constraint_description, size: '40x5' %>
   </div>
 
   <div class="field">
-    <%= form.label :task_id %>
-    <%= form.text_field :task_id, id: :constraint_task_id %>
+    Tâche (Action - Thème)* : <br/>
+    <%= form.select :task_id, Task.all.collect { |task| [task.title + ' (' + task.action.code + ' ' + task.action.title + ' - ' + task.action.theme.code + ' ' + task.action.theme.title + ')', task.id] }, { :include_blank => "Choisir" } %>
+    <%= link_to 'Créer une nouvelle tâche', new_task_path %>
   </div>
 
+  <hr/>
+  <h6>* Champs obligatoires</h6>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit 'Enregistrer' %>
   </div>
 <% end %>

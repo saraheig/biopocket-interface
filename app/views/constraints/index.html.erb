@@ -1,31 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Constraints</h1>
+<h1>Table des contraintes</h1>
+<em>
+  Cette table contient les différentes contraintes des tâches.
+</em>
 
-<table>
+<hr/>
+<%= link_to 'Ajouter une contrainte', new_constraint_path %>
+<hr/>
+
+<h3>Effectuer une recherche</h3><br/>
+<%= form_tag(constraints_path, method: :get) do %>
+
+  <div class="field">
+    Mot-clé cherché dans le titre et la description :
+    <%= text_field_tag :keyword, params[:keyword], size: '30', placeholder: 'Aucun mot-clé' %>
+  </div>
+  
+  <div class="field">
+    Tâche (Action - Thème) :
+    <% tasks = Task.all %>
+    <% taskoptions = ['Indifférent'] %>
+    <% tasks.each do |task| %>
+      <% taskarray = [task.title + ' (' + task.action.code + ' ' + task.action.title + ' - ' + task.action.theme.code + ' ' + task.action.theme.title + ')', task.id] %>
+      <% taskoptions.push(taskarray) %>
+    <% end %>
+    <%= select_tag :task_id, options_for_select(taskoptions, params[:task_id]) %>
+  </div>
+
+  <div class="actions">
+    <%= submit_tag 'Rechercher', name: nil %>
+  </div>
+
+<% end %><br/>
+
+<%= link_to 'Annuler la recherche', constraints_path %><br/><br/>
+
+<table class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Task</th>
-      <th colspan="3"></th>
+      <th>Titre de la contrainte</th>
+      <th>Description de la contrainte</th>
+      <th>Tâche (Action - Thème)</th>
+      <th></th>
     </tr>
   </thead>
-
   <tbody>
     <% @constraints.each do |constraint| %>
       <tr>
         <td><%= constraint.title %></td>
-        <td><%= constraint.description %></td>
-        <td><%= constraint.task %></td>
-        <td><%= link_to 'Show', constraint %></td>
-        <td><%= link_to 'Edit', edit_constraint_path(constraint) %></td>
-        <td><%= link_to 'Destroy', constraint, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= simple_format(markdown(constraint.description)) %></td>
+        <td><%= constraint.task.title %> (<%= constraint.task.action.code %> <%= constraint.task.action.title %> - <%= constraint.task.action.theme.code %> <%= constraint.task.action.theme.title %>)</td>
+        <td>
+          <%= link_to 'Editer', edit_constraint_path(constraint) %><br/>
+          <%= link_to 'Supprimer', constraint, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette contrainte est irréversible.' } %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Constraint', new_constraint_path %>

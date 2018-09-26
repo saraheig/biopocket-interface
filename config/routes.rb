@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  resources :constraints
   root to: redirect('/tables')
 
   resource :session, only: [:new, :create, :destroy]
@@ -32,6 +31,10 @@ Rails.application.routes.draw do
   resources :tasks, path: '/tables/tasks' do
     get :autocomplete_task_title, :on => :collection
     get :autocomplete_task_code, :on => :collection
+  end
+
+  resources :constraints, path: '/tables/constraints' do
+    get :autocomplete_constraint_title, :on => :collection
   end
 
   resources :links, path: '/tables/links' do

@@ -1,19 +1,29 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @constraint.title %>
-</p>
+<h1>Contrainte "<%= @constraint.title %>"</h1>
 
-<p>
-  <strong>Description:</strong>
-  <%= @constraint.description %>
-</p>
+<hr/>
+<%= link_to 'Voir toutes les contraintes', constraints_path %>
+<hr/>
 
-<p>
-  <strong>Task:</strong>
-  <%= @constraint.task %>
-</p>
-
-<%= link_to 'Edit', edit_constraint_path(@constraint) %> |
-<%= link_to 'Back', constraints_path %>
+<table class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Titre de la contrainte</th>
+      <th>Description de la contrainte</th>
+      <th>Tâche (Action - Thème)</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @constraint.title %></td>
+      <td><%= @constraint.description %></td>
+      <td><%= @constraint.task.title %> (<%= @constraint.task.action.code %> <%= @constraint.task.action.title %> - <%= @constraint.task.action.theme.code %> <%= @constraint.task.action.theme.title %>)</td>
+      <td>
+        <%= link_to 'Editer', edit_constraint_path(@constraint) %><br/>
+        <%= link_to 'Supprimer', @constraint, method: :delete, data: { confirm: 'Etes-vous sûr ? Attention : La suppression de cette contrainte est irréversible.' } %>
+      </td>
+    </tr>
+  </tbody>
+</table>

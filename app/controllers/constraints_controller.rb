@@ -1,10 +1,13 @@
-class ConstraintsController < ApplicationController
+class ConstraintsController < AuthenticateController
   before_action :set_constraint, only: [:show, :edit, :update, :destroy]
+  autocomplete :constraint, :title, :full => true
 
   # GET /constraints
   # GET /constraints.json
   def index
-    @constraints = Constraint.all
+    keyword = params[:keyword]
+    task = params[:task_id]
+    @constraints = Constraint.search(keyword, task)
   end
 
   # GET /constraints/1
@@ -28,7 +31,7 @@ class ConstraintsController < ApplicationController
 
     respond_to do |format|
       if @constraint.save
-        format.html { redirect_to @constraint, notice: 'Constraint was successfully created.' }
+        format.html { redirect_to @constraint, notice: 'La contrainte a été créée.' }
         format.json { render :show, status: :created, location: @constraint }
       else
         format.html { render :new }
@@ -42,7 +45,7 @@ class ConstraintsController < ApplicationController
   def update
     respond_to do |format|
       if @constraint.update(constraint_params)
-        format.html { redirect_to @constraint, notice: 'Constraint was successfully updated.' }
+        format.html { redirect_to @constraint, notice: 'La contrainte a été mise à jour.' }
         format.json { render :show, status: :ok, location: @constraint }
       else
         format.html { render :edit }
@@ -56,7 +59,7 @@ class ConstraintsController < ApplicationController
   def destroy
     @constraint.destroy
     respond_to do |format|
-      format.html { redirect_to constraints_url, notice: 'Constraint was successfully destroyed.' }
+      format.html { redirect_to constraints_url, notice: 'La contrainte a été supprimée.' }
       format.json { head :no_content }
     end
   end

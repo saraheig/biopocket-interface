@@ -13,6 +13,7 @@ The actual database of this project is composed by these tables ([model](/lib/as
 * Cost
 * Unit
 * Task
+* Constraint
 * Link
 * Picture
 * Period
