@@ -14,6 +14,10 @@ In the database interface, **image syntax** looks like this:
 
 `![Name of the image](https://s3-eu-west-1.amazonaws.com/biopocket-data/images/imageName.jpg "parameters")`
 
+**Example**:
+`![F5-2-main](https://s3-eu-west-1.amazonaws.com/biopocket-data/images/F5-2-main.jpg "full ct")`
+
+
 ### Parameters related to images
 
 Each image must have **two parameters**.
@@ -24,42 +28,48 @@ The **first parameter** indicates the position of the image related to the mobil
 - `full` if the image is at the bottom of the mobile screen (over the entire width of the mobile screen)
 - `right` if the image is in the right corner of the mobile screen
 
-Example of a main image and a full image:
-![Example of a main image and a full image](https://xd.adobe.com/view/02e504e9-d676-434c-9205-334d69113c9a/screen/e21c5c13-a304-4b4d-a978-d60a00fb9a4d/Details-tache)
+**Example of a main image and a full image**:
+
+![Example of a main image and a full image](/lib/assets/example-main-full-images.png)
 
 The **second parameter** indicates the approximate position of the object (bird, tree, plant ...) related to the image itself. It must be composed by **two letters**.
 
 * The first letter indicates the **horizontal position** of the object related to the image itself. Only one of these three possibilities must be used by image: 
-..-`l` if the object is on the left side of the image
-..-`c` if the object is at the center of the image
-..-`r` if the object is on the right side of the image
+
+    * `l` if the object is on the left side of the image
+    * `c` if the object is at the center of the image
+    * `r` if the object is on the right side of the image
 
 * The second letter indicates the **vertical position** of the object related to the image itself. Only one of these three possibilities must be used by image: 
-..-`t` if the object is at the top of the image
-..-`c` if the object is at the center of the image
-..-`b` if the object is at the bottom of the image
 
-**Example**: `![Name of the image](https://s3-eu-west-1.amazonaws.com/biopocket-data/images/imageName.jpg "full ct")`
+    * `t` if the object is at the top of the image
+    * `c` if the object is at the center of the image
+    * `b` if the object is at the bottom of the image
 
 
 ## Database structure
 
 The actual database of this project is composed by these tables ([model](/lib/assets/mcd.pdf)):
 
-* Action
-* Theme
-* Type
-* Category
-* Cost
-* Unit
-* Task
-* Constraint
-* Link
-* Period
-* ActionsAction
-* TasksTask
-* Species
-* SpeciesAction
+* Action: All actions a user can undertake
+
+    * ActionsAction: Links between the actions
+    * Cost: Costs related to each action
+    * Species: Species affected by each action
+    * SpeciesAction: Links between actions and species
+    * Unit: Time units related to the actions
+
+* Theme: Groups of actions
+
+* Type: Types of actions
+
+* Task: All tasks of each action
+
+    * TasksTask: Links between the tasks
+    * Category: Time categories
+    * Constraint: Constraints related to each task
+    * Link: Web links related to each task
+    * Period: Periods related to each task
 
 In order to use this Web application, users can only sign in. As a result, the actual database also contains this table: 
 
