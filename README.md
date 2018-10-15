@@ -15,8 +15,8 @@ This is a Web application which allows users not only to easily create, read, up
 Images are stored on [Amazon](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#sauvegarde-des-images-sur-amazon) with this [convention](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#convention-de-nommage).
 
 **Attention** : In the application, there are two main categories of images.
-- Main images: Each theme and each action has one main image. The main image must be named with the code of the theme or action and the keyword "main" (`CODE-main.jpg`) and **the link must not be indicated in the database interface**.
-- Secondary images: Each theme and each task could have several secondary images. These secondary images must be named with the code and a name (`CODE-name.jpg`). Moreover, **the link must be indicated in the database interface in one of the fields related to a description**.
+- **Main images**: Each theme and each action has one main image. The main image must be named with the code of the theme or action and the keyword "main" (`CODE-main.jpg`) and **the image must not be indicated in the database interface**.
+- **Secondary images**: Each theme and each task could have several secondary images. These secondary images must be named with the code of the theme or task and a name (`CODE-name.jpg`). Moreover, **the image must be indicated in the database interface in one of the fields related to a description**.
 
 In the database interface, **image syntax** looks like this:
 
@@ -26,7 +26,7 @@ In the database interface, **image syntax** looks like this:
 `![full ct](F5-habitat.jpg)`
 This is an example of a secondary image related to the theme F5.
 
-In the database interface, each secondary image must have **two parameters** (see below).
+In the database interface, each secondary image must have **two parameters** (see below). These two parameters are indicated in the brackets.
 
 
 ### First parameter
@@ -39,7 +39,7 @@ The first parameter indicates **the position of the image related to the mobile 
 
 **Example of a left image and a full image**:
 
-![Example of a left image and a full image](/lib/assets/example-main-full-images.png)
+![Example of a left image and a full image](/lib/assets/example-left-full-images.png)
 
 
 ### Second parameter
