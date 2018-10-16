@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180926171210) do
+ActiveRecord::Schema.define(version: 20181016164004) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -125,7 +125,6 @@ ActiveRecord::Schema.define(version: 20180926171210) do
     t.datetime "updated_at", null: false
     t.string "code", limit: 10
     t.string "time", limit: 1500
-    t.string "constraint_task", limit: 1500
     t.string "recommendation", limit: 1500
     t.string "complement_title", limit: 30
     t.text "complement_description"
