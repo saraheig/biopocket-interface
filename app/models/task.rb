@@ -16,7 +16,6 @@ class Task < ApplicationRecord
   validates_length_of :code, :maximum => 10, :message => 'Le code de la tâche doit avoir maximum 10 caractères.'
   validates_presence_of :description, :message => 'La description complète de la tâche doit être spécifiée.'
   validates_length_of :time, :maximum => 1500, :message => 'Le temps de la tâche doit avoir maximum 1500 caractères.'
-  validates_length_of :constraint_task, :maximum => 1500, :message => 'La contrainte de la tâche doit avoir maximum 1500 caractères.'
   validates_length_of :recommendation, :maximum => 1500, :message => 'L\'information / recommandation de la tâche doit avoir maximum 1500 caractères.'
   validates_length_of :complement_title, :maximum => 30, :message => 'Le titre de l\'encart curiosité de la tâche doit avoir maximum 30 caractères.'
   validates_numericality_of :action_id, :greater_than_or_equal_to => 0, :message => 'Choisir une action pour cette tâche.'
@@ -38,10 +37,10 @@ class Task < ApplicationRecord
     end
 
     if keyword && sql_action == ""
-      where("title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR time iLIKE :term OR constraint_task iLIKE :term OR recommendation iLIKE :term OR complement_title iLIKE :term OR complement_description iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
+      where("title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR time iLIKE :term OR recommendation iLIKE :term OR complement_title iLIKE :term OR complement_description iLIKE :term", term: "%#{keyword}%").order(updated_at: :desc)
       # iLIKE -> case insensitive
     elsif keyword && sql_action != ""
-      where(sql_action + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR time iLIKE :term OR constraint_task iLIKE :term OR recommendation iLIKE :term OR complement_title iLIKE :term OR complement_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
+      where(sql_action + " AND (title iLIKE :term OR code iLIKE :term OR description iLIKE :term OR time iLIKE :term OR recommendation iLIKE :term OR complement_title iLIKE :term OR complement_description iLIKE :term)", term: "%#{keyword}%").order(updated_at: :desc)
     else
       all.order(updated_at: :desc)
     end

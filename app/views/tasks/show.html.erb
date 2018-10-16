@@ -14,7 +14,6 @@
       <th>Action (Thème)</th>
       <th>Description complète de la tâche</th>
       <th>Temps</th>
-      <th>Contrainte tâche</th>
       <th>Contraintes de la tâche</th>
       <th>Information / recommandation</th>
       <th>Titre de l'encart curiosité</th>
@@ -32,7 +31,6 @@
       <td><%= @task.action.code %> <%= @task.action.title %> (<%= @task.action.theme.code %> <%= @task.action.theme.title %>)</td>
       <td><%= simple_format(markdown(@task.description)) %></td>
       <td><%= simple_format(markdown(@task.time)) %></td>
-      <td><%= simple_format(markdown(@task.constraint_task)) %></td>
       <td>
         <% if Constraint.where(["task_id = ?", @task.id]).count > 0 %>
           <%= link_to 'Voir les différentes contraintes relatives à cette tâche', constraints_url + '?utf8=✓&keyword=&task_id=' + @task.id.to_s, class: 'with-features' %>
