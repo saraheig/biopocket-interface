@@ -12,7 +12,7 @@ This is a Web application which allows users not only to easily create, read, up
 
 ## Images management
 
-Images are stored on [Amazon](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#sauvegarde-des-images-sur-amazon) with this [convention](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#convention-de-nommage).
+Images are stored on [Amazon](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#sauvegarde-des-images-sur-amazon) with this [convention](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#convention-de-nommage). Attention: All images must be set public.
 
 **Attention** : In the application, there are two main categories of images.
 - **Main images**: Each theme and each action has one main image. The main image must be named with the code of the theme or action and the keyword "main" (`CODE-main.jpg`) and **the image must not be indicated in the database interface**.
@@ -27,6 +27,8 @@ In the database interface, **image syntax** looks like this:
 This is an example of a secondary image related to the theme F5.
 
 In the database interface, each secondary image must have **two parameters** (see below). These two parameters are indicated in the brackets.
+
+If an image is not displayed in the database interface, please verify the syntax.
 
 
 ### First parameter
