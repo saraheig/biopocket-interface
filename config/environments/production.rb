@@ -2,7 +2,7 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Base url for images
-  config.imagesBaseUrl = ENV["BIOPOCKET_IMAGES_BASE_URL"]
+  config.imagesBaseUrl = ENV["BIOPOCKET_INTERFACE_IMAGES_BASE_URL"]
 
   # Code is not reloaded between requests.
   config.cache_classes = true
