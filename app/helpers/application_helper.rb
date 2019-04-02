@@ -1,3 +1,6 @@
+require 'uri'
+require 'net/http'
+
 module ApplicationHelper
   # Initialize a function related to markdown (parser)
   def markdown(text)
