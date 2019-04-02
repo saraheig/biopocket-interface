@@ -14,6 +14,8 @@ This is a Web application which allows users not only to easily create, read, up
 
 Images are stored on [Amazon](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#sauvegarde-des-images-sur-amazon) with this [convention](https://github.com/MediaComem/biopocket/blob/master/IMAGES-WORKFLOW.md#convention-de-nommage). Attention: All images must be set public.
 
+All images must be stored in the **main folder or in the "ImagesATraiter" sub-folder** of [Amazon](https://s3.console.aws.amazon.com/s3/buckets/biopocket-data/images/).
+
 **Attention** : In the application, there are two main categories of images.
 - **Main images**: Each theme and each action has one main image. The main image must be named with the code of the theme or action and the keyword "main" (`CODE-main.jpg`) and **the image must not be indicated in the database interface**.
 - **Secondary images**: Each theme and each task could have several secondary images. These secondary images must be named with the code of the theme or task and a name (`CODE-name.jpg`). Moreover, **the image must be indicated in the database interface in one of the fields related to a description**.
@@ -28,7 +30,10 @@ This is an example of a secondary image related to the theme F5.
 
 In the database interface, each secondary image must have **two parameters** (see below). These two parameters are indicated in the brackets.
 
-If an image is not displayed in the database interface, please verify the syntax.
+If an image is not displayed in the database interface, please verify the syntax AND the following points:
+- The image must be stored in the **main folder or in the "ImagesATraiter" sub-folder** of [Amazon](https://s3.console.aws.amazon.com/s3/buckets/biopocket-data/images/).
+- The image name must not contain any special characters (accents, spaces, plus, slashes, brackets, ampersands, etc.).
+- It is recommended that the image name is in lowercase.
 
 
 ### First parameter
