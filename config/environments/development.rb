@@ -2,8 +2,8 @@ Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Base url for images
-  config.imagesFinalUrl = "https://s3-eu-west-1.amazonaws.com/biopocket-data/images/"
-  config.imagesInitUrl = "https://s3-eu-west-1.amazonaws.com/biopocket-data/images/ImagesATraiter/"
+  config.imagesFinalUrl = ENV["BIOPOCKET_INTERFACE_IMAGES_FINAL_URL"]
+  config.imagesInitUrl = ENV["BIOPOCKET_INTERFACE_IMAGES_INIT_URL"]
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development

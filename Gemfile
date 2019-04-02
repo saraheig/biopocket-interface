@@ -51,6 +51,8 @@ group :development, :test do
   gem 'capybara-screenshot'
   gem 'poltergeist'
   gem 'phantomjs', :require => 'phantomjs/poltergeist'
+  # Loads environment variables from .env
+  gem 'dotenv-rails', '~> 2.7', '>= 2.7.2'
 end
 
 group :development do
