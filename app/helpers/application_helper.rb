@@ -5,19 +5,19 @@ module ApplicationHelper
   # Initialize a function related to markdown (parser)
   def markdown(text)
     if text
-      
+
       images = text.scan(/!\[((?:full|right|left)\s(?:l|c|r|a)(?:t|c|b|a))\]\(([^)\s]+\.(?:gif|jpe?g|png))\)/)
 
       images.each { |image|
 
-        url = Rails.configuration.imagesFinalUrl + image[1]
+        url = Rails.configuration.imagesFinalUrl + ERB::Util.url_encode(image[1])
         res = Net::HTTP.get_response(URI.parse(url)).is_a?(Net::HTTPSuccess)
 
         if res
-          url_final = Rails.configuration.imagesFinalUrl + image[1]
+          url_final = Rails.configuration.imagesFinalUrl + ERB::Util.url_encode(image[1])
           status = "image traitée"
         else
-          url_final = Rails.configuration.imagesInitUrl + image[1]
+          url_final = Rails.configuration.imagesInitUrl + ERB::Util.url_encode(image[1])
           status = "image à traiter"
         end
 
