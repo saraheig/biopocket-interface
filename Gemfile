@@ -38,7 +38,7 @@ gem 'rails-jquery-autocomplete', '~> 1.0', '>= 1.0.3'
 # Bootstrap
 gem 'rails-bootstrap', '~> 3.0', '>= 3.0.0.4'
 # Markdown
-gem 'redcarpet', '~> 3.4'
+gem 'redcarpet', '~> 3.5'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
